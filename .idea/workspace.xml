@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="composer.json" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/symfony/symfony" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-apcu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/distribution-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1gOhsgScvoCR8eFrOgxbhE2cTn0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.16.2" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="Symfony2.MethodSignatureTypeSettingsForm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\symfonyhotel\web" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Server" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/bin/console" scriptParameters="server:run">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="" />
+      <created>1597991779277</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597991779277</updated>
+      <workItem from="1597991980407" duration="2681000" />
+      <workItem from="1597994951543" duration="5156000" />
+      <workItem from="1598000265021" duration="8687000" />
+      <workItem from="1598013593053" duration="1411000" />
+      <workItem from="1598076286467" duration="59000" />
+      <workItem from="1598287191400" duration="261000" />
+      <workItem from="1598358705447" duration="8544000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="527" y="5" key="#PHP" timestamp="1597993685009">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="527" y="5" key="#PHP/0.0.1366.728@0.0.1366.728" timestamp="1597993685009" />
+    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598360945008">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1598360945008" />
+    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser" timestamp="1598004392639">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1598004392639" />
+    <state x="456" y="45" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597998851660">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="456" y="45" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1597998851660" />
+    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598365434540">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598365434540" />
+    <state x="600" y="117" key="FileChooserDialogImpl" timestamp="1598076342780">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="600" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598076342780" />
+    <state width="1322" height="152" key="GridCell.Tab.0.bottom" timestamp="1597994870178">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="152" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
+    <state width="1322" height="152" key="GridCell.Tab.0.center" timestamp="1597994870178">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="152" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
+    <state width="1322" height="152" key="GridCell.Tab.0.left" timestamp="1597994870178">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="152" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
+    <state width="1322" height="152" key="GridCell.Tab.0.right" timestamp="1597994870178">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="152" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1598360958191">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1598360958191" />
+    <state x="184" y="0" key="SettingsEditor" timestamp="1598000129053">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598000129053" />
+    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598368193548">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1598368193548" />
+  </component>
+</project>
