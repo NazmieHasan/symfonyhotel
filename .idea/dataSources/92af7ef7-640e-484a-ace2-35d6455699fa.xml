@@ -1072,41 +1072,103 @@
       <ObjectGrants>ALL PRIVILEGES!
 </ObjectGrants>
     </user>
-    <table id="341" parent="13" name="users">
+    <table id="341" parent="13" name="categories">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <column id="342" parent="341" name="id">
+    <table id="342" parent="13" name="rooms">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <table id="343" parent="13" name="users">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <column id="344" parent="341" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="343" parent="341" name="email">
+    <column id="345" parent="341" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="344" parent="341" name="password">
+    <column id="346" parent="341" name="beds">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="345" parent="341" name="fullName">
+    <column id="347" parent="341" name="price">
       <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="346" parent="341" name="UNIQ_1483A5E9E7927C74">
-      <ColNames>email</ColNames>
+    <index id="348" parent="341" name="UNIQ_3AF346685E237E06">
+      <ColNames>name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="347" parent="341" name="PRIMARY">
+    <key id="349" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="348" parent="341" name="UNIQ_1483A5E9E7927C74">
+    <key id="350" parent="341" name="UNIQ_3AF346685E237E06">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>UNIQ_3AF346685E237E06</UnderlyingIndexName>
+    </key>
+    <column id="351" parent="342" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="352" parent="342" name="number">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="353" parent="342" name="category_id">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="354" parent="342" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="355" parent="343" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="356" parent="343" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="357" parent="343" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="358" parent="343" name="fullName">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="359" parent="343" name="UNIQ_1483A5E9E7927C74">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="360" parent="343" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="361" parent="343" name="UNIQ_1483A5E9E7927C74">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>UNIQ_1483A5E9E7927C74</UnderlyingIndexName>
     </key>
