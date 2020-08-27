@@ -2,6 +2,7 @@
 
 namespace HotelBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +43,26 @@ class Room
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
+
+
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="room")
+     */
+    private $bookings;
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getNumber();
+    }
+
 
 
     /**
@@ -100,6 +121,22 @@ class Room
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBookings()
+    {
+        return $this->bookings;
+    }
+
+    /**
+     * @param ArrayCollection $bookings
+     */
+    public function setBookings(ArrayCollection $bookings)
+    {
+        $this->bookings = $bookings;
     }
 
 

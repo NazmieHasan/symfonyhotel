@@ -20,11 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/rooms/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/rooms/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/RoomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Room.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Room.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +149,9 @@
       <workItem from="1598382281906" duration="2941000" />
       <workItem from="1598420692625" duration="17763000" />
       <workItem from="1598452206335" duration="2069000" />
+      <workItem from="1598468840893" duration="14137000" />
+      <workItem from="1598504074567" duration="11741000" />
+      <workItem from="1598517754351" duration="11349000" />
     </task>
     <servers />
   </component>
@@ -164,14 +171,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="309" y="41" key="#Inspections" timestamp="1598509377182">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="41" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1598509377182" />
     <state x="527" y="5" key="#PHP" timestamp="1597993685009">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="527" y="5" key="#PHP/0.0.1366.728@0.0.1366.728" timestamp="1597993685009" />
-    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598360945008">
+    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598504269460">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1598360945008" />
+    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1598504269460" />
     <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser" timestamp="1598004392639">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -184,10 +195,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598432948534" />
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598431518689">
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598529382978">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598431518689" />
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598529382978" />
+    <state x="129" y="54" key="DiffContextDialog" timestamp="1598532119064">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="129" y="54" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1598532119064" />
     <state x="600" y="117" key="FileChooserDialogImpl" timestamp="1598076342780">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -212,17 +227,29 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1598422649655" />
-    <state x="263" y="97" key="IDE.errors.dialog" timestamp="1598435959504">
+    <state x="263" y="97" key="IDE.errors.dialog" timestamp="1598532235646">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598435959504" />
+    <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598532235646" />
+    <state x="442" y="85" key="NewPhpClassDialog" timestamp="1598479584430">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="442" y="85" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1598479584430" />
+    <state x="478" y="83" key="RollbackChangesDialog" timestamp="1598532128171">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="478" y="83" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598532128171" />
     <state x="184" y="0" key="SettingsEditor" timestamp="1598000129053">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598000129053" />
-    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598385167061">
+    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598533073137">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1598385167061" />
+    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1598533073137" />
+    <state x="339" y="157" key="run.anything.popup" timestamp="1598527654546">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598527654546" />
   </component>
 </project>

@@ -50,9 +50,17 @@ class Category
      */
     private $rooms;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="categories")
+     */
+    private $bookings;
+
     public function __construct()
     {
         $this->rooms = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function __toString()
@@ -156,6 +164,22 @@ class Category
     public function setRooms($rooms)
     {
         $this->rooms = $rooms;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBookings()
+    {
+        return $this->bookings;
+    }
+
+    /**
+     * @param ArrayCollection $bookings
+     */
+    public function setBookings(ArrayCollection $bookings)
+    {
+        $this->bookings = $bookings;
     }
 }
 

@@ -6,12 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Payment
+ * Status
  *
- * @ORM\Table(name="payments")
- * @ORM\Entity(repositoryClass="HotelBundle\Repository\PaymentRepository")
+ * @ORM\Table(name="statuses")
+ * @ORM\Entity(repositoryClass="HotelBundle\Repository\StatusRepository")
  */
-class Payment
+class Status
 {
     /**
      * @var int
@@ -32,7 +32,7 @@ class Payment
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="payment")
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="statuses")
      */
     private $bookings;
 
@@ -45,6 +45,7 @@ class Payment
     {
         return $this->getName();
     }
+
 
 
     /**
@@ -62,7 +63,7 @@ class Payment
      *
      * @param string $name
      *
-     * @return Payment
+     * @return Status
      */
     public function setName($name)
     {

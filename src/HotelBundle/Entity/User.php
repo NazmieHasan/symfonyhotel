@@ -2,6 +2,7 @@
 
 namespace HotelBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -43,6 +44,18 @@ class User implements UserInterface
      * @ORM\Column(name="fullName", type="string", length=255)
      */
     private $fullName;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="client")
+     */
+    private $bookings;
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
 
     /**
@@ -117,6 +130,7 @@ class User implements UserInterface
         return $this;
     }
 
+
     /**
      * Get fullName
      *
@@ -145,6 +159,24 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBookings()
+    {
+        return $this->bookings;
+    }
+
+    /**
+     * @param Booking $booking
+     * @return User
+     */
+    public function addBooking(Booking $booking)
+    {
+        $this->bookings[] = $booking;
+        return $this;
     }
 }
 

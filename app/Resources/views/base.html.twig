@@ -33,11 +33,18 @@
                         My Profile
                         </a>
                         </li>
-                        {#<li>#}
-                        {#<a href="{{ path('article_create') }}" class="navbar-brand">#}
-                        {#Create Article#}
-                        {#</a>#}
-                        {#</li>#}
+                        <li>
+                        <a href="{{ path('booking_create') }}" class="navbar-brand">
+                        Create Booking
+                        </a>
+                        </li>
+                            <li>
+                                <a href="{{ path('guest_create') }}" class="navbar-brand">
+                                    Create Guest
+                                </a>
+                            </li>
+
+
                             <li>
                                 <a href="{{ path('category_create') }}" class="navbar-brand">
                                     Create Category
@@ -51,6 +58,11 @@
                             <li>
                                 <a href="{{ path('payment_create') }}" class="navbar-brand">
                                     Create Payment
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('status_create') }}" class="navbar-brand">
+                                    Create Status
                                 </a>
                             </li>
                         <li>

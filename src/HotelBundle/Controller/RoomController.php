@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RoomController extends Controller
 {
     /**
-     * @Route("/insert", name="room_create")
+     * @Route("/createroom", name="room_create")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response|null

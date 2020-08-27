@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'register' %}
+
+{% block main %}
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" action="{{ path('guest_create') }}" method="post">
+                <fieldset>
+                    <legend>Create Guest</legend>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="guest_name">Name</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="guest_name" placeholder="Name" name="guest[name]" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="guest_family">Family</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="guest_family" placeholder="Family" name="guest[family]" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="guest_egn">EGN</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="guest_egn" placeholder="EGN" name="guest[egn]" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="guest_phone">Phone</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="guest_phone" placeholder="Phone" name="guest[phone]" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="guest_booking">Booking</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="guest_booking" placeholder="Booking" name="guest[booking]" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            {#<a class="btn btn-default" href="{{ path('hotel_index') }}">Cancel</a>#}
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+
+                    {{  form_row(form._token) }}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
