@@ -18,7 +18,8 @@ class CategoryType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('beds', NumberType::class)
-            ->add('price', NumberType::class);
+            ->add('price', NumberType::class)
+            ->add('imageURL', TextType::class);
     }/**
      * {@inheritdoc}
      */

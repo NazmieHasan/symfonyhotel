@@ -137,7 +137,7 @@ class BookingController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function view($id) {
+    public function view(int $id) {
         $booking = $this
             ->getDoctrine()
             ->getRepository(Booking::class)

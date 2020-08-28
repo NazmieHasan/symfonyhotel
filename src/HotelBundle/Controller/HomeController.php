@@ -2,7 +2,7 @@
 
 namespace HotelBundle\Controller;
 
-use HotelBundle\Entity\Booking;
+use HotelBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,10 +16,10 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $bookings = $this->getDoctrine()->getRepository(Booking::class)
+        $categories = $this->getDoctrine()->getRepository(Category::class)
             ->findAll();
         // replace this example code with whatever you need
         return $this->render('home/index.html.twig',
-        ['bookings' => $bookings]);
+        ['categories' => $categories]);
     }
 }

@@ -44,6 +44,13 @@ class Category
     private $price;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="text")
+     */
+    private $imageURL;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Room", mappedBy="categories")
@@ -180,6 +187,22 @@ class Category
     public function setBookings(ArrayCollection $bookings)
     {
         $this->bookings = $bookings;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageURL()
+    {
+        return $this->imageURL;
+    }
+
+    /**
+     * @param string $imageURL
+     */
+    public function setImageURL(string $imageURL)
+    {
+        $this->imageURL = $imageURL;
     }
 }
 
