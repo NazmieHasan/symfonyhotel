@@ -20,11 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Encryption/ArgonEncryption.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Encryption/BCryptService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Encryption/EncryptionServiceInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Users/UserServiceInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Repository/BookingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Repository/BookingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Repository/UserRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +153,7 @@
       <workItem from="1598545778472" duration="2291000" />
       <workItem from="1598548616375" duration="419000" />
       <workItem from="1598555359706" duration="14759000" />
-      <workItem from="1598590387593" duration="10252000" />
+      <workItem from="1598590387593" duration="12181000" />
     </task>
     <servers />
   </component>
