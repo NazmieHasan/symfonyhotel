@@ -39,6 +39,17 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         }
     }
 
+    
+    public function update(User $user){
+        $this->_em->merge($user);
+
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
 
 }
-

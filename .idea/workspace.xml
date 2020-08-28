@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Users/UserServiceInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Bookings/BookingService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Bookings/BookingServiceInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Roles/RoleService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Roles/RoleServiceInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HotelBundle/Repository/BookingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Repository/BookingRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HotelBundle/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Repository/UserRepository.php" afterDir="false" />
     </list>
@@ -120,6 +123,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\symfonyhotel\src\HotelBundle\Service" />
+      <recent name="C:\xampp\htdocs\symfonyhotel\src\HotelBundle\Service\Users" />
       <recent name="C:\xampp\htdocs\symfonyhotel\web" />
     </key>
   </component>
@@ -153,7 +157,7 @@
       <workItem from="1598545778472" duration="2291000" />
       <workItem from="1598548616375" duration="419000" />
       <workItem from="1598555359706" duration="14759000" />
-      <workItem from="1598590387593" duration="12181000" />
+      <workItem from="1598590387593" duration="26283000" />
     </task>
     <servers />
   </component>
@@ -189,10 +193,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1598546894903" />
-    <state x="456" y="45" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597998851660">
+    <state x="456" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598604909328">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="456" y="45" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1597998851660" />
+    <state x="456" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1598604909328" />
     <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598432948534">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -249,9 +253,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1598533073137" />
-    <state x="339" y="157" key="run.anything.popup" timestamp="1598544185233">
+    <state x="339" y="157" key="run.anything.popup" timestamp="1598614526508">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598544185233" />
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598614526508" />
   </component>
 </project>

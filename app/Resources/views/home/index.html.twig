@@ -14,16 +14,17 @@
             {% endfor %}
 
             {% for category in categories %}
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <article>
                         <header>
 
                         </header>
-                        <p>
-                            <a href="{{ path('booking_create') }}">
-                            <img src="{{ category.imageURL }}" width="600px" height="300px"> {{ category.name }} {{ category.price }} lv. BOOKING
-                            </a>
-                        </p>
+                        <div>
+                            {{ category.name }} ${{ category.price }} <br />
+                            <p><a class="btn btn-success btn-xs" href="{{ path('booking_create') }}">BOOKING</a></p>
+                            <img src="{{ category.imageURL }}" width="500px" height="350px">
+                            </a><br /><br /><br />
+                        </div>
 
                         <footer>
 
