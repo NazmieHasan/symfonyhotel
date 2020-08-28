@@ -37,11 +37,8 @@ class BookingType extends AbstractType
             ->add('days', NumberType::class)
             ->add('adults', NumberType::class)
             ->add('childBed', NumberType::class)
-            ->add('totalAmount', NumberType::class)
             ->add('payment', EntityType::class,
                 ['class' => Payment::class])
-            ->add('paidAmount', NumberType::class)
-            ->add('paymentAmount', NumberType::class)
             ->add('status', EntityType::class,
                 ['class' => Status::class])
             ->add('room', EntityType::class,

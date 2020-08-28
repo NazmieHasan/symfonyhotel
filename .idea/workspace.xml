@@ -20,10 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/view.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/users/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/users/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +122,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.MethodSignatureTypeSettingsForm" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -148,6 +156,10 @@
       <workItem from="1598504074567" duration="11741000" />
       <workItem from="1598517754351" duration="11349000" />
       <workItem from="1598534700370" duration="9204000" />
+      <workItem from="1598545778472" duration="2291000" />
+      <workItem from="1598548616375" duration="419000" />
+      <workItem from="1598555359706" duration="14759000" />
+      <workItem from="1598590387593" duration="671000" />
     </task>
     <servers />
   </component>
@@ -179,10 +191,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1598504269460" />
-    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser" timestamp="1598004392639">
+    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser" timestamp="1598546894903">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1598004392639" />
+    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1598546894903" />
     <state x="456" y="45" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597998851660">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -227,18 +239,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598532235646" />
-    <state x="442" y="85" key="NewPhpClassDialog" timestamp="1598479584430">
+    <state x="442" y="85" key="NewPhpClassDialog" timestamp="1598546852442">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="442" y="85" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1598479584430" />
+    <state x="442" y="85" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1598546852442" />
     <state x="478" y="83" key="RollbackChangesDialog" timestamp="1598532128171">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="478" y="83" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598532128171" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1598000129053">
+    <state x="184" y="0" key="SettingsEditor" timestamp="1598560836832">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598000129053" />
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598560836832" />
     <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598533073137">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

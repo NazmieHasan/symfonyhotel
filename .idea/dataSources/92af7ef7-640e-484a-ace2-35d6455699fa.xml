@@ -1066,323 +1066,319 @@
     <table id="338" parent="7" name="payments">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="339" parent="7" name="rooms">
+    <table id="339" parent="7" name="roles">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="340" parent="7" name="statuses">
+    <table id="340" parent="7" name="rooms">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="341" parent="7" name="users">
+    <table id="341" parent="7" name="statuses">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <column id="342" parent="335" name="id">
+    <table id="342" parent="7" name="users">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <table id="343" parent="7" name="users_roles">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <column id="344" parent="335" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="343" parent="335" name="checkin">
+    <column id="345" parent="335" name="checkin">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="344" parent="335" name="checkout">
+    <column id="346" parent="335" name="checkout">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="345" parent="335" name="days">
+    <column id="347" parent="335" name="days">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="346" parent="335" name="adults">
+    <column id="348" parent="335" name="adults">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="347" parent="335" name="childBed">
+    <column id="349" parent="335" name="childBed">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="348" parent="335" name="totalAmount">
+    <column id="350" parent="335" name="totalAmount">
       <Position>7</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="349" parent="335" name="paidAmount">
+    <column id="351" parent="335" name="paidAmount">
       <Position>8</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="350" parent="335" name="paymentAmount">
+    <column id="352" parent="335" name="paymentAmount">
       <Position>9</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="351" parent="335" name="dateAdded">
+    <column id="353" parent="335" name="dateAdded">
       <Position>10</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="352" parent="335" name="clientId">
+    <column id="354" parent="335" name="clientId">
       <Position>11</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="353" parent="335" name="category_id">
+    <column id="355" parent="335" name="category_id">
       <Position>12</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="354" parent="335" name="payment_id">
+    <column id="356" parent="335" name="payment_id">
       <Position>13</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="355" parent="335" name="status_id">
+    <column id="357" parent="335" name="status_id">
       <Position>14</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="356" parent="335" name="room_id">
+    <column id="358" parent="335" name="room_id">
       <Position>15</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="357" parent="335" name="IDX_7A853C35EA1CE9BE">
+    <index id="359" parent="335" name="IDX_7A853C35EA1CE9BE">
       <ColNames>clientId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="358" parent="335" name="IDX_7A853C3512469DE2">
+    <index id="360" parent="335" name="IDX_7A853C3512469DE2">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="359" parent="335" name="IDX_7A853C354C3A3BB">
+    <index id="361" parent="335" name="IDX_7A853C354C3A3BB">
       <ColNames>payment_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="360" parent="335" name="IDX_7A853C356BF700BD">
+    <index id="362" parent="335" name="IDX_7A853C356BF700BD">
       <ColNames>status_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="361" parent="335" name="IDX_7A853C3554177093">
+    <index id="363" parent="335" name="IDX_7A853C3554177093">
       <ColNames>room_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="362" parent="335" name="PRIMARY">
+    <key id="364" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="363" parent="335" name="FK_7A853C35EA1CE9BE">
+    <foreign-key id="365" parent="335" name="FK_7A853C35EA1CE9BE">
       <ColNames>clientId</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="364" parent="335" name="FK_7A853C3512469DE2">
+    <foreign-key id="366" parent="335" name="FK_7A853C3512469DE2">
       <ColNames>category_id</ColNames>
       <RefTableName>categories</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="365" parent="335" name="FK_7A853C354C3A3BB">
+    <foreign-key id="367" parent="335" name="FK_7A853C354C3A3BB">
       <ColNames>payment_id</ColNames>
       <RefTableName>payments</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="366" parent="335" name="FK_7A853C356BF700BD">
+    <foreign-key id="368" parent="335" name="FK_7A853C356BF700BD">
       <ColNames>status_id</ColNames>
       <RefTableName>statuses</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="367" parent="335" name="FK_7A853C3554177093">
+    <foreign-key id="369" parent="335" name="FK_7A853C3554177093">
       <ColNames>room_id</ColNames>
       <RefTableName>rooms</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="368" parent="336" name="id">
+    <column id="370" parent="336" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="369" parent="336" name="name">
+    <column id="371" parent="336" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="370" parent="336" name="beds">
+    <column id="372" parent="336" name="beds">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="371" parent="336" name="price">
+    <column id="373" parent="336" name="price">
       <Position>4</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="372" parent="336" name="UNIQ_3AF346685E237E06">
+    <index id="374" parent="336" name="UNIQ_3AF346685E237E06">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="373" parent="336" name="PRIMARY">
+    <key id="375" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="374" parent="336" name="UNIQ_3AF346685E237E06">
+    <key id="376" parent="336" name="UNIQ_3AF346685E237E06">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>UNIQ_3AF346685E237E06</UnderlyingIndexName>
     </key>
-    <column id="375" parent="337" name="id">
+    <column id="377" parent="337" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="376" parent="337" name="name">
+    <column id="378" parent="337" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="377" parent="337" name="family">
+    <column id="379" parent="337" name="family">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="378" parent="337" name="egn">
+    <column id="380" parent="337" name="egn">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="379" parent="337" name="phone">
+    <column id="381" parent="337" name="phone">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="380" parent="337" name="booking">
+    <column id="382" parent="337" name="booking">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="381" parent="337" name="UNIQ_4D11BCB231EB61E6">
+    <index id="383" parent="337" name="UNIQ_4D11BCB231EB61E6">
       <ColNames>egn</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="382" parent="337" name="PRIMARY">
+    <key id="384" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="383" parent="337" name="UNIQ_4D11BCB231EB61E6">
+    <key id="385" parent="337" name="UNIQ_4D11BCB231EB61E6">
       <ColNames>egn</ColNames>
       <UnderlyingIndexName>UNIQ_4D11BCB231EB61E6</UnderlyingIndexName>
     </key>
-    <column id="384" parent="338" name="id">
+    <column id="386" parent="338" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="385" parent="338" name="name">
+    <column id="387" parent="338" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="386" parent="338" name="UNIQ_65D29B325E237E06">
+    <index id="388" parent="338" name="UNIQ_65D29B325E237E06">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="387" parent="338" name="PRIMARY">
+    <key id="389" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="388" parent="338" name="UNIQ_65D29B325E237E06">
+    <key id="390" parent="338" name="UNIQ_65D29B325E237E06">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>UNIQ_65D29B325E237E06</UnderlyingIndexName>
     </key>
-    <column id="389" parent="339" name="id">
+    <column id="391" parent="339" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="390" parent="339" name="number">
+    <column id="392" parent="339" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="391" parent="339" name="category_id">
+    <index id="393" parent="339" name="UNIQ_B63E2EC75E237E06">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="394" parent="339" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="395" parent="339" name="UNIQ_B63E2EC75E237E06">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>UNIQ_B63E2EC75E237E06</UnderlyingIndexName>
+    </key>
+    <column id="396" parent="340" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="397" parent="340" name="number">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="398" parent="340" name="category_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="392" parent="339" name="IDX_7CA11A9612469DE2">
+    <index id="399" parent="340" name="IDX_7CA11A9612469DE2">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="393" parent="339" name="PRIMARY">
+    <key id="400" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="394" parent="339" name="FK_7CA11A9612469DE2">
+    <foreign-key id="401" parent="340" name="FK_7CA11A9612469DE2">
       <ColNames>category_id</ColNames>
       <RefTableName>categories</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="395" parent="340" name="id">
+    <column id="402" parent="341" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="396" parent="340" name="name">
+    <column id="403" parent="341" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="397" parent="340" name="UNIQ_4BF01E115E237E06">
+    <index id="404" parent="341" name="UNIQ_4BF01E115E237E06">
       <ColNames>name</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="398" parent="340" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="399" parent="340" name="UNIQ_4BF01E115E237E06">
-      <ColNames>name</ColNames>
-      <UnderlyingIndexName>UNIQ_4BF01E115E237E06</UnderlyingIndexName>
-    </key>
-    <column id="400" parent="341" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="401" parent="341" name="email">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="402" parent="341" name="password">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="403" parent="341" name="fullName">
-      <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="404" parent="341" name="UNIQ_1483A5E9E7927C74">
-      <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
@@ -1391,9 +1387,78 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="406" parent="341" name="UNIQ_1483A5E9E7927C74">
+    <key id="406" parent="341" name="UNIQ_4BF01E115E237E06">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>UNIQ_4BF01E115E237E06</UnderlyingIndexName>
+    </key>
+    <column id="407" parent="342" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="408" parent="342" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="409" parent="342" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="410" parent="342" name="fullName">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="411" parent="342" name="UNIQ_1483A5E9E7927C74">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="412" parent="342" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="413" parent="342" name="UNIQ_1483A5E9E7927C74">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>UNIQ_1483A5E9E7927C74</UnderlyingIndexName>
     </key>
+    <column id="414" parent="343" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="415" parent="343" name="role_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="416" parent="343" name="IDX_51498A8EA76ED395">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="417" parent="343" name="IDX_51498A8ED60322AC">
+      <ColNames>role_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="418" parent="343" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id
+role_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="419" parent="343" name="FK_51498A8EA76ED395">
+      <ColNames>user_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="420" parent="343" name="FK_51498A8ED60322AC">
+      <ColNames>role_id</ColNames>
+      <RefTableName>roles</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

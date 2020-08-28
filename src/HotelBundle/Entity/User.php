@@ -52,9 +52,21 @@ class User implements UserInterface
      */
     private $bookings;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="HotelBundle\Entity\Role")
+     * @ORM\JoinTable(name="users_roles",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     * )
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
 
 
@@ -143,7 +155,14 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return [];
+        $stringRoles = [];
+
+        /** @var Role $role */
+        foreach ($this->roles as $role) {
+            $stringRoles[] = $role->getRole();
+    }
+        return $stringRoles;
+
     }
 
     public function getSalt()
@@ -177,6 +196,31 @@ class User implements UserInterface
     {
         $this->bookings[] = $booking;
         return $this;
+    }
+
+    /**
+     * @param Role $role
+     * @return User
+     */
+    public function addRole(Role $role)
+    {
+        $this->roles[] = $role;
+        return $this;
+    }
+
+    /**
+     * @param Booking $booking
+     * @return bool
+     */
+    public function isClient(Booking $booking){
+        return $booking->getClient()->getId() === $this->getId();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(){
+        return in_array("ROLE_ADMIN", $this->getRoles());
     }
 }
 

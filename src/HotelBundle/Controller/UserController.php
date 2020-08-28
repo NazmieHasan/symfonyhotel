@@ -2,6 +2,7 @@
 
 namespace HotelBundle\Controller;
 
+use HotelBundle\Entity\Role;
 use HotelBundle\Entity\User;
 use HotelBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,6 +25,13 @@ class UserController extends Controller
             $passwordHash =
                 $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPassword());
+
+            $roleUser = $this
+                ->getDoctrine()
+                ->getRepository(Role::class)
+                ->findOneBy(['name' => 'ROLE_USER']);
+
+            $user->addRole($roleUser);
 
             $user->setPassword($passwordHash);
             $em = $this->getDoctrine()->getManager();
