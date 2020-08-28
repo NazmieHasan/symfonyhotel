@@ -6,6 +6,13 @@
 
     <div class="container body-content">
         <div class="row">
+
+            {% for msg in app.session.flashbag.get('info')  %}
+                <div class="alert alert-success" id="info">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+
             {% for category in categories %}
                 <div class="col-md-12">
                     <article>

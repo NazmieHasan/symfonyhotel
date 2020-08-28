@@ -16,8 +16,11 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $categories = $this->getDoctrine()->getRepository(Category::class)
-            ->findAll();
+        $categories =
+            $this
+                ->getDoctrine()
+                ->getRepository(Category::class)
+                ->findAll();
         // replace this example code with whatever you need
         return $this->render('home/index.html.twig',
         ['categories' => $categories]);

@@ -36,6 +36,7 @@ class BookingController extends Controller
             $em->persist($booking);
             $em->flush();
 
+            $this->addFlash("info", "Create booking successfully!");
             return $this->redirectToRoute("hotel_index");
         }
 
@@ -171,7 +172,11 @@ class BookingController extends Controller
         $bookings = $this
             ->getDoctrine()
             ->getRepository(Booking::class)
-            ->findBy(['client' => $this->getUser()]);
+            ->findBy(
+                ['client' => $this->getUser()],
+                [
+                    'dateAdded' => 'DESC'
+                ]);
 
         return $this->render("bookings/myBookings.html.twig",
         [
