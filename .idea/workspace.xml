@@ -20,26 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/admin/users.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/users.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/myBookings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/myBookings.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/view.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/users/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/users/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Room.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Room.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/CategoryType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/CategoryType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/AdminController.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +161,7 @@
       <workItem from="1598631849025" duration="290000" />
       <workItem from="1598632509062" duration="5421000" />
       <workItem from="1598638117932" duration="24174000" />
-      <workItem from="1598665558556" duration="8612000" />
+      <workItem from="1598665558556" duration="10589000" />
     </task>
     <servers />
   </component>
@@ -270,6 +257,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1598533073137" />
+    <state x="291" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598676196923">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="291" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1598676196923" />
     <state x="339" y="157" key="run.anything.popup" timestamp="1598664231125">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
