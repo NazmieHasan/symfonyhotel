@@ -21,8 +21,8 @@ class CategoryType extends AbstractType
             ->add('price', NumberType::class)
             ->add('imageURL', TextType::class);
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

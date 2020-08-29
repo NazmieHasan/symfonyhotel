@@ -44,8 +44,8 @@ class BookingType extends AbstractType
             ->add('room', EntityType::class,
                 ['class' => Room::class]);
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

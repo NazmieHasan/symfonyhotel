@@ -205,4 +205,3 @@ class Category
         $this->imageURL = $imageURL;
     }
 }
-

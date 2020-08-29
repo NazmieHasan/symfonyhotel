@@ -33,11 +33,18 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         {% if app.user %}
-                        <li>
-                        <a href="{{ path('user_profile') }}" class="navbar-brand">
-                        My Profile
-                        </a>
-                        </li>
+                            {% if app.user.isAdmin() %}
+                                <li>
+                                    <a href="{{ path('admin_index') }}" class="navbar-brand">
+                                        Admin Panel
+                                    </a>
+                                </li>
+                            {% endif %}
+                            <li>
+                                <a href="{{ path('user_profile') }}" class="navbar-brand">
+                                    My Profile
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ path('my_bookings') }}" class="navbar-brand">
                                     My Bookings
@@ -110,7 +117,7 @@
 {% block footer %}
     <footer>
         <div class="container modal-footer">
-            <p>&copy; 2020 - Hotel</p>
+            <p>TERMS | PRIVACY POLICY | SITEMAP | BLOG</p>
         </div>
     </footer>
 {% endblock %}

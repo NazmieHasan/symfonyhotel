@@ -98,4 +98,3 @@ class Status
         $this->bookings = $bookings;
     }
 }
-

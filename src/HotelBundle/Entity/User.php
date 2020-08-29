@@ -160,7 +160,7 @@ class User implements UserInterface
         /** @var Role $role */
         foreach ($this->roles as $role) {
             $stringRoles[] = $role->getRole();
-    }
+        }
         return $stringRoles;
 
     }
@@ -223,4 +223,3 @@ class User implements UserInterface
         return in_array("ROLE_ADMIN", $this->getRoles());
     }
 }
-

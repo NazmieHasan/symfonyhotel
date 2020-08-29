@@ -15,7 +15,7 @@
                             Booking {{ booking.id }}
                         </header>
                         <p>
-                            Checkin: {{ booking.checkin|date("Y-m-d H:i:s") }}  Checkout: {{ booking.checkout|date("Y-m-d H:i:s") }}
+                            Checkin: {{ booking.checkin|date("Y-m-d") }}  Checkout: {{ booking.checkout|date("Y-m-d") }}
                         </p>
 
                         <footer>
@@ -32,4 +32,3 @@
     </div>
 
 {% endblock %}
-

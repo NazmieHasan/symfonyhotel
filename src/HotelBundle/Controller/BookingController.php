@@ -145,7 +145,7 @@ class BookingController extends Controller
             ->find($id);
 
         return $this->render("bookings/view.html.twig",
-        ['booking' => $booking ]);
+            ['booking' => $booking ]);
 
     }
 
@@ -179,9 +179,9 @@ class BookingController extends Controller
                 ]);
 
         return $this->render("bookings/myBookings.html.twig",
-        [
-            'bookings' => $bookings
-        ]);
+            [
+                'bookings' => $bookings
+            ]);
 
     }
 
