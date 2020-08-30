@@ -14,8 +14,8 @@
                         <h2>Booking Information</h2>
                     </header>
 
-                    <p>Checkin: {{ booking.checkin|date("Y-m-d H:i:s") }}</p>
-                    <p>Checkout: {{ booking.checkout|date("Y-m-d H:i:s") }}
+                    <p>Checkin: {{ booking.checkin|date("Y-m-d") }}</p>
+                    <p>Checkout: {{ booking.checkout|date("Y-m-d") }}
                     <p>Days: {{ booking.days}}</p>
                     <p>Adults: {{ booking.adults}}</p>
                     <p>Child Bed: {{ booking.childBed}}</p>
@@ -30,7 +30,7 @@
 
                     <footer>
                         <div class="pull-right">
-                            {% if app.getUser() and ( app.getUser().isClient(booking) or app.getUser().isAdmin() ) %}
+                            {% if app.getUser().isAdmin()  %}
                                 <a class="btn btn-success btn-xs" href="{{ path('booking_edit', {id: booking.id}) }}">Edit</a>
                                 <a class="btn btn-danger btn-xs" href="{{ path('booking_delete', {id: booking.id}) }}">Delete</a>
                             {% endif %}
@@ -40,6 +40,6 @@
                 </article>
             </div>
         </div>
-    </div>
+    </div
 
 {% endblock %}

@@ -20,7 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfonyhotel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfonyhotel.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/delete.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/delete.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/myBookings.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/view.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/categories/create.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/rooms/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/rooms/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +100,19 @@
       <path value="$PROJECT_DIR$/vendor/fig/link-util" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gOhsgScvoCR8eFrOgxbhE2cTn0" />
@@ -102,7 +127,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.16.2" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Resources/views/admin/admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -115,10 +140,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views\admin\admin" />
+      <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views\users" />
+      <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views\admin\categories" />
+      <recent name="C:\xampp\htdocs\symfonyhotel\src\HotelBundle\Controller\Admin" />
       <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views" />
-      <recent name="C:\xampp\htdocs\symfonyhotel\src\HotelBundle\Service" />
-      <recent name="C:\xampp\htdocs\symfonyhotel\src\HotelBundle\Service\Users" />
-      <recent name="C:\xampp\htdocs\symfonyhotel\web" />
     </key>
   </component>
   <component name="RunManager">
@@ -156,6 +182,9 @@
       <workItem from="1598632509062" duration="5421000" />
       <workItem from="1598638117932" duration="24174000" />
       <workItem from="1598665558556" duration="11430000" />
+      <workItem from="1598692883427" duration="10972000" />
+      <workItem from="1598708731269" duration="1217000" />
+      <workItem from="1598769949213" duration="10438000" />
     </task>
     <servers />
   </component>
@@ -195,10 +224,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="456" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1598604909328" />
-    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598665903973">
+    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598779543547">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598665903973" />
+    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598779543547" />
     <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598664048507">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -227,14 +256,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1322" height="152" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1598665639771">
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1598780530389">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1598665639771" />
-    <state x="263" y="97" key="IDE.errors.dialog" timestamp="1598532235646">
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1598780530389" />
+    <state x="263" y="97" key="IDE.errors.dialog" timestamp="1598775675972">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598532235646" />
+    <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598775675972" />
     <state x="442" y="85" key="NewPhpClassDialog" timestamp="1598546852442">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -251,13 +280,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1598533073137" />
+    <state x="263" y="17" key="com.intellij.database.dbimport.ImportDialog" timestamp="1598779401949">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="263" y="17" key="com.intellij.database.dbimport.ImportDialog/0.0.1366.728@0.0.1366.728" timestamp="1598779401949" />
     <state x="291" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598676196923">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="291" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1598676196923" />
-    <state x="339" y="157" key="run.anything.popup" timestamp="1598664231125">
+    <state x="339" y="157" key="run.anything.popup" timestamp="1598779087213">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598664231125" />
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598779087213" />
   </component>
 </project>

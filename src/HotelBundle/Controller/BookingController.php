@@ -164,7 +164,7 @@ class BookingController extends Controller
     }
 
     /**
-     * @Route("/bookings/my_bookings", name="my_bookings")
+     * @Route("/users/my_bookings", name="my_bookings")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -178,11 +178,34 @@ class BookingController extends Controller
                     'dateAdded' => 'DESC'
                 ]);
 
-        return $this->render("bookings/myBookings.html.twig",
+        return $this->render("users/myBookings.html.twig",
             [
                 'bookings' => $bookings
             ]);
 
     }
+
+    /**
+     * @Route("/admin/bookings/all_bookings", name="all_bookings")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getAllBookings(){
+        $bookings = $this
+            ->getDoctrine()
+            ->getRepository(Booking::class)
+            ->findBy(
+                [],
+                [
+                    'dateAdded' => 'DESC'
+                ]);
+
+        return $this->render("admin/bookings/allBookings.html.twig",
+            [
+                'bookings' => $bookings
+            ]);
+
+    }
+
 
 }

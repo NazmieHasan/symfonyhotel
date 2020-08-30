@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="container body-content">
+        <div class="well">
+            <h2>All Booking -
+                <a href="#" class="btn btn-warning">Create New</a>
+            </h2>
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Checkin</th>
+                        <th>Checkout</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for booking in bookings %}
+
+                        <tr>
+                        <tr>
+                            <td>{{ booking.id }}</td>
+                            <td>{{ booking.checkin|date("Y-m-d") }}</td>
+                            <td>{{ booking.checkout|date("Y-m-d") }}</td>
+                            <td>{{ booking.status }}</td>
+                            <td>
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
