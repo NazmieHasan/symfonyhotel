@@ -8,7 +8,7 @@
 
     <div class="container body-content span=8 offset=2">
         <div class="well">
-            <form class="form-horizontal" action="{{ path('booking_edit', {id: booking.id}) }}" method="post">
+            <form class="form-horizontal" action="{{ path('admin_booking_edit', {id: booking.id}) }}" method="post">
                 <fieldset>
                     <legend>Edit Booking</legend>
 
@@ -22,14 +22,14 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="booking_checkin">Checkin</label>
                         <div class="col-sm-4 ">
-                            <input type="date" class="form-control" id="booking_checkin"  name="booking[checkin]"  value="{{ booking.checkin|date("Y-m-d H:i:s") }}">
+                            <input type="date" class="form-control" id="booking_checkin"  name="booking[checkin]"  value="{{ booking.checkin|date("Y-m-d") }}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="booking_checkout">Checkout</label>
                         <div class="col-sm-4 ">
-                            <input type="date" class="form-control" id="booking_checkout"  name="booking[checkout]"  value="{{ booking.checkout|date("Y-m-d H:i:s")}}">
+                            <input type="date" class="form-control" id="booking_checkout"  name="booking[checkout]"  value="{{ booking.checkout|date("Y-m-d")}}">
                         </div>
                     </div>
 

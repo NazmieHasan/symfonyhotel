@@ -45,8 +45,11 @@ class CategoryController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listCategories(){
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        return $this->render('admin/categories/list.html.twig', ['categories' => $categories]);
+        $categories = $this
+            ->getDoctrine()
+            ->getRepository(Category::class)->findAll();
+        return $this->render('admin/categories/list.html.twig',
+            ['categories' => $categories]);
     }
 
 }

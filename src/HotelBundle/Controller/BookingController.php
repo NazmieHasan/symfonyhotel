@@ -46,94 +46,6 @@ class BookingController extends Controller
 
 
     /**
-     * @Route("/edit/{id}", name="booking_edit")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param Request $request
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @noinspection PhpParamsInspection
-     */
-    public function edit(Request $request, int $id)
-    {
-        $booking = $this
-            ->getDoctrine()
-            ->getRepository(Booking::class)
-            ->find($id);
-
-        if(null === $booking) {
-            return $this->redirectToRoute("hotel_index");
-        }
-
-
-        if(!$this->isClientOrAdmin($booking)){
-            return $this->redirectToRoute("hotel_index");
-        }
-
-        $form = $this->createForm(BookingType::class, $booking);
-        $form->handleRequest($request);
-
-
-        if($form->isSubmitted()) {
-            $booking->setClient($this->getUser());
-            $em = $this->getDoctrine()->getManager();
-            $em->merge($booking);
-            $em->flush();
-
-            return $this->redirectToRoute("hotel_index");
-        }
-
-        return $this->render('bookings/edit.html.twig',
-            [
-                'form' => $form->createView(),
-                'booking' => $booking
-            ]);
-    }
-
-    /**
-     * @Route("/delete/{id}", name="booking_delete")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param Request $request
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @noinspection PhpParamsInspection
-     */
-    public function delete(Request $request, int $id)
-    {
-        $booking = $this
-            ->getDoctrine()
-            ->getRepository(Booking::class)
-            ->find($id);
-
-        if(null === $booking) {
-            return $this->redirectToRoute("hotel_index");
-        }
-
-        if(!$this->isClientOrAdmin($booking)){
-            return $this->redirectToRoute("hotel_index");
-        }
-
-
-        $form = $this->createForm(BookingType::class, $booking);
-        $form->handleRequest($request);
-
-
-        if($form->isSubmitted()) {
-            $booking->setClient($this->getUser());
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($booking);
-            $em->flush();
-
-            return $this->redirectToRoute("hotel_index");
-        }
-
-        return $this->render('bookings/delete.html.twig',
-            [
-                'form' => $form->createView(),
-                'booking' => $booking
-            ]);
-    }
-
-    /**
      * @Route("/booking/{id}", name="booking_view")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -179,28 +91,6 @@ class BookingController extends Controller
                 ]);
 
         return $this->render("users/myBookings.html.twig",
-            [
-                'bookings' => $bookings
-            ]);
-
-    }
-
-    /**
-     * @Route("/admin/bookings/all_bookings", name="all_bookings")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function getAllBookings(){
-        $bookings = $this
-            ->getDoctrine()
-            ->getRepository(Booking::class)
-            ->findBy(
-                [],
-                [
-                    'dateAdded' => 'DESC'
-                ]);
-
-        return $this->render("admin/bookings/allBookings.html.twig",
             [
                 'bookings' => $bookings
             ]);
