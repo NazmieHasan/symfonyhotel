@@ -34,18 +34,23 @@ class BookingType extends AbstractType
                 "format" => 'yyyy-MM-dd',
                 "data" => new \DateTime()
             ))
-            ->add('days', NumberType::class)
             ->add('adults', NumberType::class)
             ->add('childBed', NumberType::class)
             ->add('payment', EntityType::class,
                 ['class' => Payment::class])
-            ->add('status', EntityType::class,
-                ['class' => Status::class])
+
             ->add('room', EntityType::class,
-                ['class' => Room::class]);
-    }/**
- * {@inheritdoc}
- */
+                ['class' => Room::class])
+
+            ->add('status', null, [
+                'required'   => false,
+                'empty_data' => '1'
+            ]);
+    }
+
+    /**
+    * {@inheritdoc}
+    */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

@@ -19,10 +19,15 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class)
             ->add('beds', NumberType::class)
             ->add('price', NumberType::class)
-            ->add('imageURL', TextType::class);
-    }/**
- * {@inheritdoc}
- */
+            ->add('imageURL', TextType::class,
+            [
+                'data_class' => null
+            ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

@@ -21,13 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/allBookings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/categories/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/categories/list.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/delete.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/BookingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/CategoryType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/CategoryType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +186,13 @@
       <workItem from="1598785526049" duration="2727000" />
       <workItem from="1598850298416" duration="89000" />
       <workItem from="1598851896457" duration="4531000" />
+      <workItem from="1598949612953" duration="5058000" />
+      <workItem from="1599315628659" duration="2050000" />
+      <workItem from="1599371566245" duration="3021000" />
+      <workItem from="1599485142365" duration="79000" />
+      <workItem from="1599486921809" duration="198000" />
+      <workItem from="1599543232891" duration="6961000" />
+      <workItem from="1599558164424" duration="7502000" />
     </task>
     <servers />
   </component>
@@ -226,18 +236,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598786489164" />
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598664048507">
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598954787358">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598664048507" />
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598954787358" />
     <state x="129" y="54" key="DiffContextDialog" timestamp="1598532119064">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="129" y="54" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1598532119064" />
-    <state x="600" y="117" key="FileChooserDialogImpl" timestamp="1598850390491">
+    <state x="600" y="117" key="FileChooserDialogImpl" timestamp="1599487120777">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="600" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598850390491" />
+    <state x="600" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599487120777" />
     <state width="1322" height="152" key="GridCell.Tab.0.bottom" timestamp="1597994870178">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -258,10 +268,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1598780530389" />
-    <state x="263" y="97" key="IDE.errors.dialog" timestamp="1598775675972">
+    <state x="263" y="97" key="IDE.errors.dialog" timestamp="1598955373724">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598775675972" />
+    <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598955373724" />
     <state x="442" y="85" key="NewPhpClassDialog" timestamp="1598546852442">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -286,9 +296,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="291" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1598676196923" />
-    <state x="339" y="157" key="run.anything.popup" timestamp="1598779087213">
+    <state x="339" y="157" key="run.anything.popup" timestamp="1599546058522">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598779087213" />
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1599546058522" />
   </component>
 </project>

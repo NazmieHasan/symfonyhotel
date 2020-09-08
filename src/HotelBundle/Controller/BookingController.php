@@ -32,6 +32,7 @@ class BookingController extends Controller
             $booking->setPaymentAmount(00.00);
             $booking->setTotalAmount(00.00);
             $booking->setDays(0);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($booking);
             $em->flush();

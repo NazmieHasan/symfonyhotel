@@ -37,6 +37,7 @@ class BookingController extends Controller
             $booking->setPaymentAmount(00.00);
             $booking->setTotalAmount(00.00);
             $booking->setDays(0);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($booking);
             $em->flush();
@@ -139,7 +140,7 @@ class BookingController extends Controller
     }
 
     /**
-     * @Route("/booking/{id}", name="booking_view")
+     * @Route("/view/{id}", name="admin_booking_view")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -149,7 +150,7 @@ class BookingController extends Controller
             ->getRepository(Booking::class)
             ->find($id);
 
-        return $this->render("bookings/view.html.twig",
+        return $this->render("admin/bookings/view.html.twig",
             ['booking' => $booking ]);
 
     }

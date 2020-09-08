@@ -42,6 +42,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/", name="admin_categories")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listCategories(){
@@ -51,5 +52,78 @@ class CategoryController extends Controller
         return $this->render('admin/categories/list.html.twig',
             ['categories' => $categories]);
     }
+
+    /**
+     * @Route("/edit/{id}", name="admin_category_edit")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit($id, Request $request)
+    {
+        $category = $this
+            ->getDoctrine()
+            ->getRepository(Category::class)
+            ->find($id);
+
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+
+            return $this->redirectToRoute("admin_categories");
+        }
+
+        return $this->render('admin/categories/edit.html.twig',
+            ['category' => $category, 'form' => $form->createView()]);
+    }
+
+
+
+
+    /**
+     * @Route("/delete/{id}", name="admin_category_delete")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function delete($id, Request $request)
+    {
+        $category = $this
+            ->getDoctrine()
+            ->getRepository(Category::class)
+            ->find($id);
+
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+
+            foreach ($category->getRooms() as $room) {
+                $em->remove($room);
+            }
+
+            $em->remove($category);
+            $em->flush();
+
+            return $this->redirectToRoute("admin_categories");
+        }
+
+        return $this->render('admin/categories/delete.html.twig',
+            ['category' => $category, 'form' => $form->createView()]);
+    }
+
+
+
+
+
 
 }

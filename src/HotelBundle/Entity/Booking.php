@@ -127,10 +127,6 @@ class Booking
      */
     private $client;
 
-    public  function __construct()
-    {
-        $this->dateAdded = new \DateTime('now');
-    }
 
     /**
      * @var int
@@ -146,6 +142,13 @@ class Booking
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      */
     private $status;
+
+    public  function __construct()
+    {
+        $this->dateAdded = new \DateTime('now');
+
+    }
+
 
     /**
      * @var int
