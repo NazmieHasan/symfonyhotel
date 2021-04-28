@@ -1,36 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="">
+    <list default="true" id="b2167960-1c84-47c0-bfdb-031179bbf0db" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/db_rent_cars.5PXKMA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/hotel.tMHtBQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/library.uyToCQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/newdb_hotel.U2Qwww.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/online_store.9ceWWQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/shoe_shelf.1n_kig.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/softuni_courses._0w9aw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/categories/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/categories/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/bookings/create.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/CategoryType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/CategoryType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,79 +31,66 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="composer.json" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
-      <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
-      <path value="$PROJECT_DIR$/vendor/symfony/symfony" />
-      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-apcu" />
-      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
-      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
-      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
-      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/sensio/distribution-bundle" />
-      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
-      <path value="$PROJECT_DIR$/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
-      <path value="$PROJECT_DIR$/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/vendor/psr/link" />
-      <path value="$PROJECT_DIR$/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/vendor/psr/cache" />
-      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
       <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
       <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
-      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
-      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-apcu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/symfony" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1gOhsgScvoCR8eFrOgxbhE2cTn0" />
+  <component name="ProjectId" id="1j9Acsk9caWwQriT5JxMG8DkHgP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -122,10 +99,9 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.16.2" />
-    <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -133,17 +109,8 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views\admin\bookings" />
-      <recent name="C:\xampp\htdocs\symfonyhotel\src\HotelBundle\Controller\Admin" />
-      <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views\admin\admin" />
-      <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views\users" />
-      <recent name="C:\xampp\htdocs\symfonyhotel\app\Resources\views\admin\categories" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="Server" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/bin/console" scriptParameters="server:run">
@@ -153,46 +120,15 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="16140b2c-4e14-482d-acfb-c89acd004779" name="Default Changelist" comment="" />
-      <created>1597991779277</created>
+      <changelist id="b2167960-1c84-47c0-bfdb-031179bbf0db" name="Default Changelist" comment="" />
+      <created>1603206024328</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1597991779277</updated>
-      <workItem from="1597991980407" duration="2681000" />
-      <workItem from="1597994951543" duration="5156000" />
-      <workItem from="1598000265021" duration="8687000" />
-      <workItem from="1598013593053" duration="1411000" />
-      <workItem from="1598076286467" duration="59000" />
-      <workItem from="1598287191400" duration="261000" />
-      <workItem from="1598358705447" duration="8544000" />
-      <workItem from="1598382281906" duration="2941000" />
-      <workItem from="1598420692625" duration="17763000" />
-      <workItem from="1598452206335" duration="2069000" />
-      <workItem from="1598468840893" duration="14137000" />
-      <workItem from="1598504074567" duration="11741000" />
-      <workItem from="1598517754351" duration="11349000" />
-      <workItem from="1598534700370" duration="9204000" />
-      <workItem from="1598545778472" duration="2291000" />
-      <workItem from="1598548616375" duration="419000" />
-      <workItem from="1598555359706" duration="14759000" />
-      <workItem from="1598590387593" duration="30880000" />
-      <workItem from="1598631849025" duration="290000" />
-      <workItem from="1598632509062" duration="5421000" />
-      <workItem from="1598638117932" duration="24174000" />
-      <workItem from="1598665558556" duration="11430000" />
-      <workItem from="1598692883427" duration="10972000" />
-      <workItem from="1598708731269" duration="1217000" />
-      <workItem from="1598769949213" duration="10438000" />
-      <workItem from="1598785526049" duration="2727000" />
-      <workItem from="1598850298416" duration="89000" />
-      <workItem from="1598851896457" duration="4531000" />
-      <workItem from="1598949612953" duration="5058000" />
-      <workItem from="1599315628659" duration="2050000" />
-      <workItem from="1599371566245" duration="3021000" />
-      <workItem from="1599485142365" duration="79000" />
-      <workItem from="1599486921809" duration="198000" />
-      <workItem from="1599543232891" duration="6961000" />
-      <workItem from="1599558164424" duration="7502000" />
+      <updated>1603206024328</updated>
+      <workItem from="1603206029301" duration="1914000" />
+      <workItem from="1610830164095" duration="1641000" />
+      <workItem from="1610833405274" duration="491000" />
+      <workItem from="1611860573131" duration="1524000" />
     </task>
     <servers />
   </component>
@@ -210,95 +146,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="309" y="41" key="#Inspections" timestamp="1598509377182">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="309" y="41" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1598509377182" />
-    <state x="527" y="5" key="#PHP" timestamp="1597993685009">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="527" y="5" key="#PHP/0.0.1366.728@0.0.1366.728" timestamp="1597993685009" />
-    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598504269460">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1598504269460" />
-    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser" timestamp="1598546894903">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="488" y="44" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1598546894903" />
-    <state x="456" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598604909328">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="456" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1598604909328" />
-    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598786489164">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598786489164" />
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598954787358">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598954787358" />
-    <state x="129" y="54" key="DiffContextDialog" timestamp="1598532119064">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="129" y="54" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1598532119064" />
-    <state x="600" y="117" key="FileChooserDialogImpl" timestamp="1599487120777">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="600" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599487120777" />
-    <state width="1322" height="152" key="GridCell.Tab.0.bottom" timestamp="1597994870178">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="152" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
-    <state width="1322" height="152" key="GridCell.Tab.0.center" timestamp="1597994870178">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="152" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
-    <state width="1322" height="152" key="GridCell.Tab.0.left" timestamp="1597994870178">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="152" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
-    <state width="1322" height="152" key="GridCell.Tab.0.right" timestamp="1597994870178">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="152" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597994870178" />
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1598780530389">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1598780530389" />
-    <state x="263" y="97" key="IDE.errors.dialog" timestamp="1598955373724">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1598955373724" />
-    <state x="442" y="85" key="NewPhpClassDialog" timestamp="1598546852442">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="442" y="85" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1598546852442" />
-    <state x="478" y="83" key="RollbackChangesDialog" timestamp="1598532128171">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="478" y="83" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598532128171" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1598637259826">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598637259826" />
-    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598533073137">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="557" y="229" width="316" height="270" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1598533073137" />
-    <state x="263" y="17" key="com.intellij.database.dbimport.ImportDialog" timestamp="1598779401949">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="263" y="17" key="com.intellij.database.dbimport.ImportDialog/0.0.1366.728@0.0.1366.728" timestamp="1598779401949" />
-    <state x="291" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598676196923">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="291" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1598676196923" />
-    <state x="339" y="157" key="run.anything.popup" timestamp="1599546058522">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1599546058522" />
   </component>
 </project>
