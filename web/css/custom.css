@@ -1,0 +1,608 @@
+/* html, body */
+body {
+    background: #f0f0f0;
+}
+/* html, body end */
+
+/* nav */
+.navbar {
+    padding-top: 17px;
+    padding-right: 5px;
+    padding-bottom: 17px;
+    padding-left: 5px;
+}
+.bg-dark {
+    background-color: #262627!important;
+}
+.navbar-brand img:hover {
+    cursor: pointer;
+}
+.navbar-dark .navbar-nav .nav-link {
+    font-size: 17px;
+    color: #f8f9fa;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.navbar-dark .navbar-nav .nav-link:hover, .dropdown-item:hover {
+    color: darkred;
+}
+.dropdown-item {
+    color: #262627;
+}
+/* nav end */
+
+/* header */
+.home {
+    background: url('../img/header-home.jpg');
+}
+.venues {
+    background: url('../img/header-venues.jpg');
+}
+.spa-center {
+    background: url('../img/header-spa-center.jpg');
+}
+.events {
+    background: url('../img/header-events.jpg');
+}
+.offers {
+    background: url('../img/header-offers.jpg');
+} 
+.contact {
+    background: url('../img/header-contact.jpg');
+} 
+.home-width {
+    height: 480px;
+}
+.venues-width, .spa-center-width, .events-width, .offers-width, .contact-width {
+    height: 560px;
+}
+.header {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.header-title {
+    margin-top: 170px; 
+    font-size: 3.5rem;
+    letter-spacing: 5px; 
+    word-spacing: 10px; 
+    color: white;
+}
+/* header end */
+
+/* home page */
+.search-room {
+    font-size: 20px; 
+    background: #dce0df;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.search-room .form-group {
+    margin-bottom: 0;
+}
+.search-room .form-group .col-md-2, .search-room .form-group .col-md-4, .search-room .form-group .col-sm-12 {
+    padding-right: 5px; 
+    padding-left: 5px;
+}
+.search-room .form-group .col-title{
+    padding-top: 5px; 
+    padding-bottom: 5px;  
+}
+.search-room .form-group span, .form-group .form-submit {
+    font-weight: bold; 
+    word-spacing: 5px;
+}
+.search-room .form-group label {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 2px;
+    padding-right: 8px;
+    padding-bottom: 2px;
+    padding-left: 12px;
+    background: white;
+    border: 1px solid #4f4f4f; 
+    border-radius: 2px;  
+}
+.search-room .form-group .input-date {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-right: 6px;
+    padding-left: 10px;  
+}
+.search-room .form-group .form-submit {
+    margin-top: 5px;  
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    border-radius: 2px; 
+}
+.home-container {
+    margin-top: 50px;
+}
+.home-container h2 {
+    margin-bottom: 40px; 
+    text-align: center;
+}
+.col-home {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.img-thumbnail {
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+.room-info {
+    background: white;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.btn-danger {
+    background-color: darkred;
+    border-color: darkred;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+.btn-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.room-info .btn-danger {
+    margin-top: 40px;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    border-radius: 2px;
+}
+.home-offer {
+    padding-top: 25px; 
+    padding-bottom: 10px; 
+    font-size: 20px;
+    background: gray;
+}
+.home-offer .container {
+    margin-bottom: 40px;
+}
+.home-offer h5 {
+    margin-bottom: 15px; 
+    word-spacing: 10px;
+    color: #f9f9f9;
+}
+.home-offer hr {
+    margin: auto;
+    border-top: 1px solid white;
+    width: 5%;
+}
+.home-offer .title {
+    margin-bottom: 20px;
+    font-size: 50px; 
+    color: white;
+}
+.home-offer .row {
+    margin-right: 0; 
+    margin-left: 0;
+}
+.home-offer .col-image {
+    margin-right: -40px; 
+    padding-right: 0; 
+    padding-left: 0;
+}
+.home-offer .col-text {
+    margin-left: -40px; 
+    padding-right: 0; 
+    padding-left: 0;
+}
+.home-offer .offer-info {
+    margin-top: 50px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background: white; 
+}
+.home-offer a {
+    text-decoration: underline; 
+    cursor: pointer;
+    color: darkred; 
+}
+.offer-bottom {
+    padding-right: 0; 
+    padding-left: 0;
+    background: #262627;
+}
+.offer-bottom p {
+    padding-top: 15px; 
+    padding-bottom: 10px;
+    font-size: 22px; 
+    color: lightgray;
+}
+.custom-container-home {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    padding-right: 0;
+    padding-left: 0;
+} 
+.custom-row {
+    margin-right: 0;
+    margin-left: 0;
+}
+.custom-col {
+    padding-right: 0;
+    padding-left: 0;
+}
+.col-venues, .col-relax-zone, .col-events{
+    background: white;
+} 
+.custom-col h5 {
+    margin-top: 70px;
+    margin-bottom: 20px;
+    color: darkred;
+}
+.col-venues hr, .col-relax-zone hr{
+    margin: auto;
+    border-top: 1px solid #262627;
+    width: 10%;
+}
+.custom-col h3 {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    word-spacing: 10px;
+}
+.custom-col p {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
+    font-size: 18px;
+}
+.custom-col .btn-danger {
+    padding: 15px 40px;
+    border: 2px solid darkred;
+    border-radius: 0;
+} 
+.btn-outline {
+    color: darkred;
+    border-color: darkred;
+    background: white;
+}
+/* home page end */
+
+/* venues page, spa center page */
+.venue, .spa-center-zone {
+    margin-top: 50px; 
+    margin-bottom: 50px;
+}
+.venue .row, .spa-center-zone .row {
+    margin-right: 0;
+    margin-left: 0;
+}
+.venues-img, .spa-center-img {
+    padding-right: 0; 
+    padding-left: 0;
+}
+.venues-text, .spa-center-text {
+    padding-right: 0; 
+    padding-left: 0; 
+}
+.venues-info, .spa-center-info {
+    margin-bottom: 0;
+    padding: 90px 20px;
+    background: white; 
+}
+.venues-info h3, .spa-center-info h3 {
+    margin-bottom: 20px;
+    word-spacing: 5px;
+    color: darkred;
+}
+.venues-info hr, .spa-center-info hr  {
+    margin: auto;
+    width: 20%;
+    border-top: 3px solid darkred;  
+}
+.venues-info p, .spa-center-info p {
+    margin-top: 20px;
+    font-size: 18px; 
+    word-spacing: 3px;
+}
+.venues-info h5, .spa-center-info h5 {
+    margin-bottom: 0;
+}
+.cont-venues {
+    background: url('../img/cont-venues.jpg');
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    margin-bottom: 20px;
+}
+.cont-venues h1 {
+    padding-top: 230px;
+    text-align: center;
+    color: white;
+    font-size: 5rem;
+    word-spacing: 0.65rem;
+}
+.cont-spa {
+    background: url('../img/cont-spa-center.jpg');
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    margin-bottom: 20px;
+}
+.cont-spa h1 {
+    padding-top: 200px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 8px #ff0000;
+    font-size: 5rem;
+    word-spacing: 0.65rem;
+}
+/* venues page end, spa center page end */
+
+/* events page */
+.custom-container-events {
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+.custom-col h2 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.col-events hr {
+    margin: auto;
+    width: 20%;
+    border-top: 2px solid darkred;
+}
+.col-events p {
+    padding-top: 40px; 
+    padding-right: 40px; 
+    padding-bottom: 60px; 
+    padding-left: 40px;
+}
+.special-events h3 {
+    margin-bottom: 20px;
+}
+.special-events .row {
+    margin-top: 30px;
+}
+.special-events hr, .gallery hr {
+    margin: auto;
+    width: 10%;
+    border-top: 2px solid darkred;
+}
+.special-events .col-md-4, .special-events .col-sm-12 {
+    margin-bottom: 10px;
+    padding-right: 5px; 
+    padding-left: 5px;
+}
+.special-events .info {
+    padding: 10px; 
+    background: white;
+}
+.event-link {
+    font-size: 1.5rem; 
+    font-weight: 500; 
+    word-spacing: 5px; 
+    color: #212529;
+}
+.event-link:hover {
+    color: darkred;
+}
+.special-events .info p {
+    margin-top: 10px; 
+    font-size: 18px;
+}
+.gallery .col-md-6, .gallery .col-sm-12 {
+    margin-bottom: 60px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.gallery .title {
+    background: white;
+    padding-bottom: 20px;
+}
+.gallery h4 {
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;  
+}
+/* events page end */
+
+/* offers page */
+.offers1-container, .offers2-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 30px; 
+    padding-bottom: 10px; 
+    font-size: 20px;
+}
+.offers1-container .row, .offers2-container .row {
+    margin-right: 0;
+    margin-left: 0;
+}
+.offers1-container .col-img {
+    margin-right: -40px; 
+    padding-right: 0; 
+    padding-left: 0;
+}
+.offers1-container .col-text {
+    margin-left: -40px; 
+    padding-right: 0; 
+    padding-left: 0;
+}
+.order-last {
+    margin-left: -40px; 
+    padding-right: 0; 
+    padding-left: 0;
+}
+.order-first {
+    margin-right: -40px; 
+    padding-right: 0; 
+    padding-left: 0;
+}
+.offers1-container .offers-info, .offers2-container .offers-info {
+    margin-top: 80px; 
+    padding: 40px;
+    background: white; 
+    border: 1px solid white;
+    border-radius: 2px;
+}
+.offers1-container a, .offers2-container a {
+    text-decoration: underline; 
+    cursor: pointer;
+    color: darkred; 
+}
+/* offers page end */
+
+/* contact page */
+.location {
+    margin-top: 20px; 
+    font-size: 18px;
+}
+.location .col1, .location .col2 {
+    margin-bottom: 20px;
+}
+.location h1 {
+    margin-top: -10px;
+}
+.jumbo-dark {
+    background-color: #dc3545;
+    color: white;
+}
+.jumbo-dark h2 {
+    margin-bottom: 30px;
+}
+.jumbo-dark > button {
+    padding-right: 50px; 
+    padding-left: 50px;
+    background-color: #dc3545;
+    border-color: white;
+}
+.jumbo-dark .btn-email {
+    padding-right: 20px; 
+    padding-left: 20px;
+}
+.hr-before {
+    margin-bottom: 10px;
+}
+.hr-after {
+    margin-top: 10px;
+}
+.jumbo-dark hr {
+    margin: auto;
+    border-top: 2px solid white;
+    width: 40%;
+}
+.contact-info .jumbo-light {
+    background-color: white;
+    color:#dc3545;
+}
+.contact-info .jumbo-light h2 {
+    margin-bottom: 20px;
+}
+.contact-info .jumbo-light h5 {
+    margin-bottom: 35px;
+}
+.contact-info .jumbo-light .col {
+    padding: 2px;
+}
+.form-contact .jumbo-light {
+    margin-bottom: 40px; 
+    padding-top: 20px; 
+    padding-bottom: 5px; 
+    background: white;
+}
+.form-contact h2 {
+    margin-bottom: 20px;
+    color: #dc3545;  
+}
+.form-contact .col-md-12 {
+    margin-bottom: 18px;
+}
+.form-contact .form-control {
+     color: #dc3545;
+     border: 1px solid #dc3545;
+}
+.form-contact .form-control::-webkit-input-placeholder {
+    color: #dc3545;
+    opacity: 1;
+}
+.form-contact .form-control::-moz-placeholder {
+    color: #dc3545;
+    opacity: 1;
+}
+.form-contact .form-control:-ms-input-placeholder {
+    color: #dc3545;
+    opacity: 1;
+}
+.form-contact .form-control::-ms-input-placeholder {
+    color: #dc3545;
+    opacity: 1;
+}
+.form-contact .form-control::placeholder {
+    color: #dc3545;
+    opacity: 1;
+}
+.form-contact .btn-danger {
+    padding-right: 40px; 
+    padding-left: 40px; 
+    font-size: 18px; 
+    background: #dc3545; 
+    border: 1px solid #dc3545;
+}
+.gps-coordinates {
+    margin-bottom: 40px;
+}
+.gps-coordinates h4 {
+    margin-top: 20px;
+}
+.maps {
+    margin-bottom: 30px;
+}
+/* contact page end */
+
+/* footer */
+.newsletter {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    color: white;
+    background: #625d59;
+}
+.newsletter hr {
+    margin-right: 0;
+    margin-left: 0;
+    border-top: 3px solid #ffffff;
+    width: 20%;
+}
+.text-muted {
+    color: #ffffff!important;
+}
+.newsletter .danger-submit {
+    margin-top: 0;
+    padding-top: 6px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+    padding-left: 20px;
+    background: darkred;
+    border: 1px solid darkred;
+}
+.form-control:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+.footer-p {
+      padding: 10px;
+      height: 50px;
+      text-align: center;
+      color: #f8f9fa;
+      background-color: #262627;
+}
+/* footer end */

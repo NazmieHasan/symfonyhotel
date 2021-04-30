@@ -1,29 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block body_id %}
-
-{% endblock %}
-
-{% block main %}
+{% block body %}
 
     <div class="container body-content">
+        <h1>My Bookings</h1>
+        <hr />
         <div class="row">
-            {% for booking in bookings %}
+            {% for booking in bookings %} 
                 <div class="col-md-12">
-                    <article>
-                        <header>
-                            Booking {{ booking.id }}
-                        </header>
-                        <p>
-                            Checkin: {{ booking.checkin|date("Y-m-d") }}  Checkout: {{ booking.checkout|date("Y-m-d") }}
-                        </p>
-
-                        <footer>
-                            <div class="pull-right">
-                                <a class="btn btn-default btn-xs" href="{{ path('hotel_index') }}">Back &raquo;</a>
-                            </div>
-                        </footer>
-                    </article>
+                    <h4>
+                        Booking {{ booking.id }} | 
+                        Checkin: {{ booking.checkin|date("Y-m-d") }} | 
+                        Checkout: {{ booking.checkout|date("Y-m-d") }} | 
+                        <a class="btn btn-primary btn-xs" href="{{ path('hotel_index') }}">Back &raquo;</a>
+                    </h4>
+                    <hr />   
                 </div>
             {% endfor %}
         </div>

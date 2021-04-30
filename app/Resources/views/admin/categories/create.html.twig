@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block body_id 'register' %}
+{% block body %}
 
-{% block main %}
     <div class="container body-content span=8 offset=2">
         <div class="well">
             <form class="form-horizontal" action="{{ path('category_create') }}" method="post">
@@ -49,4 +48,5 @@
             </form>
         </div>
     </div>
+    
 {% endblock %}

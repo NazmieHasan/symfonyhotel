@@ -1,45 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block body_id %}
-
-{% endblock %}
-
-{% block main %}
+{% block body %}
 
     <div class="container body-content">
-        <div class="row">
-            <div class="col-md-12">
-                <article>
-                    <header>
-                        <h2>Booking Information</h2>
-                    </header>
-
-                    <p>Checkin: {{ booking.checkin|date("Y-m-d") }}</p>
-                    <p>Checkout: {{ booking.checkout|date("Y-m-d") }}
-                    <p>Days: {{ booking.days}}</p>
-                    <p>Adults: {{ booking.adults}}</p>
-                    <p>Child Bed: {{ booking.childBed}}</p>
-                    <p>Total Amount: {{ booking.totalAmount}}</p>
-                    <p>Paid Amount: {{ booking.paidAmount}}</p>
-                    <p>Payment Amount: {{ booking.paymentAmount}}</p>
-                    <p>Date Added: {{ booking.dateAdded|date("Y-m-d H:i:s") }}</p>
-                    <p>Category: {{ booking.category.name }}</p>
-                    <p>Payment: {{ booking.payment.name }}</p>
-                    <p>Status: {{ booking.status.name }}</p>
-                    <p>Room: {{ booking.room.number }}</p>
-
-                    <footer>
-                        <div class="pull-right">
-                            {% if app.getUser().isAdmin()  %}
-                                <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit</a>
-                                <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
-                            {% endif %}
-                            <a class="btn btn-default btn-xs" href="{{ path('hotel_index') }}">Back &raquo;</a>
-                        </div>
-                    </footer>
-                </article>
-            </div>
-        </div>
+        <h2>Booking Information</h2>
+        <p>Checkin: {{ booking.checkin|date("Y-m-d") }}</p>
+        <p>Checkout: {{ booking.checkout|date("Y-m-d") }}
+        <p>Days: {{ booking.days}}</p>
+        <p>Adults: {{ booking.adults}}</p>
+        <p>Child Bed: {{ booking.childBed}}</p>
+        <p>Total Amount: {{ booking.totalAmount}}</p>
+        <p>Paid Amount: {{ booking.paidAmount}}</p>
+        <p>Payment Amount: {{ booking.paymentAmount}}</p>
+        <p>Date Added: {{ booking.dateAdded|date("Y-m-d H:i:s") }}</p>
+        <p>Category: {{ booking.category.name }}</p>
+        <p>Payment: {{ booking.payment.name }}</p>
+        <p>Status: {{ booking.status.name }}</p>
+        <p>Room: {{ booking.room.number }}</p>
+        {% if app.getUser().isAdmin()  %}
+            <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit</a>
+            <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
+        {% endif %}
+        <a class="btn btn-primary btn-xs" href="{{ path('hotel_index') }}">Back &raquo;</a>
     </div
 
 {% endblock %}

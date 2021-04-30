@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block main %}
+
+{% block body %}
+
     <div class="container body-content span=8 offset=2">
         <div class="well">
             <form class="form-horizontal" action="{{ path('admin_category_delete', {'id': category.id}) }}"  method="POST">
@@ -46,4 +48,5 @@
             </form>
         </div>
     </div>
+    
 {% endblock %}

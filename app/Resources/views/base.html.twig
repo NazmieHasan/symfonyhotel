@@ -2,11 +2,11 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Hotel & SPA{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     <script>
@@ -18,98 +18,129 @@
 
 <body id="{% block body_id %}{% endblock %}">
 
-{% block header %}
-    <header>
-        <div class="navbar navbar-default navbar-static-top" role="navigation">
+{% block header %} 
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container">
-                <div class="navbar-header">
-                    <a href="{{ path('hotel_index') }}" class="navbar-brand">HOTEL & SPA</a>
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
+                <a class="navbar-brand" href="{{ path('hotel_index') }}"><img src="{{ asset('img/logo.png') }}"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button> 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
                         {% if app.user %}
                             {% if app.user.isAdmin() %}
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                       role="button" aria-expanded="false">Admin<span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ path('admin_bookings') }}">Bookings</a></li>
-                                        <li><a href="{{ path('admin_categories') }}">Categories</a></li>
-                                        <li><a href="{{ path('guest_create') }}">Guests</a></li>
-                                        <li><a href="{{ path('payment_create') }}">Payments</a></li>
-                                        <li><a href="{{ path('room_create') }}">Rooms</a></li>
-                                        <li><a href="{{ path('status_create') }}">Statuses</a></li>
-                                        <li><a href="{{ path('admin_users') }}">Users</a></li>
-                                    </ul>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ADMIN</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ path('admin_bookings') }}">Bookings</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ path('admin_categories') }}">Categories</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ path('guest_create') }}">Guests</a>  
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ path('payment_create') }}">Payments</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ path('room_create') }}">Rooms</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ path('status_create') }}">Statuses</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ path('admin_users') }}">Users</a>
+                                    </div>
                                 </li>
                             {% endif %}
-                            <li>
-                                <a href="{{ path('booking_create') }}" class="navbar-brand">
-                                    Booking
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('my_bookings') }}" class="navbar-brand">
-                                    My Bookings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('user_profile') }}" class="navbar-brand">
-                                    My Profile
-                                </a>
-                            </li>
-                        <li>
-                        <a href="{{ path('security_logout') }}" class="navbar-brand">
-                        Logout
-                        </a>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('hotel_index') }}">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">VENUES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">RELAX</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">EVENTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">OFFERS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CONTACT</a>
+                        </li>
+                        {% if app.user %}
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('user_profile') }}">View Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('booking_create') }}">Create Booking</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('my_bookings') }}">My Bookings</a> 
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('security_logout') }}">Logout</a>   
+                            </div>
                         </li>
                         {% else %}
                             <li>
-                                <a href="{{ path('security_login') }}">
-                                    LOGIN
-                                </a>
+                                <a class="nav-link" href="{{ path('security_login') }}">LOGIN</a>
                             </li>
-                        <li>
-                        <a href="{{ path('user_register') }}">
-                        REGISTER
-                        </a>
-                        </li>
                         {% endif %}
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ENGLISH</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Български</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Deutsch</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">English</a>  
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Русский</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </header>
+        </nav>
 {% endblock %}
 
-<div class="container body-container">
     {% block body %}
-        <div class="row">
-            <div id="main" class="col-sm-9">
-                {% block main %}{% endblock %}
-            </div>
-        </div>
+      
     {% endblock %}
-</div>
 
 {% block footer %}
-    <footer>
-        <div class="container modal-footer">
-            <p>TERMS | PRIVACY POLICY | SITEMAP | BLOG</p>
-        </div>
-    </footer>
+    <footer class="footer">
+            <div class="container-fluid newsletter">
+                <div class="col-md-10 offset-md-1">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <h3>Newsletter</h3>
+                            <hr />
+                            <h6>SUBSCRIBE FOR SPECIAL OFFERS</h6>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email here">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <button type="submit" class="btn btn-danger danger-submit">Submit</button>
+                            </form> 
+                        </div> 
+                    </div>
+                </div>    
+            </div>
+            <div class="footer-p">
+                <p>All Rights Reserved</p>
+            </div>
+        </footer>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 {% endblock %}
 
 </body>
