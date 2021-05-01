@@ -53,19 +53,19 @@
                             <a class="nav-link" href="{{ path('hotel_index') }}">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">VENUES</a>
+                            <a class="nav-link" href="{{ path('view_venues') }}">VENUES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">RELAX</a>
+                            <a class="nav-link" href="{{ path('view_relax_zone') }}">RELAX</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">EVENTS</a>
+                            <a class="nav-link" href="{{ path('view_events') }}">EVENTS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">OFFERS</a>
+                            <a class="nav-link" href="{{ path('view_offers') }}">OFFERS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">CONTACT</a>
+                            <a class="nav-link" href="{{ path('view_contact') }}">CONTACT</a>
                         </li>
                         {% if app.user %}
                             <li class="nav-item dropdown">

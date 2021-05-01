@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="contact contact-width header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="header-title text-center">Golden Sands</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container location">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col1">
+                <h1>Location</h1>
+                <p>Golden Sands is the largest resort on the northern Black Sea coast. It is situated 18 km northeast away from Varna and 488 km east from Sofia in an ecologically clean bay. The complex is built in the Nature Park "Golden Sands" at 1320 ha. area. To the north it reaches the village of Kranevo and to the south - Chayka village.</p>
+            </div>
+            <div class="col-md-6 col-sm-12 col2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Contact us and take advantage of:</li>
+                    <li class="list-group-item"> - Accommodation in rooms and apartments</li>
+                    <li class="list-group-item"> - Modern restaurants and bars</li>
+                    <li class="list-group-item"> - Relax Zone in SPA & Wellness center</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container contact-info">  
+        <div class="row text-center">
+            <div class="col-md-4 col-sm-12">
+                <div class="jumbotron jumbo-dark">
+                    <h2>Call us</h2>
+                    <button class="btn btn-light btn-outline-light">
+                        <h5>For info</h5>
+                        <h5 class="hr-before"><i class="bi bi-telephone-fill"></i> (+359) 123 456 78</h5>
+                        <hr />
+                        <h5 class="hr-after">For reservations</h6>
+                        <h5><i class="bi bi-telephone-fill"></i> (+359) 123 789 45</h5>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="jumbotron jumbo-light">
+                    <h2>Follow us</h2>
+                    <h5>In Social Media</h5>
+                    <div class="row">
+                        <div class="col">
+                            <img src="img/facebook.png" alt="img" class="img-thumbnail">
+                        </div>
+                        <div class="col">
+                            <img src="img/instagram.png" alt="img" class="img-thumbnail">
+                        </div>
+                        <div class="col">
+                            <img src="img/twitter.png" alt="img" class="img-thumbnail">
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="jumbotron jumbo-dark">
+                    <h2>Write us</h2>
+                    <button class="btn btn-light btn-outline-light btn-email">
+                        <h5>For info</h5>
+                        <h5 class="hr-before"><i class="bi bi-envelope-fill"></i> hotel@info-email</h5>
+                        <hr />
+                        <h5 class="hr-after">For reservations</h5>
+                        <h5><i class="bi bi-envelope-fill"></i> hotel@reservations-email</h5>
+                    </button>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="container form-contact text-center">
+        <div class="jumbotron jumbo-light">
+            <form>
+                <div class="form-group">
+                    <h2>Contact Form</h2>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <input type="text" class="form-control" placeholder="Enter first name here">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <input type="text" class="form-control" placeholder="Enter last name here">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <input type="text" class="form-control" placeholder="Enter phone here">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email here">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" placeholder="Enter message here"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger">SUBMIT</button>
+                </div>
+            </form>                                                        
+        </div>
+    </div>
+    <div class="container gps-coordinates">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <img src="img/world-map.png" alt="img" class="img-thumbnail">
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <h4>GPS Coordinates</h4>
+                <hr />
+                <h5>Bulgaria</h5>
+                <p>UTM COORDINATES: 35T 375825.52296821 4731391.6579246</p>
+                <hr />
+                <h5>Golden Sands</h5>
+                <p>UTM COORDINATES: 35T 584241.82039909 4792913.5733866</p>
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="container maps">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.242057203464!2d27.910474214990217!3d43.204412089353305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a453f4fbc22e53%3A0x4efea94d94a2cd41!2spl.%20%22Nezavisimost%22%2C%209000%20Varna%20Center%2C%20Varna!5e0!3m2!1sen!2sbg!4v1570357891861!5m2!1sen!2sbg" width="100%" height="400" frameborder="0" style="border: 0;"></iframe>
+    </div>
+    
+{% endblock %}
