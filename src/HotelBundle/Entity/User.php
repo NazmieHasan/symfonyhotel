@@ -5,6 +5,7 @@ namespace HotelBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -25,6 +26,13 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank(message="This field cannot be empty")
+     *
+     * @Assert\Email(
+     *     message="Invalid email",
+     *     checkMX=false
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
@@ -32,6 +40,21 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @Assert\NotBlank(message="This field cannot be empty")
+     *
+     * @Assert\Length(
+     *     min = 5,
+     *     max = 15,
+     *     minMessage="Min length is 5",
+     *     maxMessage="Max lenth is 15"
+     * )
+     *
+     *  * @Assert\Regex(
+     *     pattern = "/^[A-Za-z0-9]+$/",
+     *     match=true,
+     *     message="The password must contain only letters and digits"
+     * )*
+     *
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
@@ -39,6 +62,21 @@ class User implements UserInterface
     private $password;
 
     /**
+          * @Assert\NotBlank(message="This field cannot be empty")
+     *
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 15,
+     *     minMessage="Full name min length is 3",
+     *     maxMessage="Full name max length is 15"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/^[A-Z]{1}[a-z]+$/",
+     *     match=true,
+     *     message="Full name must start with a capital letter, followed by lowercase letters"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="fullName", type="string", length=255)

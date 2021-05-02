@@ -21,7 +21,7 @@ class UserController extends Controller
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-        if($form->isSubmitted()) {
+        if($form->isSubmitted() && $form->isValid()) {
             $passwordHash =
                 $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPassword());
