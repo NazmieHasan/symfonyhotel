@@ -27,7 +27,7 @@ class UserType extends AbstractType
                 'first_options' => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat password']
             ])
-            ->add('fullName', TextType::class);
+            ->add('loginName', TextType::class);
     }/**
      * {@inheritdoc}
      */

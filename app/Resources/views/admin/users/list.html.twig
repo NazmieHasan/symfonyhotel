@@ -10,7 +10,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Full Name</th>
+                        <th>Login Name</th>
                         <th>Email</th>
                         <th>Actions</th>
                     </tr>
@@ -20,7 +20,7 @@
                     <tr>
                         <tr {% if user.isAdmin() %}class="info" {% endif %}>
                         <td>{{ user.id }}</td>
-                        <td>{{ user.fullName }}</td>
+                        <td>{{ user.loginName }}</td>
                         <td>{{ user.email }}</td>
                         <td>
                             <a href="#">Edit</a>

@@ -62,26 +62,26 @@ class User implements UserInterface
     private $password;
 
     /**
-          * @Assert\NotBlank(message="This field cannot be empty")
+     * @Assert\NotBlank(message="This field cannot be empty")
      *
      * @Assert\Length(
      *     min = 3,
      *     max = 15,
-     *     minMessage="Full name min length is 3",
-     *     maxMessage="Full name max length is 15"
+     *     minMessage="Login name min length is 3",
+     *     maxMessage="Login name max length is 15"
      * )
      *
      * @Assert\Regex(
      *     pattern = "/^[A-Z]{1}[a-z]+$/",
      *     match=true,
-     *     message="Full name must start with a capital letter, followed by lowercase letters"
+     *     message="Login name must start with a capital letter, followed by lowercase letters"
      * )
      *
      * @var string
      *
-     * @ORM\Column(name="fullName", type="string", length=255)
+     * @ORM\Column(name="loginName", type="string", length=255)
      */
-    private $fullName;
+    private $loginName;
 
     /**
      * @var ArrayCollection
@@ -167,28 +167,28 @@ class User implements UserInterface
     }
 
     /**
-     * Set fullName
+     * Set loginName
      *
-     * @param string $fullName
+     * @param string $loginName
      *
      * @return User
      */
-    public function setFullName($fullName)
+    public function setLoginName($loginName)
     {
-        $this->fullName = $fullName;
+        $this->loginName = $loginName;
 
         return $this;
     }
 
 
     /**
-     * Get fullName
+     * Get loginName
      *
      * @return string
      */
-    public function getFullName()
+    public function getLoginName()
     {
-        return $this->fullName;
+        return $this->loginName;
     }
 
     public function getRoles()

@@ -5,6 +5,25 @@ body {
 /* html, body end */
 
 /* nav */
+.form-errors ul {
+    font-size: 14px;
+    word-spacing: 5px;
+    list-style-type: none;
+    color: #e74c3c;
+}
+.login-a {
+    margin-left: 10px;
+    padding-bottom: 2px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #e74c3c; 
+    border-bottom: 1px solid #e74c3c;
+}
+.login-a:hover {
+    text-decoration: none;
+    color: darkred;
+    border-bottom: 1px solid darkred;
+}
 .navbar {
     padding-top: 17px;
     padding-right: 5px;

@@ -22,8 +22,8 @@
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <button type="submit" class="btn btn-primary">Login</button>
-                            <a href="{{ path('user_register') }}">Register</a>
+                            <button type="submit" class="btn btn-danger">Login</button>
+                            <a class="login-a" href="{{ path('user_register') }}">Register</a>
                         </div>
                     </div>
 
