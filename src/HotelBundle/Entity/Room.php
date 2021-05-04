@@ -43,27 +43,24 @@ class Room
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
-
-
-
+    
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="room")
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Stay", mappedBy="room")
      */
-    private $bookings;
+    private $stays;
 
     public function __construct()
     {
-        $this->bookings = new ArrayCollection();
+        $this->stays = new ArrayCollection();
     }
 
     public function __toString()
     {
         return $this->getNumber();
     }
-
-
+    
 
     /**
      * Get id
@@ -122,21 +119,21 @@ class Room
     {
         $this->category = $category;
     }
-
-    /**
+    
+     /**
      * @return ArrayCollection
      */
-    public function getBookings()
+    public function getStays()
     {
-        return $this->bookings;
+        return $this->stays;
     }
 
     /**
-     * @param ArrayCollection $bookings
+     * @param ArrayCollection $stays
      */
-    public function setBookings(ArrayCollection $bookings)
+    public function setStays(ArrayCollection $stays)
     {
-        $this->bookings = $bookings;
+        $this->stays = $stays;
     }
 
 

@@ -96,5 +96,6 @@ class Payment
     {
         $this->bookings = $bookings;
     }
+    
 }
 

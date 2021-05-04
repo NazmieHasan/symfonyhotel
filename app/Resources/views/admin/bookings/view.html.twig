@@ -4,6 +4,7 @@
 
     <div class="container body-content">
         <h2>Booking Information</h2>
+        <p>Reserved by email: {{ booking.userId.email}}</</p>
         <p>Checkin: {{ booking.checkin|date("Y-m-d") }}</p>
         <p>Checkout: {{ booking.checkout|date("Y-m-d") }}
         <p>Days: {{ booking.days}}</p>
@@ -16,7 +17,6 @@
         <p>Category: {{ booking.category.name }}</p>
         <p>Payment: {{ booking.payment.name }}</p>
         <p>Status: {{ booking.status.name }}</p>
-        <p>Room: {{ booking.room.number }}</p>
         {% if app.getUser().isAdmin()  %}
             <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit</a>
             <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>

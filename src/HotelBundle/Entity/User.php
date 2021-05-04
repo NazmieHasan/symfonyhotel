@@ -250,8 +250,8 @@ class User implements UserInterface
      * @param Booking $booking
      * @return bool
      */
-    public function isClient(Booking $booking){
-        return $booking->getClient()->getId() === $this->getId();
+    public function isUser(Booking $booking){
+        return $booking->getUserId()->getId() === $this->getId();
     }
 
     /**

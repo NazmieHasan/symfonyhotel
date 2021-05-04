@@ -37,10 +37,6 @@ class Booking
      */
     private $category;
 
-
-
-
-
     /**
      * @var \DateTime
      *
@@ -123,9 +119,9 @@ class Booking
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\User", inversedBy="bookings")
-     * @ORM\JoinColumn(name="clientId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $client;
+    private $userId;
 
 
     /**
@@ -142,28 +138,11 @@ class Booking
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      */
     private $status;
-
+    
     public  function __construct()
     {
         $this->dateAdded = new \DateTime('now');
-
     }
-
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="room_id", type="integer")
-     */
-    private $roomId;
-
-    /**
-     * @var Room
-     *
-     * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Room", inversedBy="rooms")
-     * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
-     */
-    private $room;
 
 
     /**
@@ -493,54 +472,22 @@ class Booking
     }
 
     /**
-     * @return int
-     */
-    public function getRoomId()
-    {
-        return $this->roomId;
-    }
-
-    /**
-     * @param int $roomId
-     */
-    public function setRoomId($roomId)
-    {
-        $this->roomId = $roomId;
-    }
-
-    /**
-     * @return Room
-     */
-    public function getRoom()
-    {
-        return $this->room;
-    }
-
-    /**
-     * @param Room $room
-     */
-    public function setRoom($room)
-    {
-        $this->room = $room;
-    }
-
-    /**
      * @return User
      */
-    public function getClient()
+    public function getUserId()
     {
-        return $this->client;
+        return $this->userId;
     }
 
     /**
-     * @param User $client
+     * @param User $user
      * @return Booking
      */
-    public function setClient(User $client = null)
+    public function setUserId(User $userId = null)
     {
-        $this->client = $client;
+        $this->userId = $userId;
         return $this;
     }
-
+    
 
 }

@@ -20,5 +20,5 @@ interface BookingServiceInterface
     /**
      * @return ArrayCollection|Booking[]
      */
-    public function getAllBookingsByClient();
+    public function getAllBookingsByUser();
 }

@@ -83,12 +83,12 @@ class BookingService implements BookingServiceInterface
     /**
      * @return ArrayCollection|Booking[]
      */
-    public function getAllBookingsByClient()
+    public function getAllBookingsByUser()
     {
         return  $this->bookingRepository
 
             ->findBy(
-                ['client' => $this->userService->currentUser()],
+                ['userId' => $this->userService->currentUser()],
                 ['dateAdded' => 'DESC']
             );
 

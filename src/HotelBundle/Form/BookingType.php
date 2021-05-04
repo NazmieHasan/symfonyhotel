@@ -38,10 +38,6 @@ class BookingType extends AbstractType
             ->add('childBed', NumberType::class)
             ->add('payment', EntityType::class,
                 ['class' => Payment::class])
-
-            ->add('room', EntityType::class,
-                ['class' => Room::class])
-
             ->add('status', null, [
                 'required'   => false,
                 'empty_data' => '1'

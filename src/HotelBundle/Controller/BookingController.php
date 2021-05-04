@@ -27,7 +27,7 @@ class BookingController extends Controller
 
 
         if($form->isSubmitted()) {
-            $booking->setClient($this->getUser());
+            $booking->setUserId($this->getUser());
             $booking->setPaidAmount(00.00);
             $booking->setPaymentAmount(00.00);
             $booking->setTotalAmount(00.00);
@@ -66,11 +66,11 @@ class BookingController extends Controller
      * @param Booking $booking
      * @return bool
      */
-    private function isClientOrAdmin(Booking $booking)
+    private function isUserOrAdmin(Booking $booking)
     {   /** @var User $currentUser */
         $currentUser = $this->getUser();
 
-        if(!$currentUser->isClient($booking) && !$currentUser->isAdmin()) {
+        if(!$currentUser->isUser($booking) && !$currentUser->isAdmin()) {
             return false;
         }
         return true;
@@ -86,7 +86,7 @@ class BookingController extends Controller
             ->getDoctrine()
             ->getRepository(Booking::class)
             ->findBy(
-                ['client' => $this->getUser()],
+                ['userId' => $this->getUser()],
                 [
                     'dateAdded' => 'DESC'
                 ]);
