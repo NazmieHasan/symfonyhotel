@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping;
 use Doctrine\ORM\OptimisticLockException;
 
-
 /**
  * BookingRepository
  *
@@ -61,7 +60,6 @@ class BookingRepository extends \Doctrine\ORM\EntityRepository
         }
     }
 
-
     /**
      * @param Booking $booking
      * @return bool
@@ -71,7 +69,6 @@ class BookingRepository extends \Doctrine\ORM\EntityRepository
     public function remove(Booking $booking)
     {
         $this->_em->remove($booking);
-
         try {
             $this->_em->flush();
             return true;
@@ -79,6 +76,5 @@ class BookingRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
-
 
 }

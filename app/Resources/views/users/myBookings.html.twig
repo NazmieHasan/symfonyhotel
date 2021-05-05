@@ -8,12 +8,8 @@
         <div class="row">
             {% for booking in bookings %} 
                 <div class="col-md-12">
-                    <h4>
-                        Booking {{ booking.id }} | 
-                        Checkin: {{ booking.checkin|date("Y-m-d") }} | 
-                        Checkout: {{ booking.checkout|date("Y-m-d") }} | 
-                        <a class="btn btn-primary btn-xs" href="{{ path('hotel_index') }}">Back &raquo;</a>
-                    </h4>
+                    <h4>Booking {{ booking.id }}</h4> 
+                    <p>Checkin: {{ booking.checkin|date("Y-m-d") }} | Checkout: {{ booking.checkout|date("Y-m-d") }}</p>
                     <hr />   
                 </div>
             {% endfor %}

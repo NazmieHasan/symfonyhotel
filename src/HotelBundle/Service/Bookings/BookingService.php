@@ -33,8 +33,12 @@ class BookingService implements BookingServiceInterface
      */
     public function create(Booking $booking): bool
     {
-        $client = $this->userService->currentUser();
-        $booking->setClient($client);
+        $user = $this->userService->currentUser();
+        $booking->setUser($user);
+        $booking->setPaidAmount(00.00);
+        $booking->setPaymentAmount(00.00);
+        $booking->setTotalAmount(00.00);
+        $booking->setDays(0);
 
         return $this->bookingRepository->insert($booking);
     }

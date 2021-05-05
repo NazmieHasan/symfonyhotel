@@ -2,9 +2,7 @@
 
 namespace HotelBundle\Repository;
 
-
 use HotelBundle\Entity\User;
-
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping;
@@ -18,6 +16,11 @@ use Doctrine\ORM\OptimisticLockException;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+     /**
+     * UserRepository constructor.
+     * @param EntityManagerInterface $em
+     * @param Mapping\ClassMetadata|null $metaData
+     */
     public function __construct(EntityManagerInterface $em,
                                 Mapping\ClassMetadata $metaData = null)
     {
@@ -27,7 +30,12 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
                 $metaData);
     }
 
-
+    /**
+     * @param User $user
+     * @return bool|string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function insert(User $user){
         $this->_em->persist($user);
 
@@ -39,10 +47,14 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         }
     }
 
-    
+    /**
+     * @param User $user
+     * @return bool|string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function update(User $user){
         $this->_em->merge($user);
-
         try {
             $this->_em->flush();
             return true;
@@ -50,6 +62,21 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
-
+    
+    /**
+     * @param User $user
+     * @return bool|string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function remove(User $user){
+        try {
+            $this->_em->remove($user);
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
 
 }

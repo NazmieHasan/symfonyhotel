@@ -2,6 +2,12 @@
 
 namespace HotelBundle\Repository;
 
+use HotelBundle\Entity\Role;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\OptimisticLockException;
+
 /**
  * RoleRepository
  *
@@ -10,4 +16,17 @@ namespace HotelBundle\Repository;
  */
 class RoleRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * RolerRepository constructor.
+     * @param EntityManagerInterface $em
+     * @param Mapping\ClassMetadata|null $metaData
+     */
+    public function __construct(EntityManagerInterface $em,
+                                Mapping\ClassMetadata $metaData = null)
+    {
+        parent::__construct($em,
+            $metaData == null ?
+                new Mapping\ClassMetadata(Role::class) :
+                $metaData);
+    }
 }

@@ -5,6 +5,7 @@ namespace HotelBundle\Controller;
 use HotelBundle\Entity\Booking;
 use HotelBundle\Entity\User;
 use HotelBundle\Form\BookingType;
+use HotelBundle\Service\Bookings\BookingServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,49 +14,65 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookingController extends Controller
 {
     /**
-     * @Route("/createbooking", name="booking_create")
+     * @var BookingServiceInterface
+     */
+    private $bookingService;
+    
+    /**
+     * BookingController constructor.
+     * @param BookingServiceInterface $bookingService
+     */
+    public function __construct(
+        BookingServiceInterface $bookingService)
+    {
+        $this->bookingService = $bookingService;
+    }
+    
+    /**
+     * @Route("/createbooking", name="booking_create", methods={"GET"})
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function create()
+    {
+        return $this->render('bookings/create.html.twig',
+            ['form' => $this
+                ->createForm(BookingType::class)
+                ->createView()]);
+    }
+
+    /**
+     * @Route("/createbooking", methods={"POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
-     * @noinspection PhpParamsInspection
      */
-    public function create(Request $request)
+    public function createProcess(Request $request)
     {
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
-
-
-        if($form->isSubmitted()) {
-            $booking->setUserId($this->getUser());
-            $booking->setPaidAmount(00.00);
-            $booking->setPaymentAmount(00.00);
-            $booking->setTotalAmount(00.00);
-            $booking->setDays(0);
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($booking);
-            $em->flush();
-
-            $this->addFlash("info", "Create booking successfully!");
-            return $this->redirectToRoute("hotel_index");
-        }
-
-        return $this->render('bookings/create.html.twig',
-            ['form' => $form->createView()]);
+        
+        $this->bookingService->create($booking);
+        $this->addFlash("info", "Create booking successfully!");
+        return $this->redirectToRoute("hotel_index");
     }
 
 
     /**
      * @Route("/booking/{id}", name="booking_view")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function view(int $id) {
-        $booking = $this
-            ->getDoctrine()
-            ->getRepository(Booking::class)
-            ->find($id);
+    public function view(int $id) 
+    {
+        $booking = $this->bookingService->getOne($id);
+
+        if (null === $booking){
+            return $this->redirectToRoute("blog_index");
+        }
 
         return $this->render("bookings/view.html.twig",
             ['booking' => $booking ]);
@@ -81,22 +98,14 @@ class BookingController extends Controller
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAllBookingsByUser(){
-        $bookings = $this
-            ->getDoctrine()
-            ->getRepository(Booking::class)
-            ->findBy(
-                ['userId' => $this->getUser()],
-                [
-                    'dateAdded' => 'DESC'
-                ]);
+    public function getAllBookingsByUser()
+    {
+        $bookings = $this->bookingService->getAllBookingByUser();
 
         return $this->render("users/myBookings.html.twig",
             [
                 'bookings' => $bookings
             ]);
-
     }
-
 
 }

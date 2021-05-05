@@ -1,12 +1,10 @@
 <?php
 
-
 namespace HotelBundle\Service\Users;
-
 
 use HotelBundle\Entity\User;
 use HotelBundle\Repository\UserRepository;
-use HotelBundle\Service\Encryption\ArgonEncryption;
+use HotelBundle\Service\Encryption\ArgonEncryption;;
 use HotelBundle\Service\Encryption\EncryptionServiceInterface;
 use HotelBundle\Service\Roles\RoleService;
 use HotelBundle\Service\Roles\RoleServiceInterface;
@@ -40,6 +38,12 @@ class UserService implements UserServiceInterface
         return $this->userRepository->findOneBy(['email' => $email]);
     }
 
+    /**
+     * @param User $user
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function save(User $user): bool
     {
             $passwordHash =
@@ -47,7 +51,6 @@ class UserService implements UserServiceInterface
             $user->setPassword($passwordHash);
             $userRole = $this->roleService->findOneBy("ROLE_USER");
             $user->addRole($userRole);
-            $user->setImage("");
 
         return $this->userRepository->insert($user);
     }
@@ -81,6 +84,17 @@ class UserService implements UserServiceInterface
     public function update(User $user): bool
     {
         return $this->userRepository->update($user);
+    }
+    
+    /**
+     * @param User $user
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(User $user): bool
+    {
+        return $this->userRepository->remove($user);
     }
 
     public function getAll()

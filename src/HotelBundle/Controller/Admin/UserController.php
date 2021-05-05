@@ -5,6 +5,7 @@ namespace HotelBundle\Controller\Admin;
 use HotelBundle\Entity\Role;
 use HotelBundle\Entity\User;
 use HotelBundle\Form\UserType;
+use HotelBundle\Service\Users\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,58 +18,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends Controller
 {
     /**
-     * @Route("/register", name="user_register")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @var UserServiceInterface
      */
-    public function register(Request $request)
+    private $userService;
+    
+    /**
+     * UserController constructor.
+     * @param UserServiceInterface $studentService
+     */
+    public function __construct(
+        UserServiceInterface $userService)
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-        if($form->isSubmitted()) {
-            $passwordHash =
-                $this->get('security.password_encoder')
-                ->encodePassword($user, $user->getPassword());
-
-            $roleUser = $this
-                ->getDoctrine()
-                ->getRepository(Role::class)
-                ->findOneBy(['name' => 'ROLE_USER']);
-
-            $user->addRole($roleUser);
-
-            $user->setPassword($passwordHash);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            return $this->redirectToRoute("security_login");
-        }
-        return $this->render('users/register.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/profile", name="user_profile")
-     */
-    public function profile(){
-        $userRepository = $this->getDoctrine()
-            ->getRepository(User::class);
-
-        $currentUser = $userRepository->find($this->getUser());
-
-        return $this->render("users/profile.html.twig",
-        ['user' => $currentUser]);
-
-    }
-
-    /**
-     * @Route("/logout", name="security_logout")
-     */
-    public function logout(){
-
+        $this->userService = $userService;
     }
 
     /**
@@ -76,7 +37,7 @@ class UserController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listUsers(){
-        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $users = $this->userService->getAll();
         return $this->render('admin/users/list.html.twig', ['users' => $users]);
 
     }
