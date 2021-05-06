@@ -49,7 +49,7 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush();
 
-            return $this->redirectToRoute("hotel_index");
+            return $this->redirectToRoute("admin_categories");
         }
 
         return $this->render('admin/categories/create.html.twig',
@@ -67,6 +67,22 @@ class CategoryController extends Controller
             ->getRepository(Category::class)->findAll();
         return $this->render('admin/categories/list.html.twig',
             ['categories' => $categories]);
+    }
+    
+    /**
+     * @Route("/view/{id}", name="admin_category_view")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function view(int $id) {
+        $category = $this
+            ->getDoctrine()
+            ->getRepository(Category::class)
+            ->find($id);
+
+        return $this->render("admin/categories/view.html.twig",
+            ['category' => $category ]);
+
     }
 
     /**

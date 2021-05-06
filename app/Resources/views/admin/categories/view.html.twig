@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <img src="{{ asset('uploads/images/categories/' ~ category.image)}}" alt="img" class="img-thumbnail">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <h2>{{ category.name }}</h2>
+                <p>{{ category.description }}</</p>
+                <p>Beds: {{ category.beds }}</p>
+                <p>Price: {{ category.price }}
+                <p><a class="btn btn-primary btn-xs" href="{{ path('admin_categories') }}">Back &raquo;</a></p>
+            </div>
+        </div>
+    </div
+
+{% endblock %}

@@ -29,7 +29,7 @@ class BookingController extends Controller
     }
     
     /**
-     * @Route("/createbooking", name="booking_create", methods={"GET"})
+     * @Route("/create-booking", name="booking_create", methods={"GET"})
      *
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
@@ -43,7 +43,7 @@ class BookingController extends Controller
     }
 
     /**
-     * @Route("/createbooking", methods={"POST"})
+     * @Route("/create-booking", methods={"POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -59,40 +59,6 @@ class BookingController extends Controller
         return $this->redirectToRoute("hotel_index");
     }
 
-
-    /**
-     * @Route("/booking/{id}", name="booking_view")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function view(int $id) 
-    {
-        $booking = $this->bookingService->getOne($id);
-
-        if (null === $booking){
-            return $this->redirectToRoute("blog_index");
-        }
-
-        return $this->render("bookings/view.html.twig",
-            ['booking' => $booking ]);
-
-    }
-
-    /**
-     * @param Booking $booking
-     * @return bool
-     */
-    private function isUserOrAdmin(Booking $booking)
-    {   /** @var User $currentUser */
-        $currentUser = $this->getUser();
-
-        if(!$currentUser->isUser($booking) && !$currentUser->isAdmin()) {
-            return false;
-        }
-        return true;
-    }
-
     /**
      * @Route("/users/my_bookings", name="my_bookings")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
@@ -100,7 +66,7 @@ class BookingController extends Controller
      */
     public function getAllBookingsByUser()
     {
-        $bookings = $this->bookingService->getAllBookingByUser();
+        $bookings = $this->bookingService->getAllBookingsByUser();
 
         return $this->render("users/myBookings.html.twig",
             [

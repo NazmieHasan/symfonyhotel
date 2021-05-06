@@ -87,11 +87,10 @@
                     
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <a class="btn btn-default" href="{{ path('hotel_index') }}">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a class="btn btn-primary" href="{{ path('admin_bookings') }}">Cancel</a>
+                            <button type="submit" class="btn btn-danger">Submit</button>
                         </div>
                     </div>
-
                     {{  form_row(form._token) }}
                 </fieldset>
             </form>

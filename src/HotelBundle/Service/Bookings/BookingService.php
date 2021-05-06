@@ -33,8 +33,8 @@ class BookingService implements BookingServiceInterface
      */
     public function create(Booking $booking): bool
     {
-        $user = $this->userService->currentUser();
-        $booking->setUser($user);
+        $userId = $this->userService->currentUser();
+        $booking->setUserId($userId);
         $booking->setPaidAmount(00.00);
         $booking->setPaymentAmount(00.00);
         $booking->setTotalAmount(00.00);
@@ -72,7 +72,7 @@ class BookingService implements BookingServiceInterface
      */
     public function getAll()
     {
-        return $this->bookingRepository->findAll();
+        return $this->bookingRepository->findBy([], ['dateAdded' => 'DESC']);
     }
 
     /**

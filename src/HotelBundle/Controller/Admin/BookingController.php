@@ -127,20 +127,6 @@ class BookingController extends Controller
     }
 
     /**
-     * @param Booking $booking
-     * @return bool
-     */
-    private function isUserOrAdmin(Booking $booking)
-    {   /** @var User $currentUser */
-        $currentUser = $this->getUser();
-
-        if(!$currentUser->isUser($booking) && !$currentUser->isAdmin()) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * @Route("/", name="admin_bookings")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
