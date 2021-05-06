@@ -1,6 +1,6 @@
 <?php
 
-namespace HotelBundle\Controller;
+namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Stay;
 use HotelBundle\Form\StayType;
@@ -9,10 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/admin/stays")
+ * Class CategoryController
+ * @package HotelBundle\Controller\Admin
+ */
 class StayController extends Controller
 {
     /**
-     * @Route("/createstay", name="stay_create")
+     * @Route("/create", name="admin_stay_create")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -31,7 +36,7 @@ class StayController extends Controller
             return $this->redirectToRoute("hotel_index");
         }
 
-        return $this->render('stays/create.html.twig',
+        return $this->render('admin/stays/create.html.twig',
             ['form' => $form->createView()]);
     }
 }

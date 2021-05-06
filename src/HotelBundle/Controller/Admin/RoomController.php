@@ -1,37 +1,42 @@
 <?php
 
-namespace HotelBundle\Controller;
+namespace HotelBundle\Controller\Admin;
 
-use HotelBundle\Entity\Guest;
-use HotelBundle\Form\GuestType;
+use HotelBundle\Entity\Room;
+use HotelBundle\Form\RoomType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GuestController extends Controller
+/**
+ * @Route("/admin/rooms")
+ * Class CategoryController
+ * @package HotelBundle\Controller\Admin
+ */
+class RoomController extends Controller
 {
     /**
-     * @Route("/createguest", name="guest_create")
+     * @Route("/create", name="admin_room_create")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Response|null
      */
     public function create(Request $request)
     {
-        $guest = new Guest();
-        $form = $this->createForm(GuestType::class, $guest);
+        $room = new Room();
+        $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
 
         if($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($guest);
+            $em->persist($room);
             $em->flush();
 
             return $this->redirectToRoute("hotel_index");
         }
 
-        return $this->render('guests/create.html.twig',
+        return $this->render('admin/rooms/create.html.twig',
             ['form' => $form->createView()]);
     }
 }
