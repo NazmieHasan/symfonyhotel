@@ -13,16 +13,18 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Beds</th>
+                    <th>Price</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for category in categories %}
-
-                    <tr>
                     <tr>
                         <td>{{ category.id }}</td>
-                        <td>{{ category.getName() }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.beds }}</td>
+                        <td>{{ category.price }}</td>
                         <td>
                             <a href="{{ path('admin_category_edit', {id: category.id}) }}">Edit</a>
                             <a href="{{ path('admin_category_delete', {id: category.id}) }}">Delete</a>

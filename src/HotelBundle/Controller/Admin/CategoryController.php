@@ -6,6 +6,8 @@ use HotelBundle\Entity\Category;
 use HotelBundle\Form\CategoryType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -30,6 +32,20 @@ class CategoryController extends Controller
 
         if($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
+            
+            /** @var UploadedFile $file */
+            $file = $form['image']->getData();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            if ($file) {
+                $file->move(
+                    $this->getParameter('categories_directory'),
+                    $fileName
+                );
+            $category->setImage($fileName);
+            }
+            
             $em->persist($category);
             $em->flush();
 
@@ -71,8 +87,22 @@ class CategoryController extends Controller
         $form->handleRequest($request);
 
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted()){
             $em = $this->getDoctrine()->getManager();
+            
+            /** @var UploadedFile $file */
+            $file = $form['image']->getData();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            if ($file) {
+                $file->move(
+                    $this->getParameter('categories_directory'),
+                    $fileName
+                );
+            $category->setImage($fileName);
+            }
+            
             $em->persist($category);
             $em->flush();
 
@@ -101,16 +131,12 @@ class CategoryController extends Controller
             ->find($id);
 
         $form = $this->createForm(CategoryType::class, $category);
+        $form->remove('image');
         $form->handleRequest($request);
 
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted()){
             $em = $this->getDoctrine()->getManager();
-
-            foreach ($category->getRooms() as $room) {
-                $em->remove($room);
-            }
-
             $em->remove($category);
             $em->flush();
 
@@ -120,10 +146,5 @@ class CategoryController extends Controller
         return $this->render('admin/categories/delete.html.twig',
             ['category' => $category, 'form' => $form->createView()]);
     }
-
-
-
-
-
 
 }

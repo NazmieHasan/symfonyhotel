@@ -5,6 +5,7 @@ namespace HotelBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,10 +20,12 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class)
             ->add('beds', NumberType::class)
             ->add('price', NumberType::class)
-            ->add('imageURL', TextType::class,
-            [
-                'data_class' => null
-            ]);
+            ->add('image', FileType::class,
+                [
+                    'data_class' => null
+                ]
+                )
+            ->add('description', TextType::class);
     }
 
     /**

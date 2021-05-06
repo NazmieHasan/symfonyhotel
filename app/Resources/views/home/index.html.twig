@@ -38,54 +38,16 @@
     <div class="container home-container">
         <h2>WELCOME</h2>
         <div class="row">
-            <div class="col-md-4 col-sm-12 col-home">
-                <img src="img/double-room.jpg" alt="img" class="img-thumbnail">
-                <div class="room-info">
-                    <h4>Double Room</h4>
-                    <p>Modern and stylish design for you</p>
-                    <button class="btn btn-danger">BOOKING</button>
+            {% for category in categories %}
+                <div class="col-md-4 col-sm-12 col-home">
+                    <img src="{{ asset('uploads/images/categories/' ~ category.image)}}" alt="img" class="img-thumbnail">
+                    <div class="room-info">
+                        <h4>{{ category.name }}</h4>
+                        <p>{{ category.description }}</p>
+                        <button class="btn btn-danger">BOOKING</button>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-12 col-home">
-                <img src="img/triple-room.jpg" alt="img" class="img-thumbnail">
-                <div class="room-info">
-                    <h4>Triple Room</h4>
-                    <p>Convenience for all the family</p>
-                    <button class="btn btn-danger">BOOKING</button>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 col-home">
-                <img src="img/apartment.jpg" alt="img" class="img-thumbnail">
-                <div class="room-info">
-                    <h4>Apartment</h4>
-                    <p>Modern design, comfort and convenience</p>
-                    <button class="btn btn-danger">BOOKING</button>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 col-home">
-                <img src="img/double-room-L.jpg" alt="img" class="img-thumbnail">
-                <div class="room-info">
-                    <h4>Double Room L</h4>
-                    <p>Luxury, elegance and comfort</p>
-                    <button class="btn btn-danger">BOOKING</button>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 col-home">
-                <img src="img/apartment-L.jpg" alt="img" class="img-thumbnail">
-                <div class="room-info">
-                    <h4>Apartment L</h4>
-                    <p>Luxury, elegance and comfort</p>
-                    <button class="btn btn-danger">BOOKING</button>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 col-home">
-                <img src="img/apartment-super-L.jpg" alt="img" class="img-thumbnail">
-                <div class="room-info">
-                    <h4>Apartment Super L</h4>
-                    <p>Super luxury, elegance and comfort</p>
-                    <button class="btn btn-danger">BOOKING</button>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="container-fluid home-offer text-center"> 

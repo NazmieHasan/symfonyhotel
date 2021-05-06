@@ -46,9 +46,9 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="image_url", type="text")
+     * @ORM\Column(name="image", type="string", length=255)
      */
-    private $imageURL;
+    private $image;
 
     /**
      * @var ArrayCollection
@@ -56,6 +56,13 @@ class Category
      * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Room", mappedBy="categories")
      */
     private $rooms;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
 
     /**
      * @var ArrayCollection
@@ -172,6 +179,30 @@ class Category
     {
         $this->rooms = $rooms;
     }
+    
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Category
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
     /**
      * @return ArrayCollection
@@ -192,16 +223,16 @@ class Category
     /**
      * @return string
      */
-    public function getImageURL()
+    public function getImage()
     {
-        return $this->imageURL;
+        return $this->image;
     }
 
     /**
      * @param string $imageURL
      */
-    public function setImageURL(string $imageURL)
+    public function setImage(string $image)
     {
-        $this->imageURL = $imageURL;
+        $this->image = $image;
     }
 }
