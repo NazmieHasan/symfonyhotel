@@ -60,7 +60,7 @@ class BookingController extends Controller
     }
 
     /**
-     * @Route("/users/my_bookings", name="my_bookings")
+     * @Route("/users/my-bookings", name="my_bookings")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
