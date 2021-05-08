@@ -10,23 +10,18 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Login Name</th>
                         <th>Email</th>
-                        <th>Actions</th>
+                        <th>Login Name</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for user in users %}
-                    <tr>
-                        <tr {% if user.isAdmin() %}class="info" {% endif %}>
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.loginName }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                        </td>
-                    </tr>
+                        <tr>
+                        <tr {% if user.isAdmin() %} class="tr-admin" {% endif %}>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.loginName}}</td>
+                        </tr>
                     {% endfor %}
                     </tbody>
                 </table>

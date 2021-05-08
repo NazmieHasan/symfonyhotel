@@ -6,6 +6,14 @@ body {
     margin-top: 4em;
     margin-bottom: 2em;
 }
+.tr-admin {
+    color: #ffffff;
+    background: #b40000;
+}
+.table-hover tbody tr.tr-admin:hover {
+    color: #ffffff;
+    background: #dc3545;
+}
 /* html, body end */
 
 /* nav */
@@ -163,6 +171,15 @@ body {
     margin-bottom: 50px;
     padding-top: 10px;
     padding-left: 20px;
+}
+.cat-link {
+    font-size: 1.6rem; 
+    font-weight: 500; 
+    word-spacing: 6px; 
+    color: #212529;
+}
+.cat-link:hover {
+    color: darkred;
 }
 .btn-danger {
     background-color: darkred;

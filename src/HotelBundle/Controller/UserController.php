@@ -70,17 +70,6 @@ class UserController extends Controller
     }
     
     /**
-     * @Route("/profile", name="user_profile")
-     */
-    public function profile(){
-
-        return $this->render("users/profile.html.twig",
-            [
-                'user' => $this->userService->currentUser(),
-            ]);
-    }
-    
-    /**
      * @Route("/logout", name="security_logout")
      * @throws \Exception
      */

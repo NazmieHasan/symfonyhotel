@@ -42,7 +42,7 @@
                 <div class="col-md-4 col-sm-12 col-home">
                     <img src="{{ asset('uploads/images/categories/' ~ category.image)}}" alt="img" class="img-thumbnail">
                     <div class="room-info">
-                        <h4>{{ category.name }}</h4>
+                        <a class="cat-link" href="{{ path('category_view', {id: category.id}) }}">{{ category.name }}</a>
                         <p>{{ category.description }}</p>
                         <button class="btn btn-danger">BOOKING</button>
                     </div>
