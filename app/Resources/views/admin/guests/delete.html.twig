@@ -4,48 +4,43 @@
 
     <div class="container body-content">
         <div class="well">
-            {% for msg in app.session.flashbag.get('errors')  %}
-                <div class="alert alert-danger">
-                    {{ msg }}
-                </div>
-            {% endfor %}
-            <form class="form-horizontal" action="{{ path('admin_guest_create') }}" method="post">
+            <form class="form-horizontal" action="{{ path('admin_guest_delete', {'id': guest.id}) }}"  method="POST">
                 <fieldset>
-                    <legend>Create Guest</legend>
+                    <legend>Delete Guest</legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="guest_personalNumber">Personal Number</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="guest_personalNumber" placeholder="Personal Number" name="guest[personalNumber]">
+                            <input type="text" class="form-control" id="guest_personalNumber" placeholder="Personal Number" name="guest[personalNumber]" value="{{ guest.personalNumber }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="guest_firstName">First Name</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="guest_firstName" placeholder="First Name" name="guest[firstName]">
+                            <input type="text" class="form-control" id="guest_firstName" placeholder="First Name" name="guest[firstName]" value="{{ guest.firstName }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="guest_fathersName">Father's Name</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="guest_fathersName" placeholder="Father's Name" name="guest[fathersName]">
+                            <input type="text" class="form-control" id="guest_fathersName" placeholder="Father's Name" name="guest[fathersName]" value="{{ guest.fathersName }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="guest_lastName">Last Name</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="guest_lastName" placeholder="Last Name" name="guest[lastName]">
+                            <input type="text" class="form-control" id="guest_lastName" placeholder="Last Name" name="guest[lastName]" value="{{ guest.lastName }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="guest_email">Email</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="guest_email" placeholder="Email" name="guest[email]">
+                            <input type="text" class="form-control" id="guest_email" placeholder="Email" name="guest[email]" value="{{ guest.email }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="guest_phone">Phone</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="guest_phone" placeholder="Phone" name="guest[phone]">
+                            <input type="text" class="form-control" id="guest_phone" placeholder="Phone" name="guest[phone]" value="{{ guest.phone }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -58,5 +53,5 @@
             </form>
         </div>
     </div>
-
+    
 {% endblock %}

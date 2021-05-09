@@ -4,25 +4,22 @@
 
     <div class="container body-content">
         <div class="well">
-            <form class="form-horizontal" action="{{ path('admin_payment_create') }}" method="post">
+            <form class="form-horizontal" action="{{ path('admin_payment_edit', {'id': payment.id}) }}" method="POST">
                 <fieldset>
-                    <legend>Create Payment</legend>
-
+                    <legend>Edit Payment</legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="payment_name">Name</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="payment_name" placeholder="Name" name="payment[name]" required>
+                            <input type="text" class="form-control" id="payment_name" placeholder="Name" name="payment[name]" value="{{ payment.name}}">
                         </div>
                     </div>
-
+                    {{ form_row(form._token) }}
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            {#<a class="btn btn-default" href="{{ path('hotel_index') }}">Cancel</a>#}
+                            <a class="btn btn-primary" href="{{ path('admin_categories') }}">Cancel</a>
                             <button type="submit" class="btn btn-danger">Submit</button>
                         </div>
                     </div>
-
-                    {{  form_row(form._token) }}
                 </fieldset>
             </form>
         </div>

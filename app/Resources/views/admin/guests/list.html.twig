@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container body-content">
+    <div class="well">
+        <h2>All Guests -
+            <a href="{{ path('admin_guest_create') }}" class="btn btn-danger">Create New</a>
+        </h2>
+        <div class="row">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Personal Number</th>
+                    <th>First Name</th>
+                    <th>Father's Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for guest in guests %}
+                    <tr>
+                        <td>{{ guest.id }}</td>
+                        <td>{{ guest.personalNumber }}</td>
+                        <td>{{ guest.firstName }}</td>
+                        <td>{{ guest.fathersName }}</td>
+                        <td>{{ guest.lastName }}</td>
+                        <td>{{ guest.email }}</td>
+                        <td>{{ guest.phone }}</td>
+                        <td>
+                            <a href="{{ path('admin_guest_edit', {id: guest.id}) }}">Edit</a>
+                            <a href="{{ path('admin_guest_delete', {id: guest.id}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -4,14 +4,13 @@
 
     <div class="container body-content">
         <div class="well">
-            <form class="form-horizontal" action="{{ path('admin_room_create') }}" method="post">
+            <form class="form-horizontal" action="{{ path('admin_room_edit', {'id': room.id}) }}" method="POST">
                 <fieldset>
-                    <legend>Create Room</legend>
-
+                    <legend>Edit Room</legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="room_number">Number</label>
                         <div class="col-sm-6">
-                            <input type="number" class="form-control" id="room_number" placeholder="Number" name="room[number]" required>
+                            <input type="number" class="form-control" id="room_number" placeholder="Number" name="room[number]" value="{{ room.number }}">
                         </div>
                     </div>
 

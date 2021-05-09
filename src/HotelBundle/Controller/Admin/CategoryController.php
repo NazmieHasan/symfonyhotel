@@ -4,6 +4,7 @@ namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Category;
 use HotelBundle\Form\CategoryType;
+use HotelBundle\Service\Categories\CategoryServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
@@ -19,21 +20,46 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/create", name="admin_category_create")
+     * @var CategoryServiceInterface
+     */
+    private $categoryService;
+    
+     /**
+     * CategoryController constructor.
+     * @param CategoryServiceInterface $categoryService
+     */
+    public function __construct(
+        CategoryServiceInterface $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+    
+    /**
+     * @Route("/create", name="admin_category_create", methods={"GET"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function create()
+    {
+        return $this->render('admin/categories/create.html.twig',
+            ['form' => $this
+                ->createForm(CategoryType::class)
+                ->createView()]);
+    }
+    
+    /**
+     * @Route("/create", methods={"POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request)
+    public function createProcess(Request $request)
     {
-        $category = new Category();
+        $category = new category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
-        if($form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            
-            /** @var UploadedFile $file */
+        
+        /** @var UploadedFile $file */
             $file = $form['image']->getData();
 
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
@@ -45,29 +71,12 @@ class CategoryController extends Controller
                 );
             $category->setImage($fileName);
             }
-            
-            $em->persist($category);
-            $em->flush();
-
-            return $this->redirectToRoute("admin_categories");
-        }
-
-        return $this->render('admin/categories/create.html.twig',
-            ['form' => $form->createView()]);
+        
+        $this->categoryService->create($category);
+        $this->addFlash("info", "Create category successfully!");
+        return $this->redirectToRoute("admin_categories");
     }
 
-    /**
-     * @Route("/", name="admin_categories")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function listCategories(){
-        $categories = $this
-            ->getDoctrine()
-            ->getRepository(Category::class)->findAll();
-        return $this->render('admin/categories/list.html.twig',
-            ['categories' => $categories]);
-    }
     
     /**
      * @Route("/view/{id}", name="admin_category_view")
@@ -75,38 +84,66 @@ class CategoryController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function view(int $id) {
-        $category = $this
-            ->getDoctrine()
-            ->getRepository(Category::class)
-            ->find($id);
+        $category = $this->categoryService->getOne($id);
 
         return $this->render("admin/categories/view.html.twig",
             ['category' => $category ]);
-
     }
 
     /**
-     * @Route("/edit/{id}", name="admin_category_edit")
+     * @Route("/", name="admin_categories")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getAllCategories()
+    {
+        $categories = $this->categoryService->getAll();
+
+        return $this->render("admin/categories/list.html.twig",
+            [
+                'categories' => $categories
+            ]);
+    }
+    
+    /**
+     * @Route("/edit/{id}", name="admin_category_edit", methods={"GET"})
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit($id, Request $request)
+    public function edit($id)
     {
-        $category = $this
-            ->getDoctrine()
-            ->getRepository(Category::class)
-            ->find($id);
+        $category = $this->categoryService->getOne($id);
+        
+        if (null === $category){
+            return $this->redirectToRoute("hotel_index");
+        }
 
+        return $this->render('admin/categories/edit.html.twig',
+            [
+                'form' => $this->createForm(CategoryType::class)
+                       ->createView(),
+                'category' => $category
+            ]);
+
+    }
+    
+    /**
+     * @Route("/edit/{id}", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Responsen
+     */
+    public function editProcess(Request $request, int $id)
+    {
+        $category = $this->categoryService->getOne($id);
+        
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
-
-        if ($form->isSubmitted()){
-            $em = $this->getDoctrine()->getManager();
-            
-            /** @var UploadedFile $file */
+        
+        /** @var UploadedFile $file */
             $file = $form['image']->getData();
 
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
@@ -118,49 +155,48 @@ class CategoryController extends Controller
                 );
             $category->setImage($fileName);
             }
-            
-            $em->persist($category);
-            $em->flush();
+        
+        $this->categoryService->edit($category);
 
-            return $this->redirectToRoute("admin_categories");
-        }
-
-        return $this->render('admin/categories/edit.html.twig',
-            ['category' => $category, 'form' => $form->createView()]);
+        return $this->redirectToRoute("admin_categories");
     }
-
-
-
-
+    
     /**
-     * @Route("/delete/{id}", name="admin_category_delete")
+     * @Route("/delete/{id}", name="admin_category_delete", methods={"GET"})
+     *
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param Request $request
-     * @param $id
+     * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delete($id, Request $request)
+    public function delete(int $id)
     {
-        $category = $this
-            ->getDoctrine()
-            ->getRepository(Category::class)
-            ->find($id);
+        $category = $this->categoryService->getOne($id);
+
+        return $this->render('admin/categories/delete.html.twig',
+            [
+                'form' => $this->createForm(CategoryType::class)
+                       ->createView(),
+                'category' => $category
+            ]);
+    }
+    
+    /**
+     * @Route("/delete/{id}", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteProcess(Request $request, int $id)
+    {
+        $category = $this->categoryService->getOne($id);
 
         $form = $this->createForm(CategoryType::class, $category);
         $form->remove('image');
         $form->handleRequest($request);
 
-
-        if ($form->isSubmitted()){
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($category);
-            $em->flush();
-
-            return $this->redirectToRoute("admin_categories");
-        }
-
-        return $this->render('admin/categories/delete.html.twig',
-            ['category' => $category, 'form' => $form->createView()]);
+        $this->categoryService->delete($category);
+        return $this->redirectToRoute("admin_categories");
     }
-
+    
 }

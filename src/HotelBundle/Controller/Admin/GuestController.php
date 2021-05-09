@@ -4,6 +4,7 @@ namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Guest;
 use HotelBundle\Form\GuestType;
+use HotelBundle\Service\Guests\GuestServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,32 +12,149 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin/guests")
- * Class CategoryController
+ * Class GuestController
  * @package HotelBundle\Controller\Admin
  */
 class GuestController extends Controller
 {
     /**
-     * @Route("/create", name="admin_guest_create")
+     * @var GuestServiceInterface
+     */
+    private $guestService;
+    
+    /**
+     * GuestController constructor.
+     * @param GuestServiceInterface $guestService
+     */
+    public function __construct(
+        GuestServiceInterface $guestService)
+    {
+        $this->guestService = $guestService;
+    }
+    
+    /**
+     * @Route("/create", name="admin_guest_create", methods={"GET"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function create()
+    {
+        return $this->render('admin/guests/create.html.twig',
+            ['form' => $this
+                ->createForm(GuestType::class)
+                ->createView()]);
+    }
+    
+    /**
+     * @Route("/create", methods={"POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request)
+    public function createProcess(Request $request)
     {
         $guest = new Guest();
         $form = $this->createForm(GuestType::class, $guest);
         $form->handleRequest($request);
+        
+        $this->guestService->create($guest);
+        $this->addFlash("info", "Create guest successfully!");
+        return $this->redirectToRoute("admin_guests");
+    }
+    
+    /**
+     * @Route("/", name="admin_guests")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getAllGuests()
+    {
+        $guests = $this->guestService->getAll();
 
-        if($form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($guest);
-            $em->flush();
-
+        return $this->render("admin/guests/list.html.twig",
+            [
+                'guests' => $guests
+            ]);
+    }
+    
+    /**
+     * @Route("/edit/{id}", name="admin_guest_edit", methods={"GET"})
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit($id)
+    {
+        $guest = $this->guestService->getOne($id);
+        
+        if (null === $guest){
             return $this->redirectToRoute("hotel_index");
         }
 
-        return $this->render('admin/guests/create.html.twig',
-            ['form' => $form->createView()]);
+        return $this->render('admin/guests/edit.html.twig',
+            [
+                'form' => $this->createForm(GuestType::class)
+                       ->createView(),
+                'guest' => $guest
+            ]);
+
     }
+    
+    /**
+     * @Route("/edit/{id}", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Responsen
+     */
+    public function editProcess(Request $request, int $id)
+    {
+        $guest = $this->guestService->getOne($id);
+        
+        $form = $this->createForm(GuestType::class, $guest);
+        $form->handleRequest($request);
+        
+        $this->guestService->edit($guest);
+
+        return $this->redirectToRoute("admin_guests");
+    }
+    
+    /**
+     * @Route("/delete/{id}", name="admin_guest_delete", methods={"GET"})
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function delete(int $id)
+    {
+        $guest = $this->guestService->getOne($id);
+
+        return $this->render('admin/guests/delete.html.twig',
+            [
+                'form' => $this->createForm(GuestType::class)
+                       ->createView(),
+                'guest' => $guest
+            ]);
+    }
+    
+    /**
+     * @Route("/delete/{id}", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteProcess(Request $request, int $id)
+    {
+        $guest = $this->guestService->getOne($id);
+
+        $form = $this->createForm(GuestType::class, $guest);
+        $form->handleRequest($request);
+
+        $this->guestService->delete($guest);
+        return $this->redirectToRoute("admin_guests");
+    }
+    
 }

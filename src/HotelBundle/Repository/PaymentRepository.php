@@ -2,6 +2,11 @@
 
 namespace HotelBundle\Repository;
 
+use HotelBundle\Entity\Payment;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\OptimisticLockException;
+
 /**
  * PaymentRepository
  *
@@ -10,4 +15,66 @@ namespace HotelBundle\Repository;
  */
 class PaymentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function __construct(EntityManagerInterface $em,
+                                Mapping\ClassMetadata $metaData = null)
+    {
+        parent::__construct($em,
+            $metaData == null ?
+                new Mapping\ClassMetadata(Payment::class) :
+                $metaData);
+    }
+
+    /**
+     * @param Payment $payment
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function insert(Payment $payment)
+    {
+        $this->_em->persist($payment);
+
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * @param Payment $payment
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function update(Payment $payment)
+    {
+        try {
+            $this->_em->merge($payment);
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param Payment $payment
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function remove(Payment $payment)
+    {
+        $this->_em->remove($payment);
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
 }

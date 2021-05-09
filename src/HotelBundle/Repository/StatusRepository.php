@@ -2,6 +2,11 @@
 
 namespace HotelBundle\Repository;
 
+use HotelBundle\Entity\Status;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\OptimisticLockException;
+
 /**
  * StatusRepository
  *
@@ -10,4 +15,66 @@ namespace HotelBundle\Repository;
  */
 class StatusRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function __construct(EntityManagerInterface $em,
+                                Mapping\ClassMetadata $metaData = null)
+    {
+        parent::__construct($em,
+            $metaData == null ?
+                new Mapping\ClassMetadata(Status::class) :
+                $metaData);
+    }
+
+    /**
+     * @param Status $status
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function insert(Status $status)
+    {
+        $this->_em->persist($status);
+
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * @param Status $status
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function update(Status $status)
+    {
+        try {
+            $this->_em->merge($status);
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param Status $status
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function remove(Status $status)
+    {
+        $this->_em->remove($status);
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+    
 }

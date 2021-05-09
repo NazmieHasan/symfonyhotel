@@ -2,6 +2,11 @@
 
 namespace HotelBundle\Repository;
 
+use HotelBundle\Entity\Stay;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\OptimisticLockException;
+
 /**
  * StayRepository
  *
@@ -10,4 +15,66 @@ namespace HotelBundle\Repository;
  */
 class StayRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function __construct(EntityManagerInterface $em,
+                                Mapping\ClassMetadata $metaData = null)
+    {
+        parent::__construct($em,
+            $metaData == null ?
+                new Mapping\ClassMetadata(Stay::class) :
+                $metaData);
+    }
+
+    /**
+     * @param Stay $stay
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function insert(Stay $stay)
+    {
+        $this->_em->persist($stay);
+
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * @param Stay $stay
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function update(Stay $stay)
+    {
+        try {
+            $this->_em->merge($stay);
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param Stay $stay
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function remove(Stay $stay)
+    {
+        $this->_em->remove($stay);
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+    
 }

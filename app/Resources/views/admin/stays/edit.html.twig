@@ -4,13 +4,12 @@
 
     <div class="container body-content">
         <div class="well">
-            <form class="form-horizontal" action="{{ path('admin_stay_create') }}" method="post">
-                <fieldset>
-                    <legend>Create Stay</legend>
+            <form class="form-horizontal" action="{{ path('admin_stay_edit', {'id': stay.id}) }}" method="POST">
+                <legend>Delete Stay</legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="stay_note">Note</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="stay_note" placeholder="Note" name="stay[note]" required>
+                            <input type="text" class="form-control" id="stay_note" placeholder="Note" name="stay[note]" value="{{ stay.note }}">
                         </div>
                     </div>
                     <div class="form-group">

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container body-content">
+    <div class="well">
+        <h2>All Stays -
+            <a href="{{ path('admin_stay_create') }}" class="btn btn-danger">Create New</a>
+        </h2>
+        <div class="row">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Guest</th>
+                    <th>Room Number</th>
+                    <th>Category</th>
+                    <th>Note</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for stay in stays %}
+                    <tr>
+                        <td>{{ stay.id }}</td>
+                        <td>{{ stay.guest }}</td>
+                        <td>{{ stay.room.number }}</td>
+                        <td>{{ stay.room.category }}</td>
+                        <td>{{ stay.note }}</td>
+                        <td>
+                            <a href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
+                            <a href="{{ path('admin_stay_delete', {id: stay.id}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

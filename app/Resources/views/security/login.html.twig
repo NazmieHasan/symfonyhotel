@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="container body-content span=8 offset=2">
+    <div class="container body-content">
         <div class="well">
             <form name="authenticate" class="form-horizontal" action="{{ path('security_login') }}" method="post">
                 <fieldset>
@@ -26,7 +26,6 @@
                             <a class="login-a" href="{{ path('user_register') }}">Register</a>
                         </div>
                     </div>
-
                 </fieldset>
             </form>
         </div>

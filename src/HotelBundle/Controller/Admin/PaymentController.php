@@ -4,6 +4,7 @@ namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Payment;
 use HotelBundle\Form\PaymentType;
+use HotelBundle\Service\Payments\PaymentServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,27 +18,143 @@ use Symfony\Component\Routing\Annotation\Route;
 class PaymentController extends Controller
 {
     /**
-     * @Route("/create", name="admin_payment_create")
+     * @var PaymentServiceInterface
+     */
+    private $paymentService;
+    
+    /**
+     * PaymentController constructor.
+     * @param PaymentServiceInterface $paymentService
+     */
+    public function __construct(
+        PaymentServiceInterface $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+    
+    /**
+     * @Route("/create", name="admin_payment_create", methods={"GET"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function create()
+    {
+        return $this->render('admin/payments/create.html.twig',
+            ['form' => $this
+                ->createForm(PaymentType::class)
+                ->createView()]);
+    }
+    
+    /**
+     * @Route("/create", methods={"POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request)
+    public function createProcess(Request $request)
     {
         $payment = new Payment();
         $form = $this->createForm(PaymentType::class, $payment);
         $form->handleRequest($request);
+        
+        $this->paymentService->create($payment);
+        $this->addFlash("info", "Create payment successfully!");
+        return $this->redirectToRoute("admin_payments");
+    }
+    
+     /**
+     * @Route("/", name="admin_payments")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getAllPayments()
+    {
+        $payments = $this->paymentService->getAll();
 
-        if($form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($payment);
-            $em->flush();
-
+        return $this->render("admin/payments/list.html.twig",
+            [
+                'payments' => $payments
+            ]);
+    }
+    
+    /**
+     * @Route("/edit/{id}", name="admin_payment_edit", methods={"GET"})
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit($id)
+    {
+        $payment = $this->paymentService->getOne($id);
+        
+        if (null === $payment){
             return $this->redirectToRoute("hotel_index");
         }
 
-        return $this->render('admin/payments/create.html.twig',
-            ['form' => $form->createView()]);
-    }
-}
+        return $this->render('admin/payments/edit.html.twig',
+            [
+                'form' => $this->createForm(PaymentType::class)
+                       ->createView(),
+                'payment' => $payment
+            ]);
 
+    }
+    
+    /**
+     * @Route("/edit/{id}", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Responsen
+     */
+    public function editProcess(Request $request, int $id)
+    {
+        $payment = $this->paymentService->getOne($id);
+        
+        $form = $this->createForm(PaymentType::class, $payment);
+        $form->handleRequest($request);
+        
+        $this->paymentService->edit($payment);
+
+        return $this->redirectToRoute("admin_payments");
+    }
+    
+    /**
+     * @Route("/delete/{id}", name="admin_payment_delete", methods={"GET"})
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function delete(int $id)
+    {
+        $payment = $this->paymentService->getOne($id);
+
+        return $this->render('admin/payments/delete.html.twig',
+            [
+                'form' => $this->createForm(PaymentType::class)
+                       ->createView(),
+                'payment' => $payment
+            ]);
+    }
+    
+    /**
+     * @Route("/delete/{id}", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteProcess(Request $request, int $id)
+    {
+        $payment = $this->paymentService->getOne($id);
+
+        $form = $this->createForm(PaymentType::class, $payment);
+        $form->handleRequest($request);
+
+        $this->paymentService->delete($payment);
+        return $this->redirectToRoute("admin_payments");
+    }
+    
+}

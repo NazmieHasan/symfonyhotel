@@ -2,43 +2,38 @@
 
 {% block body %}
 
-    <div class="container body-content span=8 offset=2">
+    <div class="container body-content">
         <div class="well">
             <form class="form-horizontal" action="{{ path('admin_category_delete', {'id': category.id}) }}"  method="POST">
                 <fieldset>
                     <legend>Delete Category</legend>
-
                 <div class="form-group">
                     <label class="col-sm-4 control-label" for="category_name">Category Name</label>
                     <div class="col-sm-4 ">
                         <input type="text" class="form-control" id="category_name" placeholder="Category Name" name="category[name]" value="{{ category.name }}" disabled>
                     </div>
                 </div>
-                
                 <div class="form-group">
                         <label class="col-sm-4 control-label" for="category_description">Description</label>
                         <div class="col-sm-4 ">
                             <input type="text" class="form-control" id="category_description" placeholder="Description" name="category[description]" value="{{ category.description }}" disabled>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="category_beds">Beds</label>
                         <div class="col-sm-4 ">
                             <input type="number" class="form-control" id="category_beds" placeholder="Category Beds" name="category[beds]" value="{{ category.beds }}" disabled>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="category_price">Price</label>
                         <div class="col-sm-4 ">
                             <input type="number" class="form-control" id="category_price" placeholder="Category Price" name="category[price]" value="{{ category.price }}" disabled>
                         </div>
                     </div>
-
                 {{ form_row(form._token) }}
                 <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-4">
+                    <div class="col-sm-4">
                         <a class="btn btn-default" href="{{ path('admin_categories') }}">Cancel</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
