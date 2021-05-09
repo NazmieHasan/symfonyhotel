@@ -153,7 +153,7 @@ class StatusController extends Controller
         $form = $this->createForm(StatusType::class, $status);
         $form->handleRequest($request);
 
-        $this->guestService->delete($status);
+        $this->statusService->delete($status);
         return $this->redirectToRoute("admin_statuses");
     }
     
