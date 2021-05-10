@@ -34,6 +34,36 @@ class BookingController extends Controller
     }
     
     /**
+     * @Route("/create", name="admin_booking_create", methods={"GET"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function create()
+    {
+        return $this->render('admin/bookings/create.html.twig',
+            ['form' => $this
+                ->createForm(BookingType::class)
+                ->createView()]);
+    }
+
+    /**
+     * @Route("/create", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function createProcess(Request $request)
+    {
+        $booking = new Booking();
+        $form = $this->createForm(BookingType::class, $booking);
+        $form->handleRequest($request);
+        
+        $this->bookingService->create($booking);
+        $this->addFlash("info", "Create booking successfully!");
+        return $this->redirectToRoute("admin_bookings");
+    }
+    
+    /**
      * @Route("/view/{id}", name="admin_booking_view")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response

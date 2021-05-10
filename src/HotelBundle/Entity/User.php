@@ -86,7 +86,7 @@ class User implements UserInterface
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="user")
      */
     private $bookings;
 

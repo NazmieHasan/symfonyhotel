@@ -32,7 +32,7 @@ class Status
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="statuses")
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="status")
      */
     private $bookings;
 

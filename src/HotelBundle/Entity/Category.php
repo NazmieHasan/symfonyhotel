@@ -53,7 +53,7 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Room", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Room", mappedBy="category")
      */
     private $rooms;
     
@@ -67,7 +67,7 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Booking", mappedBy="category")
      */
     private $bookings;
 
