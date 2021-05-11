@@ -59,6 +59,14 @@ class Stay
      */
     private $room;
     
+    /**
+     * @var Booking
+     *
+     * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Booking", inversedBy="stays")
+     * @ORM\JoinColumn(name="booking_id", referencedColumnName="id")
+     */
+    private $booking;
+    
 
     /**
      * Get id
@@ -157,6 +165,22 @@ class Stay
     public function setRoom($room)
     {
         $this->room = $room;
+    }
+    
+    /**
+     * @param Booking $booking
+     */
+    public function setBooking($booking)
+    {
+        $this->booking = $booking;
+    }
+
+    /**
+     * @return Booking
+     */
+    public function getBooking()
+    {
+        return $this->booking;
     }
 
 }

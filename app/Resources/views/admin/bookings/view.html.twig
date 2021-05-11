@@ -17,10 +17,8 @@
         <p>Category: {{ booking.category.name }}</p>
         <p>Payment: {{ booking.payment.name }}</p>
         <p>Status: {{ booking.status.name }}</p>
-        {% if app.getUser().isAdmin()  %}
-            <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit</a>
-            <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
-        {% endif %}
+        <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit</a>
+        <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
         <a class="btn btn-primary btn-xs" href="{{ path('admin_bookings') }}">Back &raquo;</a>
     </div
 

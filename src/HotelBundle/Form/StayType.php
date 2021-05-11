@@ -4,6 +4,7 @@ namespace HotelBundle\Form;
 
 use HotelBundle\Entity\Room;
 use HotelBundle\Entity\Guest;
+use HotelBundle\Entity\Booking;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,7 +23,9 @@ class StayType extends AbstractType
             ->add('guest', EntityType::class,
                 ['class' => Guest::class])
             ->add('room', EntityType::class,
-                ['class' => Room::class]);
+                ['class' => Room::class])
+            ->add('booking', EntityType::class,
+                ['class' => Booking::class]);
     }
     /**
      * {@inheritdoc}

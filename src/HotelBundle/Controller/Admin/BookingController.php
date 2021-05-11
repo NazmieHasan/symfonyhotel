@@ -115,7 +115,7 @@ class BookingController extends Controller
         $form->handleRequest($request);
         $this->bookingService->edit($booking);
 
-        return $this->redirectToRoute("hotel_index");
+        return $this->redirectToRoute("admin_bookings");
     }
     
     /**
@@ -128,6 +128,10 @@ class BookingController extends Controller
     public function delete(int $id)
     {
         $booking = $this->bookingService->getOne($id);
+        
+        if (null === $booking){
+            return $this->redirectToRoute("hotel_index");
+        }
 
         return $this->render('admin/bookings/delete.html.twig',
             [
@@ -153,7 +157,7 @@ class BookingController extends Controller
         $form->handleRequest($request);
 
         $this->bookingService->delete($booking);
-        return $this->redirectToRoute("hotel_index");
+        return $this->redirectToRoute("admin_bookings");
     }
 
     /**

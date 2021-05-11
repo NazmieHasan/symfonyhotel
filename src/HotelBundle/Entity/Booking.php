@@ -139,11 +139,23 @@ class Booking
      */
     private $status;
     
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="HotelBundle\Entity\Stay", mappedBy="booking")
+     */
+    private $stays;
+    
     public  function __construct()
     {
         $this->dateAdded = new \DateTime('now');
+        $this->stays = new ArrayCollection();
     }
-
+    
+    public function __toString()
+    {
+        return (string)$this->getId();
+    }
 
     /**
      * Get id
