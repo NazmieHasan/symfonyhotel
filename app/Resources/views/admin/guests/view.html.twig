@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container body-content">
+        <h2>Guest Information</h2>
+        <p>{{ guest.firstName }} {{ guest.fathersName }} {{ guest.lastName }}</p>
+        <p>Personal Number: {{ guest.personalNumber }}</p>
+        <p>Email: {{ guest.email }}</p>
+        <p>Phone: {{ guest.phone }}</p>
+        <a class="btn btn-success btn-xs" href="{{ path('admin_guest_edit', {id: guest.id}) }}">Edit</a>
+        <a class="btn btn-danger btn-xs" href="{{ path('admin_guest_delete', {id: guest.id}) }}">Delete</a>
+        <a class="btn btn-primary btn-xs" href="{{ path('admin_guests') }}">Back &raquo;</a>
+    </div>
+
+{% endblock %}

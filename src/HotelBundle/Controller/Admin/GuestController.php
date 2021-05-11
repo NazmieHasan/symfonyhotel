@@ -63,6 +63,18 @@ class GuestController extends Controller
     }
     
     /**
+     * @Route("/view/{id}", name="admin_guest_view")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function view(int $id) {
+        $guest = $this->guestService->getOne($id);
+
+        return $this->render("admin/guests/view.html.twig",
+            ['guest' => $guest ]);
+    }
+    
+    /**
      * @Route("/", name="admin_guests")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response

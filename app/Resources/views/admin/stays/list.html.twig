@@ -25,7 +25,7 @@
                         <td>{{ stay.id }}</td>
                         <td>{{ stay.booking }}</td>
                         <td>{{ stay.room.number }} / {{ stay.room.category }} </td>
-                        <td>{{ stay.guest }}</td>
+                        <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}">{{ stay.guest }}</a></td>
                         <td>{{ stay.note }}</td>
                         <td>
                             <a href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
