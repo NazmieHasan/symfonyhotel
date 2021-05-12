@@ -4,6 +4,7 @@ namespace HotelBundle\Service\Stays;
 
 use HotelBundle\Entity\Stay;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\Request;
 
 interface StayServiceInterface
 {
@@ -16,4 +17,10 @@ interface StayServiceInterface
      * @return ArrayCollection|Stay[]
      */
     public function getAll();
+    
+    /**
+     * @param int $guestId
+     * @return Stay[]
+     */
+    public function getAllByGuestId(int $guestId);
 }

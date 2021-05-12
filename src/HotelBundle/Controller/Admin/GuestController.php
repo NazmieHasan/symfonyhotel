@@ -3,8 +3,10 @@
 namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Guest;
+use HotelBundle\Entity\Stay;
 use HotelBundle\Form\GuestType;
 use HotelBundle\Service\Guests\GuestServiceInterface;
+use HotelBundle\Service\Stays\StayServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,13 +25,21 @@ class GuestController extends Controller
     private $guestService;
     
     /**
+     * @var StayServiceInterface
+     */
+    private $stayService;
+    
+    /**
      * GuestController constructor.
      * @param GuestServiceInterface $guestService
+     * @param StayServiceInterface $stayService
      */
     public function __construct(
-        GuestServiceInterface $guestService)
+        GuestServiceInterface $guestService,
+        StayServiceInterface $stayService)
     {
         $this->guestService = $guestService;
+        $this->stayService = $stayService;
     }
     
     /**
@@ -64,14 +74,20 @@ class GuestController extends Controller
     
     /**
      * @Route("/view/{id}", name="admin_guest_view")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function view(int $id) {
         $guest = $this->guestService->getOne($id);
+        
+        $stays = $this->stayService->getAllByGuestId($id);
 
         return $this->render("admin/guests/view.html.twig",
-            ['guest' => $guest ]);
+            [
+                'guest' => $guest,
+                'stays' => $stays,
+            ]);
     }
     
     /**
