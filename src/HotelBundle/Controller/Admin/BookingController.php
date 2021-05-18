@@ -3,9 +3,11 @@
 namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Booking;
+use HotelBundle\Entity\Stay;
 use HotelBundle\Entity\User;
 use HotelBundle\Form\BookingType;
 use HotelBundle\Service\Bookings\BookingServiceInterface;
+use HotelBundle\Service\Stays\StayServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,13 +26,21 @@ class BookingController extends Controller
     private $bookingService;
     
     /**
+     * @var StayServiceInterface
+     */
+    private $stayService;
+    
+    /**
      * BookingController constructor.
      * @param BookingServiceInterface $bookingService
+     * @param StayServiceInterface $stayService
      */
     public function __construct(
-        BookingServiceInterface $bookingService)
+        BookingServiceInterface $bookingService,
+        StayServiceInterface $stayService)
     {
         $this->bookingService = $bookingService;
+        $this->stayService = $stayService;
     }
     
     /**
@@ -70,10 +80,14 @@ class BookingController extends Controller
      */
     public function view(int $id) {
         $booking = $this->bookingService->getOne($id);
+        
+        $stays = $this->stayService->getAllByBookingId($id);
 
         return $this->render("admin/bookings/view.html.twig",
-            ['booking' => $booking ]);
-
+            [
+                'booking' => $booking,
+                'stays' => $stays,
+            ]);
     }
     
     /**

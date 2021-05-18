@@ -14,6 +14,9 @@ body {
     color: #ffffff;
     background: #dc3545;
 }
+.stay-room {
+    font-weight: bold;
+}
 /* html, body end */
 
 /* nav */
@@ -301,14 +304,20 @@ body {
     font-size: 18px;
 }
 .custom-col .btn-danger {
-    padding: 15px 40px;
+    padding: 10px 40px;
+    word-spacing: 4px;
     border: 2px solid darkred;
     border-radius: 0;
 } 
 .btn-outline {
     color: darkred;
-    border-color: darkred;
     background: white;
+    border-color: darkred;   
+}
+.btn-outline:hover {
+    color: white;
+    background: darkred;
+    border-color: darkred;  
 }
 /* home page end */
 

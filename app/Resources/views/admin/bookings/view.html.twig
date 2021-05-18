@@ -17,6 +17,16 @@
         <p>Category: {{ booking.category.name }}</p>
         <p>Payment: {{ booking.payment.name }}</p>
         <p>Status: {{ booking.status.name }}</p>
+        <h2>All stays</h2>
+        {% if stays|length == 0 %} 
+            <p>No result for stays</p>
+        {% endif %} 
+        <hr />
+        {% for stay in stays %}
+            <p>Stay Id: {{ stay.id }} | <span class="stay-room"> {{ stay.room }} </span> - {{ stay.room.category }}</p>  
+            <p><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}">Guest Id: {{ stay.guest.id }}</a>: {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </p>      
+            <hr />
+        {% endfor %}
         <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit</a>
         <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
         <a class="btn btn-primary btn-xs" href="{{ path('admin_bookings') }}">Back &raquo;</a>
