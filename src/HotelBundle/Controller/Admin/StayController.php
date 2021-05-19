@@ -121,26 +121,7 @@ class StayController extends Controller
     }
     
     /**
-     * @Route("/delete/{id}", name="admin_stay_delete", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function delete(int $id)
-    {
-        $stay = $this->stayService->getOne($id);
-
-        return $this->render('admin/stays/delete.html.twig',
-            [
-                'form' => $this->createForm(StayType::class)
-                       ->createView(),
-                'stay' => $stay
-            ]);
-    }
-    
-    /**
-     * @Route("/delete/{id}", methods={"POST"})
+     * @Route("/delete/{id}", name="admin_stay_delete")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param int $id
@@ -152,8 +133,9 @@ class StayController extends Controller
 
         $form = $this->createForm(StayType::class, $stay);
         $form->handleRequest($request);
-
         $this->stayService->delete($stay);
+        $this->addFlash("info", "Stay is deleted");
+        
         return $this->redirectToRoute("admin_stays");
     }
     

@@ -67,7 +67,7 @@ class PaymentService implements PaymentServiceInterface
      */
     public function getAll()
     {
-        return $this->paymentRepository->findAll();
+        return $this->paymentRepository->findBy([], ['id' => 'ASC']);
     }
        
 }

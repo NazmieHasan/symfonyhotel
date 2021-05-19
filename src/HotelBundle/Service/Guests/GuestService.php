@@ -67,7 +67,7 @@ class GuestService implements GuestServiceInterface
      */
     public function getAll()
     {
-        return $this->guestRepository->findAll();
+        return $this->guestRepository->findBy([], ['id' => 'DESC']);
     }
     
 }

@@ -121,26 +121,7 @@ class RoomController extends Controller
     }
     
     /**
-     * @Route("/delete/{id}", name="admin_room_delete", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function delete(int $id)
-    {
-        $room = $this->roomService->getOne($id);
-
-        return $this->render('admin/rooms/delete.html.twig',
-            [
-                'form' => $this->createForm(RoomType::class)
-                       ->createView(),
-                'room' => $room
-            ]);
-    }
-    
-    /**
-     * @Route("/delete/{id}", methods={"POST"})
+     * @Route("/delete/{id}", name="admin_room_delete")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param int $id
@@ -152,8 +133,9 @@ class RoomController extends Controller
 
         $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
-
         $this->roomService->delete($room);
+        $this->addFlash("info", "Room is deleted");
+        
         return $this->redirectToRoute("admin_rooms");
     }
     

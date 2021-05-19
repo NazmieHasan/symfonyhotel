@@ -131,33 +131,9 @@ class BookingController extends Controller
 
         return $this->redirectToRoute("admin_bookings");
     }
-    
-    /**
-     * @Route("/delete/{id}", name="admin_booking_delete", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function delete(int $id)
-    {
-        $booking = $this->bookingService->getOne($id);
-        
-        if (null === $booking){
-            return $this->redirectToRoute("hotel_index");
-        }
-
-        return $this->render('admin/bookings/delete.html.twig',
-            [
-                'form' => $this->createForm(BookingType::class)
-                       ->createView(),
-                'booking' => $booking
-            ]);
-
-    }
 
     /**
-     * @Route("/delete/{id}", methods={"POST"})
+     * @Route("/delete/{id}", name="admin_booking_delete")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param int $id
@@ -166,11 +142,12 @@ class BookingController extends Controller
     public function deleteProcess(Request $request, int $id)
     {
         $booking = $this->bookingService->getOne($id);
-
+        
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
-
         $this->bookingService->delete($booking);
+        $this->addFlash("info", "Booking is deleted");
+        
         return $this->redirectToRoute("admin_bookings");
     }
 

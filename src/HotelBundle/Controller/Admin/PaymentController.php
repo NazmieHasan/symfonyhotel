@@ -121,26 +121,7 @@ class PaymentController extends Controller
     }
     
     /**
-     * @Route("/delete/{id}", name="admin_payment_delete", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function delete(int $id)
-    {
-        $payment = $this->paymentService->getOne($id);
-
-        return $this->render('admin/payments/delete.html.twig',
-            [
-                'form' => $this->createForm(PaymentType::class)
-                       ->createView(),
-                'payment' => $payment
-            ]);
-    }
-    
-    /**
-     * @Route("/delete/{id}", methods={"POST"})
+     * @Route("/delete/{id}", name="admin_payment_delete")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param int $id
@@ -152,8 +133,9 @@ class PaymentController extends Controller
 
         $form = $this->createForm(PaymentType::class, $payment);
         $form->handleRequest($request);
-
         $this->paymentService->delete($payment);
+        $this->addFlash("info", "Payment is deleted");
+        
         return $this->redirectToRoute("admin_payments");
     }
     

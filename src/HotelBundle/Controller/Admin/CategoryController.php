@@ -162,26 +162,7 @@ class CategoryController extends Controller
     }
     
     /**
-     * @Route("/delete/{id}", name="admin_category_delete", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function delete(int $id)
-    {
-        $category = $this->categoryService->getOne($id);
-
-        return $this->render('admin/categories/delete.html.twig',
-            [
-                'form' => $this->createForm(CategoryType::class)
-                       ->createView(),
-                'category' => $category
-            ]);
-    }
-    
-    /**
-     * @Route("/delete/{id}", methods={"POST"})
+     * @Route("/delete/{id}", name="admin_category_delete")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param int $id
@@ -194,8 +175,9 @@ class CategoryController extends Controller
         $form = $this->createForm(CategoryType::class, $category);
         $form->remove('image');
         $form->handleRequest($request);
-
         $this->categoryService->delete($category);
+        $this->addFlash("info", "Category is deleted");
+        
         return $this->redirectToRoute("admin_categories");
     }
     

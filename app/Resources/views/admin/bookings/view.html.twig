@@ -2,29 +2,20 @@
 
 {% block body %}
 
-    <div class="container body-content">
-        <h2>Booking Information</h2>
-        <p>Reserved by email: {{ booking.userId.email}}</</p>
-        <p>Checkin: {{ booking.checkin|date("Y-m-d") }}</p>
-        <p>Checkout: {{ booking.checkout|date("Y-m-d") }}
-        <p>Days: {{ booking.days}}</p>
-        <p>Adults: {{ booking.adults}}</p>
-        <p>Child Bed: {{ booking.childBed}}</p>
-        <p>Total Amount: {{ booking.totalAmount}}</p>
-        <p>Paid Amount: {{ booking.paidAmount}}</p>
-        <p>Payment Amount: {{ booking.paymentAmount}}</p>
-        <p>Date Added: {{ booking.dateAdded|date("Y-m-d H:i:s") }}</p>
-        <p>Category: {{ booking.category.name }}</p>
+    <div class="container body-content text-center">
+        <h2>Booking Information [status: {{ booking.status.name }}]</h2>
+        <p>Reserved by email <span class="cl-bold"> {{ booking.userId.email}} </span> on <span class="cl-bold"> {{ booking.dateAdded|date("Y-m-d H:i:s") }} </span></p>
+        <p>Checkin: {{ booking.checkin|date("Y-m-d") }} | Checkout: {{ booking.checkout|date("Y-m-d") }} </p>
         <p>Payment: {{ booking.payment.name }}</p>
-        <p>Status: {{ booking.status.name }}</p>
+        <p>Total Amount: {{ booking.totalAmount}} | Paid Amount: {{ booking.paidAmount}} | Payment Amount: {{ booking.paymentAmount}}</p>
+        <p>Category: <span class="cl-bold"> {{ booking.category.name }} </span> | Adults: <span class="cl-bold"> {{ booking.adults}} </span> | Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
         <h2>All stays</h2>
         {% if stays|length == 0 %} 
             <p>No result for stays</p>
         {% endif %} 
         <hr />
         {% for stay in stays %}
-            <p>Stay Id: {{ stay.id }} | <span class="stay-room"> {{ stay.room }} </span> - {{ stay.room.category }}</p>  
-            <p><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}">Guest Id: {{ stay.guest.id }}</a>: {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </p>      
+            <p>Stay Id: {{ stay.id }} | Room number: <span class="cl-bold">{{ stay.room }}</span> | <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></p>      
             <hr />
         {% endfor %}
         <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit</a>

@@ -119,28 +119,9 @@ class StatusController extends Controller
 
         return $this->redirectToRoute("admin_statuses");
     }
-    
+   
     /**
-     * @Route("/delete/{id}", name="admin_status_delete", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function delete(int $id)
-    {
-        $status = $this->statusService->getOne($id);
-
-        return $this->render('admin/statuses/delete.html.twig',
-            [
-                'form' => $this->createForm(StatusType::class)
-                       ->createView(),
-                'status' => $status
-            ]);
-    }
-    
-    /**
-     * @Route("/delete/{id}", methods={"POST"})
+     * @Route("/delete/{id}", name="admin_status_delete")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param int $id
@@ -152,8 +133,9 @@ class StatusController extends Controller
 
         $form = $this->createForm(StatusType::class, $status);
         $form->handleRequest($request);
-
         $this->statusService->delete($status);
+        $this->addFlash("info", "Status is deleted");
+        
         return $this->redirectToRoute("admin_statuses");
     }
     

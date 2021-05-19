@@ -67,7 +67,7 @@ class RoomService implements RoomServiceInterface
      */
     public function getAll()
     {
-        return $this->roomRepository->findAll();
+        return $this->roomRepository->findBy([], ['id' => 'DESC']);
     }
     
 }

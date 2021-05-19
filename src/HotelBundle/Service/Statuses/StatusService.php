@@ -67,7 +67,7 @@ class StatusService implements StatusServiceInterface
      */
     public function getAll()
     {
-        return $this->statusRepository->findAll();
+        return $this->statusRepository->findBy([], ['id' => 'ASC']);
     }
     
 }

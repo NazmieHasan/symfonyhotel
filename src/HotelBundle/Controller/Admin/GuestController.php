@@ -149,26 +149,7 @@ class GuestController extends Controller
     }
     
     /**
-     * @Route("/delete/{id}", name="admin_guest_delete", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function delete(int $id)
-    {
-        $guest = $this->guestService->getOne($id);
-
-        return $this->render('admin/guests/delete.html.twig',
-            [
-                'form' => $this->createForm(GuestType::class)
-                       ->createView(),
-                'guest' => $guest
-            ]);
-    }
-    
-    /**
-     * @Route("/delete/{id}", methods={"POST"})
+     * @Route("/delete/{id}", name="admin_guest_delete")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @param int $id
@@ -180,8 +161,9 @@ class GuestController extends Controller
 
         $form = $this->createForm(GuestType::class, $guest);
         $form->handleRequest($request);
-
         $this->guestService->delete($guest);
+        $this->addFlash("info", "Guest is deleted");
+        
         return $this->redirectToRoute("admin_guests");
     }
     

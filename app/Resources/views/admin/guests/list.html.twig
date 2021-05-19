@@ -32,8 +32,8 @@
                         <td>{{ guest.email }}</td>
                         <td>{{ guest.phone }}</td>
                         <td>
-                            <a href="{{ path('admin_guest_view', {id: guest.id}) }}">View</a>
-                            <a href="{{ path('admin_guest_edit', {id: guest.id}) }}">Edit</a>
+                            <a href="{{ path('admin_guest_view', {id: guest.id}) }}" target=_blank>View</a>
+                            <a href="{{ path('admin_guest_edit', {id: guest.id}) }}" target=_blank>Edit</a>
                             <a href="{{ path('admin_guest_delete', {id: guest.id}) }}">Delete</a>
                         </td>
                     </tr>
