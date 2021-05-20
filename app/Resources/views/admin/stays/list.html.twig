@@ -13,7 +13,7 @@
                 <tr>
                     <th>#</th>
                     <th>Booking</th>
-                    <th>Room / Category</th>
+                    <th>Number / Category</th>
                     <th>Guest</th>
                     <th>Note</th>
                     <th>Actions</th>
@@ -28,6 +28,7 @@
                         <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}">{{ stay.guest }}</a></td>
                         <td>{{ stay.note }}</td>
                         <td>
+                            <a href="{{ path('admin_stay_view', {id: stay.id}) }}">View</a>
                             <a href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
                             <a href="{{ path('admin_stay_delete', {id: stay.id}) }}">Delete</a>
                         </td>

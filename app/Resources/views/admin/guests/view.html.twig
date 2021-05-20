@@ -11,7 +11,7 @@
         {% endif %} 
         <hr />
         {% for stay in stays %}
-            <p>Stay Id: {{ stay.id }} | {{ stay.room }} - {{ stay.room.category }}</p>        
+            <p><a href="{{ path('admin_stay_view', {id: stay.id}) }}">Stay Id: {{ stay.id }}</a> | {{ stay.room }} - {{ stay.room.category }}</p>        
             <p><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">Booking Id: {{ stay.booking }}</a> | Checkin: {{ stay.booking.checkin|date("Y-m-d") }} | Checkout: {{ stay.booking.checkout|date("Y-m-d") }} </p>
             <hr />
         {% endfor %}

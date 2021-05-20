@@ -78,6 +78,20 @@ class StayController extends Controller
     }
     
     /**
+     * @Route("/view/{id}", name="admin_stay_view")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function view(int $id) {
+        $stay = $this->stayService->getOne($id);
+
+        return $this->render("admin/stays/view.html.twig",
+            [
+                'stay' => $stay
+            ]);
+    }
+    
+    /**
      * @Route("/edit/{id}", name="admin_stay_edit", methods={"GET"})
      *
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
