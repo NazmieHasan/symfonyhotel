@@ -93,11 +93,23 @@ class GuestController extends Controller
     /**
      * @Route("/", name="admin_guests")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAllGuests()
+    public function getAllGuests(Request $request)
     {
         $guests = $this->guestService->getAll();
+        
+        if($request->isMethod("POST")) {  
+            $personalNumber = $request->get('personalNumber');
+        
+            $em = $this->getDoctrine()->getManager();
+            $guests = $em->getRepository("HotelBundle:Guest")
+                       ->findBy(
+                           [
+                               'personalNumber' => $personalNumber
+                           ]);
+            }
 
         return $this->render("admin/guests/list.html.twig",
             [

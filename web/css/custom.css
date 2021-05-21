@@ -17,6 +17,17 @@ body {
 .cl-bold {
     font-weight: bold;
 }
+.find-guest input {
+    margin-top: 15px; 
+    padding-top: 4px; 
+    padding-right: 2px; 
+    padding-bottom: 4px; 
+    padding-left: 2px; 
+    border-radius: 0.25rem;
+}
+.icon-find { 
+ font-family: Arial, 'Font Awesome 5 Free';
+}
 /* html, body end */
 
 /* nav */

@@ -16,4 +16,6 @@ interface GuestServiceInterface
      * @return ArrayCollection|Guest[]
      */
     public function getAll();
+    
+    public function findOneByPersonalNumber(string $personalNumber) : ?Guest; 
 }
