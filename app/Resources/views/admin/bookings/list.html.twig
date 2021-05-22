@@ -3,40 +3,55 @@
 {% block body %}
 
     <div class="container body-content">
-        <div class="well">
-            <h2>All Booking -
-                <a href="{{ path('admin_booking_create') }}" class="btn btn-danger">Create New</a>
-            </h2>
-            <div class="row">
-                <table class="table table-striped table-hover ">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Date Added</th>
-                        <th>Checkin</th>
-                        <th>Checkout</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for booking in bookings %}
-                        <tr>
-                            <td>{{ booking.id }}</td>
-                            <td>{{ booking.dateAdded|date("Y-m-d H:i:s") }}</td>
-                            <td>{{ booking.checkin|date("Y-m-d") }}</td>
-                            <td>{{ booking.checkout|date("Y-m-d") }}</td>
-                            <td>{{ booking.status }}</td>
-                            <td>
-                                <a href="{{ path('admin_booking_view', {id: booking.id}) }}" target=_blank>View</a>
-                                <a href="{{ path('admin_booking_edit', {id: booking.id}) }}" target=_blank>Edit</a>
-                                <a href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+        <div class="row find-guest">
+            <div class="col-md-8">
+                <h2>All Booking -
+                    <a href="{{ path('admin_booking_create') }}" class="btn btn-danger">Create Booking</a>
+                </h2>
             </div>
+            <div class="col-md-4 text-center">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" class="icon-find" name="statusId" placeholder="&#xF002; Enter status" />
+                            <p>Please, enter status!</p>
+                        </div>
+                        <div class="col-md-5">
+                            <button type="submit" class="btn btn-danger">Find Booking</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-hover ">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date Added</th>
+                    <th>Checkin</th>
+                    <th>Checkout</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.id }}</td>
+                        <td>{{ booking.dateAdded|date("Y-m-d H:i:s") }}</td>
+                        <td>{{ booking.checkin|date("Y-m-d") }}</td>
+                        <td>{{ booking.checkout|date("Y-m-d") }}</td>
+                        <td>{{ booking.status }}</td>
+                        <td>
+                            <a href="{{ path('admin_booking_view', {id: booking.id}) }}" target=_blank>View</a>
+                            <a href="{{ path('admin_booking_edit', {id: booking.id}) }}" target=_blank>Edit</a>
+                            <a href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
     

@@ -154,16 +154,27 @@ class BookingController extends Controller
     /**
      * @Route("/", name="admin_bookings")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAllBookings()
+    public function getAllBookings(Request $request)
     {
         $bookings = $this->bookingService->getAll();
+        
+        if($request->isMethod("POST")) {  
+            $statusId = $request->get('statusId');
+        
+            $em = $this->getDoctrine()->getManager();
+            $bookings = $em->getRepository("HotelBundle:Booking")
+                       ->findBy(
+                           [
+                               'statusId' => $statusId
+                           ]);
+        }
 
         return $this->render("admin/bookings/list.html.twig",
             [
                 'bookings' => $bookings
             ]);
     }
-
 }

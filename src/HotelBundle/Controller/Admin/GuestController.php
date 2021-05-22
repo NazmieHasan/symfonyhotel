@@ -109,7 +109,7 @@ class GuestController extends Controller
                            [
                                'personalNumber' => $personalNumber
                            ]);
-            }
+        }
 
         return $this->render("admin/guests/list.html.twig",
             [
