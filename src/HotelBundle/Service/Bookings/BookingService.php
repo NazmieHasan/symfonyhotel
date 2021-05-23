@@ -35,9 +35,9 @@ class BookingService implements BookingServiceInterface
     {
         $userId = $this->userService->currentUser();
         $booking->setUserId($userId);
-        $booking->setPaidAmount(00.00);
-        $booking->setPaymentAmount(00.00);
-        $booking->setTotalAmount(00.00);
+        $booking->setTotalAmount($booking->getcategory()->getPrice());
+        $booking->setPaidAmount(0.00);
+        $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
         $booking->setDays(0);
 
         return $this->bookingRepository->insert($booking);
@@ -52,6 +52,9 @@ class BookingService implements BookingServiceInterface
      */
     public function edit(Booking $booking): bool
     {
+        $booking->setTotalAmount($booking->getcategory()->getPrice());
+        $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
+        
         return $this->bookingRepository->update($booking);
     }
 

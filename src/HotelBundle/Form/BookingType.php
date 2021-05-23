@@ -41,7 +41,8 @@ class BookingType extends AbstractType
             ->add('status', null, [
                 'required'   => false,
                 'empty_data' => '1'
-            ]);
+            ])
+            ->add('paidAmount', NumberType::class);
     }
 
     /**

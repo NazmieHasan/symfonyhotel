@@ -7,7 +7,7 @@
         <p>Reserved by email <span class="cl-bold"> {{ booking.userId.email}} </span> on <span class="cl-bold"> {{ booking.dateAdded|date("Y-m-d H:i:s") }} </span></p>
         <p>Checkin: {{ booking.checkin|date("Y-m-d") }} | Checkout: {{ booking.checkout|date("Y-m-d") }} </p>
         <p>Payment: {{ booking.payment.name }}</p>
-        <p>Total Amount: {{ booking.totalAmount}} | Paid Amount: {{ booking.paidAmount}} | Payment Amount: {{ booking.paymentAmount}}</p>
+        <p>Total Amount: ${{ booking.totalAmount}} | Paid Amount: ${{ booking.paidAmount}} | Payment Amount: ${{ booking.paymentAmount}}</p>
         <p>Category: <span class="cl-bold"> {{ booking.category.name }} </span> | Adults: <span class="cl-bold"> {{ booking.adults}} </span> | Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
