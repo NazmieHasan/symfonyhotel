@@ -29,4 +29,10 @@ interface StayServiceInterface
      * @return Stay[]
      */
     public function getAllByBookingId(int $bookingId);
+    
+    /**
+     * @param int $roomId
+     * @return Stay[]
+     */
+    public function getAllByRoomId(int $roomId);
 }

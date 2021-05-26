@@ -24,7 +24,8 @@
                         <td>{{ room.number }}</td>
                         <td>{{ room.category.name }}</td>
                         <td>
-                            <a href="{{ path('admin_room_edit', {id: room.id}) }}">Edit</a>
+                            <a href="{{ path('admin_room_view', {id: room.id}) }}" target=_blank>View</a>
+                            <a href="{{ path('admin_room_edit', {id: room.id}) }}" target=_blank>Edit</a>
                             <a href="{{ path('admin_room_delete', {id: room.id}) }}">Delete</a>
                         </td>
                     </tr>

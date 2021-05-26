@@ -13,7 +13,7 @@
                 <tr>
                     <th>#</th>
                     <th>Booking</th>
-                    <th>Number / Category</th>
+                    <th>Room Number</th>
                     <th>Guest</th>
                     <th>Note</th>
                     <th>Actions</th>
@@ -24,12 +24,12 @@
                     <tr>
                         <td>{{ stay.id }}</td>
                         <td><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking }}</a></td>
-                        <td>{{ stay.room.number }} / {{ stay.room.category }} </td>
+                        <td><a href="{{ path('admin_room_view', {id: stay.room.id}) }}">{{ stay.room }}</a></td>
                         <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}">{{ stay.guest }}</a></td>
                         <td>{{ stay.note }}</td>
                         <td>
-                            <a href="{{ path('admin_stay_view', {id: stay.id}) }}">View</a>
-                            <a href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
+                            <a href="{{ path('admin_stay_view', {id: stay.id}) }}" target=_blank>View</a>
+                            <a href="{{ path('admin_stay_edit', {id: stay.id}) }}" target=_blank>Edit</a>
                             <a href="{{ path('admin_stay_delete', {id: stay.id}) }}">Delete</a>
                         </td>
                     </tr>

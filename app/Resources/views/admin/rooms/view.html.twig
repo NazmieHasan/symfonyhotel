@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container body-content text-center">
+        <h2>Room Information</h2>
+        <p> {{ room.number }} | {{ room.category }} | ${{ room.category.price }} </p>
+        <p> Description: {{ room.category.description }} </p>
+        <p>
+            <a class="btn btn-success btn-xs" href="{{ path('admin_room_edit', {id: room.id}) }}">Edit Room</a>
+            <a class="btn btn-danger btn-xs" href="{{ path('admin_room_delete', {id: room.id}) }}">Delete Room</a>
+        </p>
+        <h2>All stays for this room</h2>
+        {% if stays|length == 0 %} 
+            <p>No result for stays</p>
+        {% endif %} 
+        <div class="row">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>Stay Id</th>
+                        <th>Booking Id</th>
+                        <th>Guest</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stay in stays %}
+                        <tr>
+                            <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
+                            <td><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}"> {{ stay.booking.id }} </a></td>
+                            <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>       
+    </div>
+
+{% endblock %}

@@ -6,6 +6,7 @@ use HotelBundle\Entity\Stay;
 use HotelBundle\Repository\StayRepository;
 use HotelBundle\Service\Guests\GuestServiceInterface;
 use HotelBundle\Service\Bookings\BookingServiceInterface;
+use HotelBundle\Service\Rooms\RoomServiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -22,6 +23,11 @@ class StayService implements StayServiceInterface
      * @var BookingServiceInterface
      */
     private $bookingService;
+    
+    /**
+     * @var RoomServiceInterface
+     */
+    private $roomService;
 
 
     /**
@@ -31,11 +37,13 @@ class StayService implements StayServiceInterface
      */
     public function __construct(StayRepository $stayRepository,
             GuestServiceInterface $guestService,
-            BookingServiceInterface $bookingService)
+            BookingServiceInterface $bookingService,
+            RoomServiceInterface $roomService)
     {
         $this->stayRepository = $stayRepository;
         $this->guestService = $guestService;
         $this->bookingService = $bookingService;
+        $this->roomService = $roomService;
     }
 
     /**
@@ -110,6 +118,18 @@ class StayService implements StayServiceInterface
         return $this
             ->stayRepository
             ->findBy(['booking' => $booking], ['id' => 'DESC']);
+    }
+    
+    /**
+     * @param int $roomId
+     * @return Stay[]
+     */
+    public function getAllByRoomId(int $roomId)
+    {
+        $room = $this->roomService->getOne($roomId);
+        return $this
+            ->stayRepository
+            ->findBy(['room' => $room], ['id' => 'DESC']);
     }
     
 }

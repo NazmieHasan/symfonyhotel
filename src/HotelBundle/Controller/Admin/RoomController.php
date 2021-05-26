@@ -3,8 +3,10 @@
 namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Room;
+use HotelBundle\Entity\Stay;
 use HotelBundle\Form\RoomType;
 use HotelBundle\Service\Rooms\RoomServiceInterface;
+use HotelBundle\Service\Stays\StayServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,13 +25,21 @@ class RoomController extends Controller
     private $roomtService;
     
     /**
+     * @var StayServiceInterface
+     */
+    private $stayService;
+    
+    /**
      * RoomController constructor.
      * @param RoomServiceInterface $roomService
+     * @param StayServiceInterface $stayService
      */
     public function __construct(
-        RoomServiceInterface $roomService)
+        RoomServiceInterface $roomService,
+        StayServiceInterface $stayService)
     {
         $this->roomService = $roomService;
+        $this->stayService = $stayService;
     }
     
     /**
@@ -60,6 +70,24 @@ class RoomController extends Controller
         $this->roomService->create($room);
         $this->addFlash("info", "Create room successfully!");
         return $this->redirectToRoute("admin_rooms");
+    }
+    
+    /**
+     * @Route("/view/{id}", name="admin_room_view")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function view(int $id) {
+        $room = $this->roomService->getOne($id);
+        
+        $stays = $this->stayService->getAllByRoomId($id);
+
+        return $this->render("admin/rooms/view.html.twig",
+            [
+                'room' => $room,
+                'stays' => $stays,
+            ]);
     }
     
     /**
