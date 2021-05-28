@@ -2,11 +2,27 @@
 
 {% block body %}
 
-<div class="container body-content">
-    <div class="well">
-        <h2>All Rooms -
-            <a href="{{ path('admin_room_create') }}" class="btn btn-danger">Create New</a>
-        </h2>
+    <div class="container body-content">
+        <div class="row find-room">
+            <div class="col-md-8">
+                <h2>All Rooms -
+                    <a href="{{ path('admin_room_create') }}" class="btn btn-danger">Create New</a>
+                </h2>
+            </div>
+            <div class="col-md-4 text-center">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" class="icon-find" name="number" placeholder="&#xF002; Enter room number" />
+                            <p>Please, enter 3 digits!</p>
+                        </div>
+                        <div class="col-md-5">
+                            <button type="submit" class="btn btn-danger">Find Room</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="row">
             <table class="table table-striped table-hover">
                 <thead>
@@ -34,6 +50,5 @@
             </table>
         </div>
     </div>
-</div>
 
 {% endblock %}

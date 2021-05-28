@@ -60,6 +60,13 @@ class Stay
     private $room;
     
     /**
+     * @var int
+     *
+     * @ORM\Column(name="booking_id", type="integer")
+     */
+    private $bookingId;
+    
+    /**
      * @var Booking
      *
      * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Booking", inversedBy="stays")

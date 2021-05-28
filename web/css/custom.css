@@ -17,7 +17,7 @@ body {
 .cl-bold {
     font-weight: bold;
 }
-.find-guest input {
+.find-booking input, .find-room input, .find-guest input {
     margin-top: 15px; 
     padding-top: 4px; 
     padding-right: 2px; 

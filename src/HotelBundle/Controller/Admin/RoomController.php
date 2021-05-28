@@ -93,11 +93,23 @@ class RoomController extends Controller
     /**
      * @Route("/", name="admin_rooms")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAllRooms()
+    public function getAllRooms(Request $request)
     {
         $rooms = $this->roomService->getAll();
+        
+        if($request->isMethod("POST")) {  
+            $number = $request->get('number');
+        
+            $em = $this->getDoctrine()->getManager();
+            $rooms = $em->getRepository("HotelBundle:Room")
+                       ->findBy(
+                           [
+                               'number' => $number
+                           ]);
+        }
 
         return $this->render("admin/rooms/list.html.twig",
             [

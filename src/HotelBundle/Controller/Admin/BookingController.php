@@ -4,10 +4,17 @@ namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Booking;
 use HotelBundle\Entity\Stay;
+use HotelBundle\Entity\Room;
+use HotelBundle\Entity\Guest;
 use HotelBundle\Entity\User;
 use HotelBundle\Form\BookingType;
+use HotelBundle\Form\StayType;
+use HotelBundle\Form\RoomType;
+use HotelBundle\Form\GuestType;
 use HotelBundle\Service\Bookings\BookingServiceInterface;
 use HotelBundle\Service\Stays\StayServiceInterface;
+use HotelBundle\Service\Rooms\RoomServiceInterface;
+use HotelBundle\Service\Guests\GuestServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,16 +38,32 @@ class BookingController extends Controller
     private $stayService;
     
     /**
+     * @var RoomServiceInterface
+     */
+    private $roomService;
+    
+    /**
+     * @var GuestServiceInterface
+     */
+    private $guestService;
+    
+    /**
      * BookingController constructor.
      * @param BookingServiceInterface $bookingService
      * @param StayServiceInterface $stayService
+     * @param RoomServiceInterface $roomService
+     * @param GuestServiceInterface $guestService
      */
     public function __construct(
         BookingServiceInterface $bookingService,
-        StayServiceInterface $stayService)
+        StayServiceInterface $stayService,
+        RoomServiceInterface $roomService,
+        GuestServiceInterface $guestService)
     {
         $this->bookingService = $bookingService;
         $this->stayService = $stayService;
+        $this->roomService = $roomService;
+        $this->guestService = $guestService;
     }
     
     /**
@@ -75,24 +98,33 @@ class BookingController extends Controller
     
     /**
      * @Route("/view/{id}", name="admin_booking_view")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function view(int $id) {
         $booking = $this->bookingService->getOne($id);
+        $rooms = $this->roomService->getAll();
+        $guests = $this->guestService->getAll();
+        
+        $form = $this->createForm(StayType::class);
         
         $stays = $this->stayService->getAllByBookingId($id);
 
         return $this->render("admin/bookings/view.html.twig",
             [
+                'form' => $this
+                ->createForm(StayType::class)
+                ->createView(),
                 'booking' => $booking,
+                'rooms' => $rooms,
+                'guests' => $guests,
                 'stays' => $stays,
             ]);
     }
     
     /**
      * @Route("/edit/{id}", name="admin_booking_edit", methods={"GET"})
-     *
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response

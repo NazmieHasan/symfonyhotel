@@ -33,33 +33,20 @@ class StayController extends Controller
     }
     
     /**
-     * @Route("/create", name="admin_stay_create", methods={"GET"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function create()
-    {
-        return $this->render('admin/stays/create.html.twig',
-            ['form' => $this
-                ->createForm(StayType::class)
-                ->createView()]);
-    }
-    
-    /**
-     * @Route("/create", methods={"POST"})
+     * @Route("/create/{id}", name="admin_stay_create", methods={"POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function createProcess(Request $request)
+    public function create(Request $request, $id)
     {
         $stay = new Stay();
         $form = $this->createForm(StayType::class, $stay);
         $form->handleRequest($request);
         
-        $this->stayService->create($stay);
+        $this->stayService->create($stay, $id);
         $this->addFlash("info", "Create stay successfully!");
-        return $this->redirectToRoute("admin_stays");
+        return $this->redirectToRoute("admin_booking_view", ['id' => $id]);
     }
     
     /**

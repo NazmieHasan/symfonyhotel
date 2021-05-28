@@ -7,6 +7,7 @@
         <p>Booking Id: <a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking.id }} </a></p>
         <p>Guest: <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></p>
         <p>Room Number: <a href="{{ path('admin_room_view', {id: stay.room.id}) }}"> {{ stay.room }} </a></p>
+        <p>Note: {{ stay.note }}</p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
             <a class="btn btn-danger btn-xs" href="{{ path('admin_stay_delete', {id: stay.id}) }}">Delete</a>

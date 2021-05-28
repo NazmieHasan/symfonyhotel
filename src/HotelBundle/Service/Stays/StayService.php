@@ -47,13 +47,18 @@ class StayService implements StayServiceInterface
     }
 
     /**
+     * @param Request $request
      * @param Stay $stay
+     * @param int $bookingId
      * @return bool
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function create(Stay $stay): bool
+    public function create(Stay $stay, int $bookingId): bool
     {
+        $stay
+            ->setBooking($this->bookingService->getOne($bookingId));
+            
         return $this->stayRepository->insert($stay);
     }
     
