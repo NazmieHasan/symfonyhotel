@@ -37,7 +37,7 @@ class BookingService implements BookingServiceInterface
         $booking->setUserId($userId);
         $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
         $booking->setDays($days);
-        $booking->setTotalAmount(($booking->getcategory()->getPrice()) * ($booking->getDays()));
+        $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));
         $booking->setPaidAmount(0.00);
         $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
         
@@ -56,7 +56,7 @@ class BookingService implements BookingServiceInterface
     {
         $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
         $booking->setDays($days);
-        $booking->setTotalAmount(($booking->getcategory()->getPrice()) * ($booking->getDays()));
+        $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));
         $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
         
         return $this->bookingRepository->update($booking);

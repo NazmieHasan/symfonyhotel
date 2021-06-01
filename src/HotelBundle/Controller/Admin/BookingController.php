@@ -7,14 +7,23 @@ use HotelBundle\Entity\Stay;
 use HotelBundle\Entity\Room;
 use HotelBundle\Entity\Guest;
 use HotelBundle\Entity\User;
+use HotelBundle\Entity\Category;
+use HotelBundle\Entity\Payment;
+use HotelBundle\Entity\Status;
 use HotelBundle\Form\BookingType;
 use HotelBundle\Form\StayType;
 use HotelBundle\Form\RoomType;
 use HotelBundle\Form\GuestType;
+use HotelBundle\Form\CategoryType;
+use HotelBundle\Form\PaymentType;
+use HotelBundle\Form\StatusType;
 use HotelBundle\Service\Bookings\BookingServiceInterface;
 use HotelBundle\Service\Stays\StayServiceInterface;
 use HotelBundle\Service\Rooms\RoomServiceInterface;
 use HotelBundle\Service\Guests\GuestServiceInterface;
+use HotelBundle\Service\Categories\CategoryServiceInterface;
+use HotelBundle\Service\Payments\PaymentServiceInterface;
+use HotelBundle\Service\Statuses\StatusServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,22 +57,46 @@ class BookingController extends Controller
     private $guestService;
     
     /**
+     * @var CategoryServiceInterface
+     */
+    private $categoryService;
+    
+    /**
+     * @var PaymentServiceInterface
+     */
+    private $paymentService;
+    
+    /**
+     * @var StatusServiceInterface
+     */
+    private $statusService;
+    
+    /**
      * BookingController constructor.
      * @param BookingServiceInterface $bookingService
      * @param StayServiceInterface $stayService
      * @param RoomServiceInterface $roomService
      * @param GuestServiceInterface $guestService
+     * @param CategoryServiceInterface $categoryService
+     * @param PaymentServiceInterface $paymentService
+     * @param StatusServiceInterface $statusService
      */
     public function __construct(
         BookingServiceInterface $bookingService,
         StayServiceInterface $stayService,
         RoomServiceInterface $roomService,
-        GuestServiceInterface $guestService)
+        GuestServiceInterface $guestService,
+        CategoryServiceInterface $categoryService,
+        PaymentServiceInterface $paymentService,
+        StatusServiceInterface $statusService)
     {
         $this->bookingService = $bookingService;
         $this->stayService = $stayService;
         $this->roomService = $roomService;
         $this->guestService = $guestService;
+        $this->categoryService = $categoryService;
+        $this->paymentService = $paymentService;
+        $this->statusService = $statusService;
     }
     
     /**
@@ -133,6 +166,10 @@ class BookingController extends Controller
     {
         $booking = $this->bookingService->getOne($id);
         
+        $categories = $this->categoryService->getAll();
+        $payments = $this->paymentService->getAll();
+        $statuses = $this->statusService->getAll();
+        
         if (null === $booking){
             return $this->redirectToRoute("hotel_index");
         }
@@ -141,7 +178,10 @@ class BookingController extends Controller
             [
                 'form' => $this->createForm(BookingType::class)
                        ->createView(),
-                'booking' => $booking
+                'booking' => $booking,
+                'categories' => $categories,
+                'payments' => $payments,
+                'statuses' => $statuses,
             ]);
 
     }
@@ -156,6 +196,10 @@ class BookingController extends Controller
     public function editProcess(Request $request, int $id)
     {
         $booking = $this->bookingService->getOne($id);
+        
+        $categories = $this->categoryService->getAll();
+        $payments = $this->paymentService->getAll();
+        $statuses = $this->statusService->getAll();
 
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);

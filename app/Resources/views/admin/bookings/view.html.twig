@@ -11,7 +11,7 @@
         <p>Category: <span class="cl-bold"> {{ booking.category.name }} </span> | Adults: <span class="cl-bold"> {{ booking.adults}} </span> | Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
-            <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete Booking</a>
+            <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Booking</a>
         </p>
         
        <h4><button class="btn btn-danger btn-outline" id="Add">Add stay for this booking</button></h4>

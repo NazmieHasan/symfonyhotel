@@ -175,6 +175,22 @@ class Stay
     }
     
     /**
+     * @return int
+     */
+    public function getBookingId()
+    {
+        return $this->bookingId;
+    }
+
+    /**
+     * @param int $bookingId
+     */
+    public function setBookingId($bookingId)
+    {
+        $this->bookingId = $bookingId;
+    }
+    
+    /**
      * @param Booking $booking
      */
     public function setBooking($booking)

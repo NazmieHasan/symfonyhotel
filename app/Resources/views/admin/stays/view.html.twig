@@ -10,7 +10,7 @@
         <p>Note: {{ stay.note }}</p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
-            <a class="btn btn-danger btn-xs" href="{{ path('admin_stay_delete', {id: stay.id}) }}">Delete</a>
+            <a class="btn btn-danger btn-xs" href="{{ path('admin_stay_delete', {id: stay.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
         </p>
     </div>
     

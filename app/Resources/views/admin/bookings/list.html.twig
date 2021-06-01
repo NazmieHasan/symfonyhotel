@@ -46,7 +46,7 @@
                         <td>
                             <a href="{{ path('admin_booking_view', {id: booking.id}) }}" target=_blank>View</a>
                             <a href="{{ path('admin_booking_edit', {id: booking.id}) }}" target=_blank>Edit</a>
-                            <a href="{{ path('admin_booking_delete', {id: booking.id}) }}">Delete</a>
+                            <a href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}
