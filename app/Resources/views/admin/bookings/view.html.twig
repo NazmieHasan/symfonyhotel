@@ -8,14 +8,20 @@
         <p>Checkin: {{ booking.checkin|date("Y-m-d") }} | Checkout: {{ booking.checkout|date("Y-m-d") }} | {{ booking.days }} day(s)</p>
         <p>Payment: {{ booking.payment.name }}</p>
         <p>Total Amount: ${{ booking.totalAmount}} | Paid Amount: ${{ booking.paidAmount}} | Payment Amount: ${{ booking.paymentAmount}}</p>
-        <p>Category: <span class="cl-bold"> {{ booking.category.name }} </span> | Adults: <span class="cl-bold"> {{ booking.adults}} </span> | Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
+        <p>Category: <span class="cl-bold"> {{ booking.category.name }} </span></p>
+        <p>Adults: <span class="cl-bold"> {{ booking.adults}} </span> <span class="icon-find"> {% for i in 1..booking.adults %} {{ "&#xf007;" }} {% endfor %} </span></p>
+        <p>Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
             <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Booking</a>
         </p>
         
-       <h4><button class="btn btn-danger btn-outline" id="Add">Add stay for this booking</button></h4>
-       <div id="stay"></div> 
+        {% if stays|length < booking.adults %} 
+            <h4><button class="btn btn-danger btn-outline" id="Add">Add stay for this booking</button></h4>
+            <div id="stay"></div> 
+        {% else %} 
+            <h4><button class="btn btn-danger btn-outline" disabled>Add stay for this booking</button></h4>
+        {% endif %} 
         
         <h2>All stays for this booking</h2>
         {% if stays|length == 0 %} 

@@ -33,7 +33,9 @@ class StayService implements StayServiceInterface
     /**
      * StayService constructor.
      * @param StayRepository $stayRepository
+     * @param GuestRepository $guestRepository
      * @param BookingRepository $bookingRepository
+     * @param RoomRepository $roomRepository
      */
     public function __construct(StayRepository $stayRepository,
             GuestServiceInterface $guestService,

@@ -5,42 +5,57 @@ namespace HotelBundle\Service\Bookings;
 use HotelBundle\Entity\Booking;
 use HotelBundle\Repository\BookingRepository;
 use HotelBundle\Service\Users\UserServiceInterface;
+use HotelBundle\Service\Categories\CategoryServiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class BookingService implements BookingServiceInterface
 {
 
     private $bookingRepository;
+    
+    /**
+     * @var UserServiceInterface
+     */ 
     private $userService;
+    
+    /**
+     * @var CategoryServiceInterface
+     */ 
+    private $categoryService;
 
     /**
      * BookingService constructor.
      * @param BookingRepository $bookingRepository
      * @param UserServiceInterface $userService
+     * @param CategoryServiceInterface $categoryService
      */
     public function __construct(BookingRepository $bookingRepository,
-              UserServiceInterface $userService)
+              UserServiceInterface $userService,
+              CategoryServiceInterface $categoryService)
     {
         $this->bookingRepository = $bookingRepository;
         $this->userService = $userService;
+        $this->categoryService = $categoryService;
     }
 
     /**
+     * @param Request $request
      * @param Booking $booking
+     * @param int $categoryId
      * @return bool
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function create(Booking $booking): bool
+    public function create(Booking $booking, int $categoryId): bool
     {
         $userId = $this->userService->currentUser();
         $booking->setUserId($userId);
+        $booking->setCategory($this->categoryService->getOne($categoryId));
         $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
         $booking->setDays($days);
         $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));
         $booking->setPaidAmount(0.00);
         $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
-        
 
         return $this->bookingRepository->insert($booking);
     }

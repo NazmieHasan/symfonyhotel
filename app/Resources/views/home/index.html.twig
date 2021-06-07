@@ -44,7 +44,7 @@
                     <div class="room-info">
                         <a class="cat-link" href="{{ path('category_view', {id: category.id}) }}">{{ category.name }}</a>
                         <p>{{ category.description }}</p>
-                        <button class="btn btn-danger">BOOKING</button>
+                        <a href="{{ path('admin_booking_create', {id: category.id}) }}"><button class="btn btn-danger">BOOKING</button></a>
                     </div>
                 </div>
             {% endfor %}

@@ -100,31 +100,40 @@ class BookingController extends Controller
     }
     
     /**
-     * @Route("/create", name="admin_booking_create", methods={"GET"})
+     * @Route("/create/category-{id}", name="admin_booking_create", methods={"GET"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function create()
+    public function create(int $id)
     {
+        $category = $this->categoryService->getOne($id);
+        $payments = $this->paymentService->getAll();
+        
         return $this->render('admin/bookings/create.html.twig',
-            ['form' => $this
-                ->createForm(BookingType::class)
-                ->createView()]);
+            [
+                'form' => $this->createForm(BookingType::class)->createView(),
+                'category' => $category,
+                'payments' => $payments,
+            ]);
     }
 
     /**
-     * @Route("/create", methods={"POST"})
+     * @Route("/create/category-{id}", methods={"POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function createProcess(Request $request)
+    public function createProcess(Request $request, int $id)
     {
         $booking = new Booking();
+        $category = $this->categoryService->getOne($id);
+        $payments = $this->paymentService->getAll();
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
         
-        $this->bookingService->create($booking);
+        $this->bookingService->create($booking, $id);
         $this->addFlash("info", "Create booking successfully!");
         return $this->redirectToRoute("admin_bookings");
     }
@@ -146,9 +155,7 @@ class BookingController extends Controller
 
         return $this->render("admin/bookings/view.html.twig",
             [
-                'form' => $this
-                ->createForm(StayType::class)
-                ->createView(),
+                'form' => $this->createForm(StayType::class)->createView(),
                 'booking' => $booking,
                 'rooms' => $rooms,
                 'guests' => $guests,
@@ -176,8 +183,7 @@ class BookingController extends Controller
 
         return $this->render('admin/bookings/edit.html.twig',
             [
-                'form' => $this->createForm(BookingType::class)
-                       ->createView(),
+                'form' => $this->createForm(BookingType::class)->createView(),
                 'booking' => $booking,
                 'categories' => $categories,
                 'payments' => $payments,
