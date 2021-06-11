@@ -16,4 +16,10 @@ interface RoomServiceInterface
      * @return ArrayCollection|Room[]
      */
     public function getAll();
+    
+    /**
+     * @param int $categoryId
+     * @return Room[]
+     */
+    public function getAllByCategoryId(int $categoryId);
 }

@@ -4,20 +4,29 @@ namespace HotelBundle\Service\Rooms;
 
 use HotelBundle\Entity\Room;
 use HotelBundle\Repository\RoomRepository;
+use HotelBundle\Service\Categories\CategoryServiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class RoomService implements RoomServiceInterface
 {
 
     private $roomRepository;
+    
+    /**
+     * @var CategoryServiceInterface
+     */
+    private $categoryService;
 
     /**
      * RoomService constructor.
      * @param RoomRepository $roomRepository
+     * @param CategoryRepository $categoryRepository
      */
-    public function __construct(RoomRepository $roomRepository)
+    public function __construct(RoomRepository $roomRepository,
+            CategoryServiceInterface $categoryService)
     {
         $this->roomRepository = $roomRepository;
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -68,6 +77,18 @@ class RoomService implements RoomServiceInterface
     public function getAll()
     {
         return $this->roomRepository->findBy([], ['id' => 'DESC']);
+    }
+    
+    /**
+     * @param int $categoryId
+     * @return Room[]
+     */
+    public function getAllByCategoryId(int $categoryId)
+    {
+        $category = $this->categoryService->getOne($categoryId);
+        return $this
+            ->roomRepository
+            ->findBy(['category' => $category]);
     }
     
 }

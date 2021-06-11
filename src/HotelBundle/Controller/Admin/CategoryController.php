@@ -4,7 +4,10 @@ namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Category;
 use HotelBundle\Form\CategoryType;
+use HotelBundle\Entity\Room;
+use HotelBundle\Form\RoomType;
 use HotelBundle\Service\Categories\CategoryServiceInterface;
+use HotelBundle\Service\Rooms\RoomServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
@@ -24,14 +27,22 @@ class CategoryController extends Controller
      */
     private $categoryService;
     
+    /**
+     * @var RoomServiceInterface
+     */
+    private $roomService;
+    
      /**
      * CategoryController constructor.
      * @param CategoryServiceInterface $categoryService
+     * @param RoomServiceInterface $roomService
      */
     public function __construct(
-        CategoryServiceInterface $categoryService)
+        CategoryServiceInterface $categoryService,
+        RoomServiceInterface $roomService)
     {
         $this->categoryService = $categoryService;
+        $this->roomService = $roomService;
     }
     
     /**
@@ -85,9 +96,14 @@ class CategoryController extends Controller
      */
     public function view(int $id) {
         $category = $this->categoryService->getOne($id);
+        
+        $rooms = $this->roomService->getAllByCategoryId($id);
 
         return $this->render("admin/categories/view.html.twig",
-            ['category' => $category ]);
+            [
+                'category' => $category,
+                'rooms' => $rooms
+            ]);
     }
 
     /**
@@ -98,7 +114,7 @@ class CategoryController extends Controller
     public function getAllCategories()
     {
         $categories = $this->categoryService->getAll();
-
+        
         return $this->render("admin/categories/list.html.twig",
             [
                 'categories' => $categories
