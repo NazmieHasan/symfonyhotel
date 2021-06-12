@@ -2,6 +2,9 @@
 body {
     background: #f0f0f0;
 }
+a, a:hover{
+    color: darkred;
+}
 .body-content {
     margin-top: 4em;
     margin-bottom: 2em;

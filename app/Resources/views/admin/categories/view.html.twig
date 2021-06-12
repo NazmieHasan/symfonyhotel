@@ -18,12 +18,23 @@
                     <a class="btn btn-success btn-xs" href="{{ path('admin_category_edit', {id: category.id}) }}">Edit</a>
                     <a class="btn btn-danger btn-xs"  href="{{ path('admin_category_delete', {id: category.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
                 </p>
-                <h2>Rooms numbers for this category</h2>
-                {% for room in rooms %}
-                    <p>{{ room.number }}</p>
-                {% endfor %}
+                <h2>All numbers</h2>
+                <p>
+                    {% for room in rooms %}
+                        <a href="{{ path('admin_room_view', {id: room.id}) }}" target=_blank>{{ room.number}}</a>
+                    {% endfor %} 
+                </p>
+                <p>Count: {{ rooms|length }}</p> 
+                <p>
+                    {% for room in rooms|slice(0, 1) %}
+                        From {{ room.number }} 
+                    {% endfor %}
+                    {% for room in rooms|slice(rooms|length - 1) %}
+                        to {{ room.number }}
+                    {% endfor %}
+                </p>
             </div>
         </div>
-    </div
+    </div>
 
 {% endblock %}
