@@ -4,7 +4,7 @@
 
     <div class="container body-content text-center">
         <h2>Room Information</h2>
-        <p>Number: {{ room.number }} - {{ room.category }} </p>
+        <p>Number: {{ room.number }} - <a href="{{ path('admin_category_view', {id: room.category.id}) }}"> {{ room.category }} </a></p>
         <p>Beds: {{ room.category.beds }} | Price: ${{ room.category.price }} </p>
         <p>Description: {{ room.category.description }} </p>
         <p>

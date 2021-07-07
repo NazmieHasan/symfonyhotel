@@ -21,7 +21,7 @@
                 <h2>All numbers</h2>
                 <p>
                     {% for room in rooms %}
-                        <a href="{{ path('admin_room_view', {id: room.id}) }}" target=_blank>{{ room.number}}</a>
+                        <a href="{{ path('admin_room_view', {id: room.id}) }}" target=_blank>{{ room.number }}</a>
                     {% endfor %} 
                 </p>
                 <p>Count: {{ rooms|length }}</p> 

@@ -543,15 +543,19 @@ a, a:hover{
 .jumbo-dark h2 {
     margin-bottom: 30px;
 }
-.jumbo-dark > button {
-    padding-right: 50px; 
-    padding-left: 50px;
-    background-color: #dc3545;
-    border-color: white;
+.jumbo-dark p {
+    font-weight: bold;
 }
-.jumbo-dark .btn-email {
-    padding-right: 20px; 
-    padding-left: 20px;
+.jumbo-dark .phone, .jumbo-dark .email {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #dc3545;
+    border: 1px solid white;
+}
+.jumbo-dark .phone:hover, .jumbo-dark .email:hover {
+    color: #dc3545;
+    background-color: white;
+    border-color: #dc3545;
 }
 .hr-before {
     margin-bottom: 10px;
@@ -576,6 +580,9 @@ a, a:hover{
 }
 .contact-info .jumbo-light .col {
     padding: 2px;
+}
+.contact-info .img-thumbnail {
+    margin-bottom: 1rem;
 }
 .form-contact .jumbo-light {
     margin-bottom: 40px; 
