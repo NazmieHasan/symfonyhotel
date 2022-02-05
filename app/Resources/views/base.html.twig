@@ -7,7 +7,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
         <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
@@ -76,8 +76,6 @@
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ path('user_booking_create') }}">Create Booking</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ path('my_bookings') }}">My Bookings</a> 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ path('security_logout') }}">Logout</a>   

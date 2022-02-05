@@ -21,11 +21,11 @@
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <label>Arrival:</label>
-                            <input type="date" class="input-date"  value="2021-07-01">
+                            <input type="date" class="input-date"  value="{{ "now"|date('Y-m-d') }}" />
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <label>Departure:</label>
-                            <input type="date" class="input-date" value="2021-07-10">
+                            <input type="date" class="input-date" value="{{ "now"|date_modify('+1 day')|date('Y-m-d') }}" />
                         </div>
                         <div class="col-lg-2 col-md-12 col-sm-12 col-sx-12">
                             <button type="submit" class="btn btn-danger form-submit">SEARCH ROOM</button>
@@ -44,7 +44,7 @@
                     <div class="room-info">
                         <a class="cat-link" href="{{ path('category_view', {id: category.id}) }}">{{ category.name }}</a>
                         <p>{{ category.description }}</p>
-                        <a href="{{ path('admin_booking_create', {id: category.id}) }}"><button class="btn btn-danger">BOOKING</button></a>
+                        <a href="{{ path('user_booking_create', {id: category.id}) }}"><button class="btn btn-danger">BOOKING</button></a>
                     </div>
                 </div>
             {% endfor %}

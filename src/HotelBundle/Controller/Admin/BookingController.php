@@ -100,45 +100,6 @@ class BookingController extends Controller
     }
     
     /**
-     * @Route("/create/category-{id}", name="admin_booking_create", methods={"GET"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function create(int $id)
-    {
-        $category = $this->categoryService->getOne($id);
-        $payments = $this->paymentService->getAll();
-        
-        return $this->render('admin/bookings/create.html.twig',
-            [
-                'form' => $this->createForm(BookingType::class)->createView(),
-                'category' => $category,
-                'payments' => $payments,
-            ]);
-    }
-
-    /**
-     * @Route("/create/category-{id}", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function createProcess(Request $request, int $id)
-    {
-        $booking = new Booking();
-        $category = $this->categoryService->getOne($id);
-        $payments = $this->paymentService->getAll();
-        $form = $this->createForm(BookingType::class, $booking);
-        $form->handleRequest($request);
-        
-        $this->bookingService->create($booking, $id);
-        $this->addFlash("info", "Create booking successfully!");
-        return $this->redirectToRoute("admin_bookings");
-    }
-    
-    /**
      * @Route("/view/{id}", name="admin_booking_view")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param $id
@@ -243,15 +204,15 @@ class BookingController extends Controller
     {
         $bookings = $this->bookingService->getAll();
         
-        if($request->isMethod("POST")) {  
-            $statusId = $request->get('statusId');
-        
+        if($request->isMethod("POST")) { 
+            $id = $request->get('id');
+            
             $em = $this->getDoctrine()->getManager();
             $bookings = $em->getRepository("HotelBundle:Booking")
                        ->findBy(
                            [
-                               'statusId' => $statusId
-                           ]);
+                               'id' => $id
+                           ]); 
         }
 
         return $this->render("admin/bookings/list.html.twig",

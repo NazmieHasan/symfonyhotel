@@ -3,10 +3,14 @@
 {% block body %}
 
     <div class="container body-content text-center">
-        <h2>Room Information</h2>
-        <p>Number: {{ room.number }} - <a href="{{ path('admin_category_view', {id: room.category.id}) }}"> {{ room.category }} </a></p>
-        <p>Beds: {{ room.category.beds }} | Price: ${{ room.category.price }} </p>
-        <p>Description: {{ room.category.description }} </p>
+        <h2>Room Details [ #{{ room.id }} ]</h2>
+        <p>Number: <span class="cl-bold"> {{ room.number }} </span></p> 
+        <p>Category: <a href="{{ path('admin_category_view', {id: room.category.id}) }}"> {{ room.category }} </a></p>
+        <p>
+            Beds: <span class="cl-bold"> {{ room.category.beds }} </span> | 
+            Price: <span class="cl-bold"> ${{ room.category.price }} </span>
+        </p>
+        <p><span class="cl-bold">Description: </span> {{ room.category.description }} </p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_room_edit', {id: room.id}) }}">Edit Room</a>
             <a class="btn btn-danger btn-xs" href="{{ path('admin_room_delete', {id: room.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Room</a>
