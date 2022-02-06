@@ -21,36 +21,41 @@
                 </form>
             </div>
         </div>
-        <div class="row">
-            <table class="table table-striped table-hover ">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Date Added</th>
-                    <th>Checkin</th>
-                    <th>Checkout</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for booking in bookings %}
+        {% if bookings|length == 0 %} 
+            <h4 class="text-center mt-5">Not found result!</h4>
+            <h4 class="text-center mb-5">Please, try again!</h4>
+        {% else %} 
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
                     <tr>
-                        <td>{{ booking.id }}</td>
-                        <td>{{ booking.dateAdded|date("Y-m-d H:i:s") }}</td>
-                        <td>{{ booking.checkin|date("Y-m-d") }}</td>
-                        <td>{{ booking.checkout|date("Y-m-d") }}</td>
-                        <td>{{ booking.status }}</td>
-                        <td>
-                            <a href="{{ path('admin_booking_view', {id: booking.id}) }}" target=_blank>View</a>
-                            <a href="{{ path('admin_booking_edit', {id: booking.id}) }}" target=_blank>Edit</a>
-                            <a href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
-                        </td>
+                        <th>#</th>
+                        <th>Date Added</th>
+                        <th>Checkin</th>
+                        <th>Checkout</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.id }}</td>
+                            <td>{{ booking.dateAdded|date("Y-m-d H:i:s") }}</td>
+                            <td>{{ booking.checkin|date("Y-m-d") }}</td>
+                            <td>{{ booking.checkout|date("Y-m-d") }}</td>
+                            <td>{{ booking.status }}</td>
+                            <td>
+                                <a href="{{ path('admin_booking_view', {id: booking.id}) }}" target=_blank>View</a>
+                                <a href="{{ path('admin_booking_edit', {id: booking.id}) }}" target=_blank>Edit</a>
+                                <a href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}  
     </div>
     
 {% endblock %}
