@@ -173,7 +173,7 @@ class BookingController extends Controller
         $form->handleRequest($request);
         $this->bookingService->edit($booking);
 
-        return $this->redirectToRoute("admin_bookings");
+        return $this->redirectToRoute('admin_booking_view', [ 'id' => $id]);
     }
 
     /**
