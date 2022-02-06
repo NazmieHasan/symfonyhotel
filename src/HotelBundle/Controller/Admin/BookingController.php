@@ -24,6 +24,7 @@ use HotelBundle\Service\Guests\GuestServiceInterface;
 use HotelBundle\Service\Categories\CategoryServiceInterface;
 use HotelBundle\Service\Payments\PaymentServiceInterface;
 use HotelBundle\Service\Statuses\StatusServiceInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -205,14 +206,18 @@ class BookingController extends Controller
         $bookings = $this->bookingService->getAll();
         
         if($request->isMethod("POST")) { 
-            $id = $request->get('id');
+        
+            $checkinSearch = $request->get('checkin');
+            $date = $checkinSearch;
+            $checkin = (new \DateTime())->modify($date);
             
             $em = $this->getDoctrine()->getManager();
             $bookings = $em->getRepository("HotelBundle:Booking")
                        ->findBy(
-                           [
-                               'id' => $id
-                           ]); 
+                            [
+                               'checkin' => $checkin
+                            ]); 
+                            
         }
 
         return $this->render("admin/bookings/list.html.twig",

@@ -11,8 +11,8 @@
                 <form method="POST">
                     <div class="row">
                         <div class="col-md-7">
-                            <input type="text" class="icon-find" name="id" placeholder="&#xF002; Enter booking id" />
-                            <p>Please, enter number!</p>
+                            <input type="date" name="checkin" value="{{ "now"|date('Y-m-d') }}" />
+                            <p>Enter checkin date!</p>
                         </div>
                         <div class="col-md-5">
                             <button type="submit" class="btn btn-danger">Find Booking</button>

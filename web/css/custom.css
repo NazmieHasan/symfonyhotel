@@ -5,6 +5,11 @@ body {
 a, a:hover{
     color: darkred;
 }
+
+legend {
+    text-align: center;
+}
+
 .body-content {
     margin-top: 4em;
     margin-bottom: 2em;
@@ -40,7 +45,7 @@ a, a:hover{
     list-style-type: none;
     color: #e74c3c;
 }
-.login-a {
+.login-a, .cancel-a {
     margin-left: 10px;
     padding-bottom: 2px;
     font-size: 20px;
@@ -48,7 +53,7 @@ a, a:hover{
     color: #e74c3c; 
     border-bottom: 1px solid #e74c3c;
 }
-.login-a:hover {
+.login-a:hover, .cancel-a:hover {
     text-decoration: none;
     color: darkred;
     border-bottom: 1px solid darkred;
