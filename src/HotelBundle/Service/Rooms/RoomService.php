@@ -86,9 +86,22 @@ class RoomService implements RoomServiceInterface
     public function getAllByCategoryId(int $categoryId)
     {
         $category = $this->categoryService->getOne($categoryId);
+        
         return $this
             ->roomRepository
             ->findBy(['category' => $category]);
     }
+    
+    /**
+     * @param date $checkin
+     * @param date $checkout
+     * @param int $categoryId
+     * @return Room[]
+     */
+    public function getAllFreeRoomsByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId)
+    {
+        // TODO 
+        
+    } 
     
 }

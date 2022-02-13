@@ -127,16 +127,4 @@ class StayService implements StayServiceInterface
             ->findBy(['booking' => $booking], ['id' => 'DESC']);
     }
     
-    /**
-     * @param int $roomId
-     * @return Stay[]
-     */
-    public function getAllByRoomId(int $roomId)
-    {
-        $room = $this->roomService->getOne($roomId);
-        return $this
-            ->stayRepository
-            ->findBy(['room' => $room], ['id' => 'DESC']);
-    }
-    
 }

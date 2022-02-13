@@ -6,6 +6,7 @@ use HotelBundle\Entity\Booking;
 use HotelBundle\Repository\BookingRepository;
 use HotelBundle\Service\Users\UserServiceInterface;
 use HotelBundle\Service\Categories\CategoryServiceInterface;
+use HotelBundle\Service\Rooms\RoomServiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class BookingService implements BookingServiceInterface
@@ -22,20 +23,28 @@ class BookingService implements BookingServiceInterface
      * @var CategoryServiceInterface
      */ 
     private $categoryService;
+    
+    /**
+     * @var RoomServiceInterface
+     */
+    private $roomService;
 
     /**
      * BookingService constructor.
      * @param BookingRepository $bookingRepository
      * @param UserServiceInterface $userService
      * @param CategoryServiceInterface $categoryService
+     * @param RoomRepository $roomRepository
      */
     public function __construct(BookingRepository $bookingRepository,
               UserServiceInterface $userService,
-              CategoryServiceInterface $categoryService)
+              CategoryServiceInterface $categoryService,
+              RoomServiceInterface $roomService)
     {
         $this->bookingRepository = $bookingRepository;
         $this->userService = $userService;
         $this->categoryService = $categoryService;
+        $this->roomService = $roomService;
     }
 
     /**
@@ -51,6 +60,10 @@ class BookingService implements BookingServiceInterface
         $userId = $this->userService->currentUser();
         $booking->setUserId($userId);
         $booking->setCategory($this->categoryService->getOne($categoryId));
+        
+        // $room = $this->roomService->getAllFreeRoomByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId);
+        // $booking->setRoom($room);
+        
         $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
         $booking->setDays($days);
         $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));
@@ -118,5 +131,17 @@ class BookingService implements BookingServiceInterface
                 ['dateAdded' => 'DESC']
             );
 
+    }
+    
+    /**
+     * @param int $roomId
+     * @return Booking[]
+     */
+    public function getAllByRoomId(int $roomId)
+    {
+        $room = $this->roomService->getOne($roomId);
+        return $this
+            ->bookingRepository
+            ->findBy(['room' => $room], ['id' => 'DESC']);
     }
 }

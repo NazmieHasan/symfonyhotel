@@ -28,7 +28,7 @@
                 <p>
                     Category: <span class="cl-bold"> {{ booking.category.name }} </span> |
                     Adults: <span class="icon-find"> {% for i in 1..booking.adults %} {{ "&#xf007;" }} {% endfor %} </span> |
-                    Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
+                    Room: <span class="cl-bold"> {{ booking.room.number }} </span> |
                 <p>
                     <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
                     <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Booking</a>
@@ -50,7 +50,6 @@
                         <thead>
                         <tr>
                             <th>Stay Id</th>
-                            <th>Room Number</th>
                             <th>Guest</th> 
                         </tr>
                         </thead>
@@ -58,7 +57,6 @@
                             {% for stay in stays %}
                             <tr>
                                 <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
-                                <td><a href="{{ path('admin_room_view', {id:  stay.room.id}) }}"> {{ stay.room }} </a></td>
                                 <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></td>
                             </tr>
                             {% endfor %}
@@ -76,16 +74,6 @@
             let stayForm =
                 `
                 <form method="post" action="{{ path('admin_stay_create', { id: booking.id}) }}">
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <select class="form-control" id="stay_room" name="stay[room]">
-                                <option value="">Choise Room</option>
-                                {% for room in rooms %}
-                                    <option value="{{ room.id }}">{{ room.number }} {{ room.category }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <select class="form-control" id="stay_guest" name="stay[guest]">

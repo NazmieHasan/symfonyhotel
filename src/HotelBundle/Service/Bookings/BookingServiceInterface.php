@@ -22,4 +22,11 @@ interface BookingServiceInterface
      * @return ArrayCollection|Booking[]
      */
     public function getAllBookingsByUser();
+    
+     /**
+     * @param int $roomId
+     * @return Booking[]
+     */
+    public function getAllByRoomId(int $roomId);
+    
 }

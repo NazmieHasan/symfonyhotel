@@ -44,21 +44,6 @@ class Stay
      */
     private $guest;
     
-     /**
-     * @var int
-     *
-     * @ORM\Column(name="room_id", type="integer")
-     */
-    private $roomId;
-
-    /**
-     * @var Room
-     *
-     * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Room", inversedBy="stays")
-     * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
-     */
-    private $room;
-    
     /**
      * @var int
      *
@@ -139,39 +124,6 @@ class Stay
     public function setGuest($guest)
     {
         $this->guest = $guest;
-    }
-    
-    
-    /**
-     * @return int
-     */
-    public function getRoomId()
-    {
-        return $this->roomId;
-    }
-
-    /**
-     * @param int $roomId
-     */
-    public function setRoomId($roomId)
-    {
-        $this->roomId = $roomId;
-    }
-
-    /**
-     * @return Room
-     */
-    public function getRoom()
-    {
-        return $this->room;
-    }
-
-    /**
-     * @param Room $room
-     */
-    public function setRoom($room)
-    {
-        $this->room = $room;
     }
     
     /**

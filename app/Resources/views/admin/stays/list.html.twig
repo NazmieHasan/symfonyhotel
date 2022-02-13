@@ -14,7 +14,6 @@
                 <tr>
                     <th>#</th>
                     <th>Booking</th>
-                    <th>Room Number</th>
                     <th>Guest</th>
                     <th>Actions</th>
                 </tr>
@@ -24,7 +23,6 @@
                     <tr>
                         <td>{{ stay.id }}</td>
                         <td><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking }}</a></td>
-                        <td><a href="{{ path('admin_room_view', {id: stay.room.id}) }}">{{ stay.room }}</a></td>
                         <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}">{{ stay.guest }}</a></td>
                         <td>
                             <a href="{{ path('admin_stay_view', {id: stay.id}) }}" target=_blank>View</a>

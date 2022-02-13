@@ -36,6 +36,21 @@ class Booking
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
+    
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="room_id", type="integer")
+     */
+    private $roomId;
+
+    /**
+     * @var Room
+     *
+     * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Room", inversedBy="bookings")
+     * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
+     */
+    private $room;
 
     /**
      * @var \DateTime
@@ -64,13 +79,6 @@ class Booking
      * @ORM\Column(name="adults", type="integer")
      */
     private $adults;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="childBed", type="integer")
-     */
-    private $childBed;
 
     /**
      * @var string
@@ -199,6 +207,37 @@ class Booking
         $this->category = $category;
     }
 
+    /**
+     * @return int
+     */
+    public function getRoomId()
+    {
+        return $this->roomId;
+    }
+
+    /**
+     * @param int $roomId
+     */
+    public function setRoomId($roomId)
+    {
+        $this->roomId = $roomId;
+    }
+
+    /**
+     * @return Room
+     */
+    public function getRoom()
+    {
+        return $this->room;
+    }
+
+    /**
+     * @param Room $room
+     */
+    public function setRoom($room)
+    {
+        $this->room = $room;
+    }
 
     /**
      * @return int
@@ -328,30 +367,6 @@ class Booking
     public function getAdults()
     {
         return $this->adults;
-    }
-
-    /**
-     * Set childBed
-     *
-     * @param integer $childBed
-     *
-     * @return Booking
-     */
-    public function setChildBed($childBed)
-    {
-        $this->childBed = $childBed;
-
-        return $this;
-    }
-
-    /**
-     * Get childBed
-     *
-     * @return int
-     */
-    public function getChildBed()
-    {
-        return $this->childBed;
     }
 
     /**

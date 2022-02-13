@@ -22,11 +22,10 @@ class StayType extends AbstractType
             ->add('note', TextType::class)
             ->add('guest', EntityType::class,
                 ['class' => Guest::class])
-            ->add('room', EntityType::class,
-                ['class' => Room::class])
             ->add('booking', EntityType::class,
                 ['class' => Booking::class]);
     }
+    
     /**
      * {@inheritdoc}
      */

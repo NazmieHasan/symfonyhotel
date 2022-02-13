@@ -22,4 +22,13 @@ interface RoomServiceInterface
      * @return Room[]
      */
     public function getAllByCategoryId(int $categoryId);
+    
+    /**
+     * @param date $checkin
+     * @param date $checkout
+     * @param int $categoryId
+     * @return Room[]
+     */
+    public function getAllFreeRoomsByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId);
+    
 }
