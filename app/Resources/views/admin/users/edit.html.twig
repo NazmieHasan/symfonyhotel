@@ -11,13 +11,13 @@
                             {{ msg }}
                         </div>
                     {% endfor %}
-                    <form class="form-horizontal" action="{{ path('user_register') }}" method="post">
+                    <form class="form-horizontal" action="{{ path('admin_user_edit', {'id': user.id} ) }}" method="post">
                         <fieldset>
-                            <legend>Register</legend>
+                            <legend>Edit User</legend>
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="user_email">Email</label>
                                 <div class="col-sm-12">
-                                    <input  type="text" class="form-control" id="user_email" placeholder="Email" name="user[email]"  value="{{ (form.email.vars.value )}}">
+                                    <input type="text" class="form-control" id="user_email" placeholder="Email" name="user_edit[email]"  value="{{ (form.email.vars.value )}}">
                                 </div>
                                 <div class="form-errors">
                                     {{ form_errors(form.email) }}
@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="user_loginName">Login Name</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="user_loginName" placeholder="Login Name" name="user[loginName]"  value="{{ (form.loginName.vars.value )}}">
+                                    <input type="text" class="form-control" id="user_loginName" placeholder="Login Name" name="user_edit[loginName]"  value="{{ (form.loginName.vars.value )}}">
                                 </div>
                                 <div class="form-errors">
                                     {{ form_errors(form.loginName) }}
@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="user_password_first">Password</label>
                                 <div class="col-sm-12">
-                                    <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="user[password][first]">
+                                    <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="user_edit[password][first]">
                                 </div>
                                 <div class="form-errors">
                                     {{ form_errors(form.password.first) }}
@@ -44,13 +44,18 @@
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="user_password_second">Confirm Password</label>
                                 <div class="col-sm-12">
-                                    <input type="password" class="form-control" id="user_password_second" placeholder="Password" name="user[password][second]">
+                                    <input type="password" class="form-control" id="user_password_second" placeholder="Password" name="user_edit[password][second]">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    {{ form_widget(form.roles) }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <a class="cancel-a" href="{{ path('hotel_index') }}">Cancel</a>
-                                    <button type="submit" class="btn btn-danger">Register</button>
+                                    <a class="cancel-a" href="{{ path('admin_users') }}">Cancel</a>
+                                    <button type="submit" class="btn btn-danger">Submit</button>
                                 </div>
                             </div>
                             {{ form_row(form._token) }} 

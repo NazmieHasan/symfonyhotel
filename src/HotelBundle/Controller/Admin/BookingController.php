@@ -213,11 +213,10 @@ class BookingController extends Controller
             
             $em = $this->getDoctrine()->getManager();
             $bookings = $em->getRepository("HotelBundle:Booking")
-                       ->findBy(
-                            [
-                               'checkin' => $checkin
-                            ]); 
-                            
+                ->findBy(
+                    ['checkin' => $checkin],
+                    ['dateAdded' => 'DESC']
+                );                  
         }
 
         return $this->render("admin/bookings/list.html.twig",
@@ -225,4 +224,5 @@ class BookingController extends Controller
                 'bookings' => $bookings
             ]);
     }
+    
 }

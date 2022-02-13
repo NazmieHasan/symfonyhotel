@@ -3,67 +3,71 @@
 {% block body %}
 
     <div class="container body-content text-center">
-    
-        <h2>Booking Details [ #{{ booking.id }} ]</h2>
-        <p>
-            Reserved by email <span class="cl-bold"> {{ booking.userId.email}} </span>
-            on <span class="cl-bold"> {{ booking.dateAdded|date("Y-m-d H:i:s") }} </span>
-        </p>
-        <p>
-            Checkin: <span class="cl-bold"> {{ booking.checkin|date("Y-m-d") }} </span> | 
-            Checkout: <span class="cl-bold"> {{ booking.checkout|date("Y-m-d") }} </span> | 
-            <span class="cl-bold"> {{ booking.days }} day(s) </span></p>
-        <p>
-            Status: <span class="cl-bold"> {{ booking.status.name }} </span> | 
-            Payment: <span class="cl-bold"> {{ booking.payment.name }} </span>
-        </p>
-        <p>
-            Total Amount: <span class="cl-bold"> ${{ booking.totalAmount}} </span> | 
-            Paid Amount: <span class="cl-bold"> ${{ booking.paidAmount}} </span> | 
-            Payment Amount: <span class="cl-bold"> ${{ booking.paymentAmount}} </span>
-        </p>
-        <p>
-            Category: <span class="cl-bold"> {{ booking.category.name }} </span> |
-            Adults: <span class="icon-find"> {% for i in 1..booking.adults %} {{ "&#xf007;" }} {% endfor %} </span> |
-            Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
-        <p>
-            <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
-            <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Booking</a>
-        </p>
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <h2>Booking Details [ #{{ booking.id }} ]</h2>
+                <p>
+                    Reserved by email <span class="cl-bold"> {{ booking.userId.email}} </span>
+                    on <span class="cl-bold"> {{ booking.dateAdded|date("Y-m-d H:i:s") }} </span>
+                </p>
+                <h4 class="cl-bold">
+                    Status: <span class="text-danger"> {{ booking.status.name }} </span> 
+                </h4>
+                <p>
+                    Checkin: <span class="cl-bold"> {{ booking.checkin|date("Y-m-d") }} </span> | 
+                    Checkout: <span class="cl-bold"> {{ booking.checkout|date("Y-m-d") }} </span> | 
+                    <span class="cl-bold"> {{ booking.days }} day(s) </span></p>
+                <p>
+                    Payment: <span class="cl-bold"> {{ booking.payment.name }} </span> |
+                    Total Amount: <span class="cl-bold"> ${{ booking.totalAmount}} </span> 
+                </p>
+                <p>
+                    Paid Amount: <span class="cl-bold"> ${{ booking.paidAmount}} </span> | 
+                    Payment Amount: <span class="cl-bold"> ${{ booking.paymentAmount}} </span>
+                </p>
+                <p>
+                    Category: <span class="cl-bold"> {{ booking.category.name }} </span> |
+                    Adults: <span class="icon-find"> {% for i in 1..booking.adults %} {{ "&#xf007;" }} {% endfor %} </span> |
+                    Child Bed: <span class="cl-bold"> {{ booking.childBed}} </span></p>
+                <p>
+                    <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
+                    <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Booking</a>
+                </p>
         
-        {% if stays|length < booking.adults %} 
-            <h4><button class="btn btn-danger btn-outline" id="Add">Add stay for this booking</button></h4>
-            <div id="stay"></div> 
-        {% else %} 
-            <h4><button class="btn btn-danger btn-outline" disabled>Add stay for this booking</button></h4>
-        {% endif %} 
+                {% if stays|length < booking.adults %} 
+                    <h4><button class="btn btn-danger btn-outline" id="Add">Add stay for this booking</button></h4>
+                    <div id="stay"></div> 
+                {% else %} 
+                    <h4><button class="btn btn-danger btn-outline" disabled>Add stay for this booking</button></h4>
+                {% endif %} 
         
-        <h2>All stays for this booking</h2>
-        {% if stays|length == 0 %} 
-            <p>No result for stays</p>
-        {% else %} 
-            <div class="row">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>Stay Id</th>
-                        <th>Room Number</th>
-                        <th>Guest</th> 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for stay in stays %}
+                <h2>All stays for this booking</h2>
+                {% if stays|length == 0 %} 
+                    <p>No result for stays</p>
+                {% else %} 
+                    <div class="row">
+                        <table class="table table-striped table-hover">
+                        <thead>
                         <tr>
-                            <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
-                            <td><a href="{{ path('admin_room_view', {id:  stay.room.id}) }}"> {{ stay.room }} </a></td>
-                            <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></td>
+                            <th>Stay Id</th>
+                            <th>Room Number</th>
+                            <th>Guest</th> 
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for stay in stays %}
+                            <tr>
+                                <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
+                                <td><a href="{{ path('admin_room_view', {id:  stay.room.id}) }}"> {{ stay.room }} </a></td>
+                                <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        </table>
+                    </div>
+                {% endif %} 
             </div>
-        {% endif %} 
-      
+        </div>  
     </div>
     
     <script>
@@ -73,23 +77,33 @@
                 `
                 <form method="post" action="{{ path('admin_stay_create', { id: booking.id}) }}">
                     <div class="form-group">
-                        <div class="col-md-12">
-                            {{ form_widget(form.room) }}
+                        <div class="col-sm-12">
+                            <select class="form-control" id="stay_room" name="stay[room]">
+                                <option value="">Choise Room</option>
+                                {% for room in rooms %}
+                                    <option value="{{ room.id }}">{{ room.number }} {{ room.category }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <select class="form-control" id="stay_guest" name="stay[guest]">
+                                <option value="">Choise Guest</option>
+                                {% for guest in guests %}
+                                    <option value="{{ guest.id }}">{{ guest.personalNumber }} {{ guest.firstName }} {{ guest.fathersName }} {{ guest.lastName }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            {{ form_widget(form.guest) }}
+                            <textarea class="form-control" name="stay[note]" id="stay_note" rows="6" placeholder="Note"></textarea>   
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" id="stay_note" placeholder="Note" name="stay[note]" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <h4><button type="submit" class="btn btn-primary">Submit</button></h4>
+                            <h4><button type="submit" class="btn btn-danger">Submit</button></h4>
                         </div>
                     </div>
                     {{  form_row(form._token) }}
