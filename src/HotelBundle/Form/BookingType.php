@@ -35,15 +35,13 @@ class BookingType extends AbstractType
                 "data" => new \DateTime()
             ))
             ->add('adults', NumberType::class)
-            // $room = $this->roomService->getAllFreeRoomsByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId);
-            // $booking->setRoom($room);
-            ->add('room', null, [
-                'required'   => false,
-                'empty_data' => '1'
-            ])
             ->add('payment', EntityType::class,
                 ['class' => Payment::class])
             ->add('status', null, [
+                'required'   => false,
+                'empty_data' => '1'
+            ])
+            ->add('room', null, [
                 'required'   => false,
                 'empty_data' => '1'
             ])

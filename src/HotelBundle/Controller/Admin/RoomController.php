@@ -5,10 +5,15 @@ namespace HotelBundle\Controller\Admin;
 use HotelBundle\Entity\Room;
 use HotelBundle\Entity\Booking;
 use HotelBundle\Entity\Stay;
+use HotelBundle\Entity\Category;
 use HotelBundle\Form\RoomType;
+use HotelBundle\Form\BookingType;
+use HotelBundle\Form\StayType;
+use HotelBundle\Form\CategoryType;
 use HotelBundle\Service\Rooms\RoomServiceInterface;
 use HotelBundle\Service\Bookings\BookingServiceInterface;
 use HotelBundle\Service\Stays\StayServiceInterface;
+use HotelBundle\Service\Categories\CategoryServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,18 +42,27 @@ class RoomController extends Controller
     private $stayService;
     
     /**
+     * @var CategoryServiceInterface
+     */
+    private $categoryService;
+    
+    /**
      * RoomController constructor.
      * @param RoomServiceInterface $roomService
+     * @param BookingServiceInterface $bookingService
      * @param StayServiceInterface $stayService
+     * @param CategoryServiceInterface $categoryService
      */
     public function __construct(
         RoomServiceInterface $roomService,
         BookingServiceInterface $bookingService,
-        StayServiceInterface $stayService)
+        StayServiceInterface $stayService,
+        CategoryServiceInterface $categoryService)
     {
         $this->roomService = $roomService;
         $this->bookingService = $bookingService;
         $this->stayService = $stayService;
+        $this->categoryService = $categoryService;
     }
     
     /**
@@ -137,6 +151,8 @@ class RoomController extends Controller
     {
         $room = $this->roomService->getOne($id);
         
+        $categories = $this->categoryService->getAll();
+        
         if (null === $room){
             return $this->redirectToRoute("hotel_index");
         }
@@ -145,7 +161,8 @@ class RoomController extends Controller
             [
                 'form' => $this->createForm(RoomType::class)
                        ->createView(),
-                'room' => $room
+                'room' => $room,
+                'categories' => $categories,
             ]);
 
     }
@@ -166,7 +183,7 @@ class RoomController extends Controller
         
         $this->roomService->edit($room);
 
-        return $this->redirectToRoute("admin_rooms");
+        return $this->redirectToRoute('admin_room_view', [ 'id' => $id]);
     }
     
     /**

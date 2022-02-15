@@ -3,8 +3,14 @@
 namespace HotelBundle\Controller\Admin;
 
 use HotelBundle\Entity\Stay;
+use HotelBundle\Entity\Booking;
+use HotelBundle\Entity\Guest;
 use HotelBundle\Form\StayType;
+use HotelBundle\Form\BookingType;
+use HotelBundle\Form\GuestType;
 use HotelBundle\Service\Stays\StayServiceInterface;
+use HotelBundle\Service\Bookings\BookingServiceInterface;
+use HotelBundle\Service\Guests\GuestServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,13 +29,29 @@ class StayController extends Controller
     private $stayService;
     
     /**
+     * @var BookingServiceInterface
+     */
+    private $bookingService;
+    
+    /**
+     * @var GuestServiceInterface
+     */
+    private $guestService;
+    
+    /**
      * StayController constructor.
      * @param StayServiceInterface $stayService
+     * @param BookingServiceInterface $bookingService
+     * @param GuestServiceInterface $guestService
      */
     public function __construct(
-        StayServiceInterface $stayService)
+        StayServiceInterface $stayService,
+        BookingServiceInterface $bookingService,
+        GuestServiceInterface $guestService)
     {
         $this->stayService = $stayService;
+        $this->bookingService = $bookingService;
+        $this->guestService = $guestService;
     }
     
     /**
@@ -88,6 +110,8 @@ class StayController extends Controller
     public function edit($id)
     {
         $stay = $this->stayService->getOne($id);
+        $bookings = $this->bookingService->getAll();
+        $guests = $this->guestService->getAll();
         
         if (null === $stay){
             return $this->redirectToRoute("hotel_index");
@@ -97,7 +121,9 @@ class StayController extends Controller
             [
                 'form' => $this->createForm(StayType::class)
                        ->createView(),
-                'stay' => $stay
+                'stay' => $stay,
+                'bookings' => $bookings,
+                'guests' => $guests
             ]);
 
     }
@@ -115,10 +141,9 @@ class StayController extends Controller
         
         $form = $this->createForm(StayType::class, $stay);
         $form->handleRequest($request);
-        
         $this->stayService->edit($stay);
 
-        return $this->redirectToRoute("admin_stays");
+        return $this->redirectToRoute('admin_stay_view', [ 'id' => $id]);
     }
     
     /**

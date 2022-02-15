@@ -29,6 +29,13 @@ class Stay
      */
     private $note;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateOfAccommodation", type="datetime")
+     */
+    private $dateOfAccommodation;
+    
      /**
      * @var int
      *
@@ -59,6 +66,10 @@ class Stay
      */
     private $booking;
     
+    public  function __construct()
+    {
+        $this->dateOfAccommodation = new \DateTime('now');
+    }
 
     /**
      * Get id
@@ -92,6 +103,30 @@ class Stay
     public function getNote()
     {
         return $this->note;
+    }
+    
+    /**
+     * Set dateOfAccommodation
+     *
+     * @param DateTime $dateOfAccommodation
+     *
+     * @return Stay
+     */
+    public function setDateOfAccommodation($dateOfAccommodation)
+    {
+        $this->dateOfAccommodation = $dateOfAccommodation;
+
+        return $this;
+    }
+    
+    /**
+     * Get dateOfAccommodation
+     *
+     * @return \DateTime
+     */
+    public function getDateOfAccommodation()
+    {
+        return $this->dateOfAccommodation;
     }
     
     /**

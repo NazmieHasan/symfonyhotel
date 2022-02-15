@@ -92,16 +92,4 @@ class RoomService implements RoomServiceInterface
             ->findBy(['category' => $category]);
     }
     
-    /**
-     * @param date $checkin
-     * @param date $checkout
-     * @param int $categoryId
-     * @return Room[]
-     */
-    public function getAllFreeRoomsByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId)
-    {
-        // TODO 
-        
-    } 
-    
 }

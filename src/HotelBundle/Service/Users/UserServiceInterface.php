@@ -14,5 +14,5 @@ interface UserServiceInterface
     public function findOne(User $user) : ?User;
     public function currentUser() : ?User;
     public function getAll();
-
+    
 }

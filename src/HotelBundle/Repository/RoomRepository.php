@@ -76,5 +76,5 @@ class RoomRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
-    
+
 }

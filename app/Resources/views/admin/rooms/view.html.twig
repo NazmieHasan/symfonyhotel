@@ -27,6 +27,7 @@
                         <th>Booking Id</th>
                         <th>Checkin</th>
                         <th>Checkout</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,7 @@
                             <td><a href="{{ path('admin_booking_view', {id: booking.id}) }}"> {{ booking.id }} </a></td>
                             <td> {{ booking.checkin|date("Y-m-d") }} </td>
                             <td> {{ booking.checkout|date("Y-m-d") }} </td>
+                            <td> {{ booking.status }} </td>
                         </tr>
                     {% endfor %}
                     </tbody>

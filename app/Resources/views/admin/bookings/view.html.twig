@@ -7,7 +7,7 @@
             <div class="col-sm-8 offset-sm-2">
                 <h2>Booking Details [ #{{ booking.id }} ]</h2>
                 <p>
-                    Reserved by email <span class="cl-bold"> {{ booking.userId.email}} </span>
+                    Reserved by email <span class="cl-bold"> {{ booking.userId.email }} </span>
                     on <span class="cl-bold"> {{ booking.dateAdded|date("Y-m-d H:i:s") }} </span>
                 </p>
                 <h4 class="cl-bold">
@@ -36,7 +36,7 @@
         
                 {% if stays|length < booking.adults %} 
                     <h4><button class="btn btn-danger btn-outline" id="Add">Add stay for this booking</button></h4>
-                    <div id="stay"></div> 
+                    <div id="add_stay"></div> 
                 {% else %} 
                     <h4><button class="btn btn-danger btn-outline" disabled>Add stay for this booking</button></h4>
                 {% endif %} 
@@ -70,8 +70,8 @@
     
     <script>
         $('#Add').click(function () {
-            $('#stay').empty();
-            let stayForm =
+            $('#add_stay').empty();
+            let addStayForm =
                 `
                 <form method="post" action="{{ path('admin_stay_create', { id: booking.id}) }}">
                     <div class="form-group">
@@ -98,8 +98,8 @@
                 </form>
                 `;
                 
-            $('#stay').append(stayForm);
-            $('#stay').toggle();
+            $('#add_stay').append(addStayForm);
+            $('#add_stay').toggle();
         })
     </script>
 

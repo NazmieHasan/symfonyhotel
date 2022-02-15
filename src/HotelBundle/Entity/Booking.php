@@ -453,7 +453,6 @@ class Booking
         $this->dateAdded = $dateAdded;
 
         return $this;
-
     }
 
     /**

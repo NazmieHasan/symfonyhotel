@@ -136,6 +136,7 @@ class BookingController extends Controller
         $booking = $this->bookingService->getOne($id);
         
         $categories = $this->categoryService->getAll();
+        $rooms = $this->roomService->getAll();
         $payments = $this->paymentService->getAll();
         $statuses = $this->statusService->getAll();
         
@@ -148,6 +149,7 @@ class BookingController extends Controller
                 'form' => $this->createForm(BookingType::class)->createView(),
                 'booking' => $booking,
                 'categories' => $categories,
+                'rooms' => $rooms,
                 'payments' => $payments,
                 'statuses' => $statuses,
             ]);

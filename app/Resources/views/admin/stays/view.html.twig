@@ -3,7 +3,8 @@
 {% block body %}
 
     <div class="container body-content text-center">
-        <h2>Stay Information</h2>
+        <h2>Stay Details [ #{{ stay.id }} ]</h2>
+        <p>Date of accomodation: {{ stay.dateOfAccommodation|date("Y-m-d H:i:s") }} </p>
         <p>Booking Id: <a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking.id }} </a></p>
         <p>Guest: <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></p>
         <p>Note: {{ stay.note }}</p>
