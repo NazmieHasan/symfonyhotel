@@ -67,7 +67,7 @@ class RoomController extends Controller
     
     /**
      * @Route("/create", name="admin_room_create", methods={"GET"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function create()
@@ -80,7 +80,7 @@ class RoomController extends Controller
     
     /**
      * @Route("/create", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -97,7 +97,7 @@ class RoomController extends Controller
     
     /**
      * @Route("/view/{id}", name="admin_room_view")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -115,7 +115,7 @@ class RoomController extends Controller
     
     /**
      * @Route("/", name="admin_rooms")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -142,8 +142,7 @@ class RoomController extends Controller
     
     /**
      * @Route("/edit/{id}", name="admin_room_edit", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -169,7 +168,7 @@ class RoomController extends Controller
     
     /**
      * @Route("/edit/{id}", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Responsen
@@ -188,7 +187,7 @@ class RoomController extends Controller
     
     /**
      * @Route("/delete/{id}", name="admin_room_delete")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response

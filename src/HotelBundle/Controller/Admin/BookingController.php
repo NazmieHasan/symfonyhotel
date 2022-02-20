@@ -102,7 +102,7 @@ class BookingController extends Controller
     
     /**
      * @Route("/view/{id}", name="admin_booking_view")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -127,7 +127,7 @@ class BookingController extends Controller
     
     /**
      * @Route("/edit/{id}", name="admin_booking_edit", methods={"GET"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -158,7 +158,7 @@ class BookingController extends Controller
 
     /**
      * @Route("/edit/{id}", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Responsen
@@ -180,7 +180,7 @@ class BookingController extends Controller
 
     /**
      * @Route("/delete/{id}", name="admin_booking_delete")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -199,7 +199,7 @@ class BookingController extends Controller
 
     /**
      * @Route("/", name="admin_bookings")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */

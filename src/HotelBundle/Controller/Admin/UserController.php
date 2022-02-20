@@ -46,7 +46,7 @@ class UserController extends Controller
 
     /**
      * @Route("/", name="admin_users")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listUsers() {
@@ -58,7 +58,7 @@ class UserController extends Controller
     
     /**
      * @Route("/edit/{id}", name="admin_user_edit")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param int $id
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -110,7 +110,7 @@ class UserController extends Controller
     
     /**
      * @Route("/delete/{id}", name="admin_user_delete")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response

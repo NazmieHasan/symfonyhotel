@@ -56,7 +56,7 @@ class StayController extends Controller
     
     /**
      * @Route("/create/{id}", name="admin_stay_create", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -73,7 +73,7 @@ class StayController extends Controller
     
     /**
      * @Route("/", name="admin_stays")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getAllStays()
@@ -88,6 +88,7 @@ class StayController extends Controller
     
     /**
      * @Route("/view/{id}", name="admin_stay_view")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -102,8 +103,7 @@ class StayController extends Controller
     
     /**
      * @Route("/edit/{id}", name="admin_stay_edit", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -130,7 +130,7 @@ class StayController extends Controller
     
     /**
      * @Route("/edit/{id}", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')"))
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Responsen
@@ -148,7 +148,7 @@ class StayController extends Controller
     
     /**
      * @Route("/delete/{id}", name="admin_stay_delete")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response

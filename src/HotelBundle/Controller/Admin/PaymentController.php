@@ -34,7 +34,7 @@ class PaymentController extends Controller
     
     /**
      * @Route("/create", name="admin_payment_create", methods={"GET"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function create()
@@ -47,7 +47,7 @@ class PaymentController extends Controller
     
     /**
      * @Route("/create", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -64,7 +64,7 @@ class PaymentController extends Controller
     
      /**
      * @Route("/", name="admin_payments")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getAllPayments()
@@ -79,8 +79,7 @@ class PaymentController extends Controller
     
     /**
      * @Route("/edit/{id}", name="admin_payment_edit", methods={"GET"})
-     *
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -103,7 +102,7 @@ class PaymentController extends Controller
     
     /**
      * @Route("/edit/{id}", methods={"POST"})
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Responsen
@@ -122,7 +121,7 @@ class PaymentController extends Controller
     
     /**
      * @Route("/delete/{id}", name="admin_payment_delete")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
