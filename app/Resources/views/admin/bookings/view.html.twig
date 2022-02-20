@@ -57,7 +57,7 @@
                             {% for stay in stays %}
                             <tr>
                                 <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
-                                <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></td>
+                                <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }} </a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

@@ -23,7 +23,7 @@
                             <td>{{ user.loginName}}</td>
                             <td>
                                 <a href="{{ path('admin_user_edit', { 'id': user.id}) }}" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} >Edit</a>
-                                <a href="{{ path('admin_user_delete', {id: user.id}) }}" onClick="return confirm('Are you sure you want to delete?')" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} >Delete</a>
+                                <a href="{{ path('admin_user_delete', {id: user.id}) }}" onClick="return confirm('Are you sure you want to delete {{ user.email }} ?')" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} >Delete</a>
                             </td>
                         </tr>
                     {% endfor %}

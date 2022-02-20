@@ -14,7 +14,8 @@
                 <tr>
                     <th>#</th>
                     <th>Booking</th>
-                    <th>Guest</th>
+                    <th>Guest - Personal Number</th>
+                    <th>Guest - Name</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -22,12 +23,13 @@
                 {% for stay in stays %}
                     <tr>
                         <td>{{ stay.id }}</td>
-                        <td><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking }}</a></td>
-                        <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}">{{ stay.guest }}</a></td>
+                        <td><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}" target=_blank>{{ stay.booking }}</a></td>
+                        <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}" target=_blank>{{ stay.guest.personalNumber }}</a></td>
+                        <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}" target=_blank>{{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }}</a></td>
                         <td>
                             <a href="{{ path('admin_stay_view', {id: stay.id}) }}" target=_blank>View</a>
                             <a href="{{ path('admin_stay_edit', {id: stay.id}) }}" target=_blank>Edit</a>
-                            <a href="{{ path('admin_stay_delete', {id: stay.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
+                            <a href="{{ path('admin_stay_delete', {id: stay.id}) }}" onClick="return confirm('Are you sure you want to delete stay with guest {{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }} ?')">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -24,7 +24,7 @@
                         <td>{{ status.name }}</td>
                         <td>
                             <a href="{{ path('admin_status_edit', {id: status.id}) }}">Edit</a>
-                            <a href="{{ path('admin_status_delete', {id: status.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
+                            <a href="{{ path('admin_status_delete', {id: status.id}) }}" onClick="return confirm('Are you sure you want to delete status {{ status.name }} ?')">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

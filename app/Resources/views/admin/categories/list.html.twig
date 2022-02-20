@@ -29,7 +29,7 @@
                         <td>
                             <a href="{{ path('admin_category_view', {id: category.id}) }}" target=_blank>View</a>
                             <a href="{{ path('admin_category_edit', {id: category.id}) }}" target=_blank>Edit</a>
-                            <a href="{{ path('admin_category_delete', {id: category.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
+                            <a href="{{ path('admin_category_delete', {id: category.id}) }}" onClick="return confirm('Are you sure you want to delete category {{ category.name }} ?')">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}
