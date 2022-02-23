@@ -79,6 +79,13 @@ class Booking
      * @ORM\Column(name="adults", type="integer")
      */
     private $adults;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="childBed", type="boolean", nullable=true)
+     */
+    private $childBed;
 
     /**
      * @var string
@@ -368,6 +375,31 @@ class Booking
     {
         return $this->adults;
     }
+    
+    /**
+     * Set childBed
+     *
+     * @param bool $childBed
+     *
+     * @return Booking
+     */
+    public function setChildBed($childBed)
+    {
+        $this->childBed = $childBed;
+
+        return $this;
+    }
+
+    /**
+     * Get childBed
+     *
+     * @return bool
+     */
+    public function getChildBed()
+    {
+        return $this->childBed;
+    }
+    
 
     /**
      * Set totalAmount

@@ -28,6 +28,7 @@
                 <p>
                     Category: <span class="cl-bold"> {{ booking.category.name }} </span> |
                     Adults: <span class="icon-find"> {% for i in 1..booking.adults %} {{ "&#xf007;" }} {% endfor %} </span> |
+                    Child Bed: <span class="cl-bold"> {% if ( booking.childBed == 1 ) %} Yes {% else %} No {% endif %}</span> |
                     Room: <span class="cl-bold"> {{ booking.room.number }} </span> |
                 <p>
                     <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
