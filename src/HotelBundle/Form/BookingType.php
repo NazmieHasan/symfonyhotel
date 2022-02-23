@@ -36,9 +36,9 @@ class BookingType extends AbstractType
                 "data" => new \DateTime()
             ))
             ->add('adults', NumberType::class)
-             ->add('childBed', CheckboxType::class, array(
+            ->add('childBed', CheckboxType::class, array(
                 'label' => '',
-                'required'   => false,
+                'required' => false,
                 ))
             ->add('payment', EntityType::class,
                 ['class' => Payment::class])

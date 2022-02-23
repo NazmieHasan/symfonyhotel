@@ -9,9 +9,9 @@
                     <form class="form-horizontal" action="{{ path('admin_stay_edit', {'id': stay.id}) }}" method="POST">
                         <legend>Edit Stay [ #{{ stay.id }} ]</legend>
                         <div class="form-group">
-                            <label class="col-sm-12 control-label" for="stay_booking">Booking</label>
+                            <label class="col-sm-12 control-label" for="stay_edit_booking">Booking</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="stay_booking" name="stay[booking]">
+                                <select class="form-control" id="stay_edit_booking" name="stay_edit[booking]">
                                     {% for booking in bookings %}
                                         {% if ( stay.booking.id == booking.id)  %}
                                             <option selected="selected" value="{{ booking.id }}">
@@ -27,9 +27,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-12 control-label" for="stay_guest">Guest</label>
+                            <label class="col-sm-12 control-label" for="stay_edit_guest">Guest</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="stay_guest" name="stay[guest]">
+                                <select class="form-control" id="stay_edit_guest" name="stay_edit[guest]">
                                     {% for guest in guests %}
                                         {% if ( stay.guest.id == guest.id)  %}
                                             <option selected="selected" value="{{ guest.id }}">
@@ -45,9 +45,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-12 control-label" for="stay_note">Note</label>
+                                <div class="col-sm-12">
+                                    <input type="checkbox" name="stay_edit[isTerminated]" {% if ( stay.isTerminated == 1 ) %} ( checked="checked" ) {% endif %} >
+                                    <label for="stay_edit_isTerminated">Termination of stay</label>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="stay_edit_note">Note</label>
                             <div class="col-sm-12">
-                                <textarea class="form-control" name="stay[note]" id="stay_note" rows="6">{{ stay.note }}</textarea> 
+                                <textarea class="form-control" name="stay_edit[note]" id="stay_edit_note" rows="6">{{ stay.note }}</textarea> 
                             </div>
                         </div>
                         <div class="form-group">

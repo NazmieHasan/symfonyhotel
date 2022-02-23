@@ -36,6 +36,20 @@ class Stay
      */
     private $dateOfAccommodation;
     
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isTerminated", type="boolean", nullable=true)
+     */
+    private $isTerminated;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateOfDeparture", type="datetime", nullable=true)
+     */
+    private $dateOfDeparture;
+    
      /**
      * @var int
      *
@@ -127,6 +141,54 @@ class Stay
     public function getDateOfAccommodation()
     {
         return $this->dateOfAccommodation;
+    }
+    
+    /**
+     * Set isTerminated
+     *
+     * @param bool $isTerminated
+     *
+     * @return Stay
+     */
+    public function setIsTerminated($isTerminated)
+    {
+        $this->isTerminated = $isTerminated;
+
+        return $this;
+    }
+
+    /**
+     * Get isTerminated
+     *
+     * @return bool
+     */
+    public function getIsTerminated()
+    {
+        return $this->isTerminated;
+    }
+    
+    /**
+     * Set dateOfDeparture
+     *
+     * @param DateTime $dateOfDeparture
+     *
+     * @return Stay
+     */
+    public function setDateOfDeparture($dateOfDeparture)
+    {
+        $this->dateOfDeparture = $dateOfDeparture;
+
+        return $this;
+    }
+    
+    /**
+     * Get dateOfDeparture
+     *
+     * @return \DateTime
+     */
+    public function getDateOfDeparture()
+    {
+        return $this->dateOfDeparture;
     }
     
     /**

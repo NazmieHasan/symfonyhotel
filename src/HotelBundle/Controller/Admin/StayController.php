@@ -6,6 +6,7 @@ use HotelBundle\Entity\Stay;
 use HotelBundle\Entity\Booking;
 use HotelBundle\Entity\Guest;
 use HotelBundle\Form\StayType;
+use HotelBundle\Form\StayEditType;
 use HotelBundle\Form\BookingType;
 use HotelBundle\Form\GuestType;
 use HotelBundle\Service\Stays\StayServiceInterface;
@@ -119,7 +120,7 @@ class StayController extends Controller
 
         return $this->render('admin/stays/edit.html.twig',
             [
-                'form' => $this->createForm(StayType::class)
+                'form' => $this->createForm(StayEditType::class)
                        ->createView(),
                 'stay' => $stay,
                 'bookings' => $bookings,
@@ -139,7 +140,7 @@ class StayController extends Controller
     {
         $stay = $this->stayService->getOne($id);
         
-        $form = $this->createForm(StayType::class, $stay);
+        $form = $this->createForm(StayEditType::class, $stay);
         $form->handleRequest($request);
         $this->stayService->edit($stay);
 
