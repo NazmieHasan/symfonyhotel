@@ -8,6 +8,7 @@
         <p>Booking Id: <a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking.id }} </a></p>
         <p>Guest: <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></p>
         <p>Terminated: <span class="cl-bold"> {% if ( stay.isTerminated == 1 ) %} Yes {% else %} No {% endif %}</span></p>
+        <p>{% if ( stay.isTerminated == 1 ) %} Date of departure: {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }} {% endif %}</p>
         <p>Note: {{ stay.note }}</p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>

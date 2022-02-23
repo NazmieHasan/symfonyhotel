@@ -142,6 +142,13 @@ class StayController extends Controller
         
         $form = $this->createForm(StayEditType::class, $stay);
         $form->handleRequest($request);
+       
+        if ($stay->getIsTerminated(1)) {    
+            $stay->setDateOfDeparture(new \DateTime('now'));
+        } else {  
+            $stay->setDateOfDeparture(null);
+        }
+        
         $this->stayService->edit($stay);
 
         return $this->redirectToRoute('admin_stay_view', [ 'id' => $id]);
