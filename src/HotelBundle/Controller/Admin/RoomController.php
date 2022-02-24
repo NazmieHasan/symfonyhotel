@@ -29,7 +29,7 @@ class RoomController extends Controller
     /**
      * @var RoomServiceInterface
      */
-    private $roomtService;
+    private $roomService;
     
     /**
      * @var BookingServiceInterface

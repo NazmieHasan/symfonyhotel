@@ -29,4 +29,23 @@ class RoleRepository extends \Doctrine\ORM\EntityRepository
                 new Mapping\ClassMetadata(Role::class) :
                 $metaData);
     }
+    
+    /**
+     * @param Role $role
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function insert(Role $role)
+    {
+        $this->_em->persist($role);
+
+        try {
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+    
 }
