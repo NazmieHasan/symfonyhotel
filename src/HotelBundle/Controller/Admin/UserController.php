@@ -47,13 +47,47 @@ class UserController extends Controller
     /**
      * @Route("/", name="admin_users")
      * @Security("has_role('ROLE_ADMIN')")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listUsers() {
+    public function getAllUsers(Request $request)
+    {
         $users = $this->userService->getAll();
         
-        return $this->render('admin/users/list.html.twig', ['users' => $users]);
+        if($request->isMethod("POST")) {  
+            $email = $request->get('email');
+        
+            $em = $this->getDoctrine()->getManager();
+            $users = $em->getRepository("HotelBundle:User")
+                       ->findBy(
+                           [
+                               'email' => $email
+                           ]);
+        }
 
+        return $this->render("admin/users/list.html.twig",
+            [
+                'users' => $users
+            ]);
+    }
+    
+    /**
+     * @Route("/view/{id}", name="admin_user_view")
+     * @Security("has_role('ROLE_ADMIN')")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function view(int $id) 
+    {
+        $user = $this->userService->findOneById($id);
+        
+        $bookings = $this->bookingService->getAllByUserId($id);
+
+        return $this->render("admin/users/view.html.twig",
+            [
+                'user' => $user,
+                'bookings' => $bookings
+            ]);
     }
     
     /**
@@ -63,8 +97,8 @@ class UserController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editUser(Request $request, int $id) {
-    
+    public function editUser(Request $request, int $id) 
+    {
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);
         
         if ($user === null) {

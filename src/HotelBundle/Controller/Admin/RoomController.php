@@ -101,7 +101,8 @@ class RoomController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function view(int $id) {
+    public function view(int $id) 
+    {
         $room = $this->roomService->getOne($id);
         
         $bookings = $this->bookingService->getAllByRoomId($id);

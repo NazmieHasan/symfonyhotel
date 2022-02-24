@@ -3,33 +3,55 @@
 {% block body %}
 
     <div class="container body-content">
-        <h2><a href="{{ path('admin_users') }}">All Users</a></h2>
-        <div class="row">
-            <table class="table table-striped table-hover ">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Email</th>
-                        <th>Login Name</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for user in users %}
-                        <tr>
-                        <tr {% if user.isAdmin() %} class="tr-admin" {% endif %}>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.loginName}}</td>
-                            <td>
-                                <a href="{{ path('admin_user_edit', { 'id': user.id}) }}" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} >Edit</a>
-                                <a href="{{ path('admin_user_delete', {id: user.id}) }}" onClick="return confirm('Are you sure you want to delete {{ user.email }} ?')" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} >Delete</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="row find-booking mb-4">
+            <div class="col-md-5">
+                <h2><a href="{{ path('admin_users') }}">All Users</a></h2>
+            </div>
+            <div class="col-md-7">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="email" placeholder="Please, enter email" />
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <button type="submit" class="btn btn-danger">Find User</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+        {% if users|length == 0 %} 
+            <h4 class="text-center mt-5">Not found result!</h4>
+            <h4 class="text-center mb-5">Please, try again!</h4>
+        {% else %}   
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Email</th>
+                            <th>Login Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                            <tr {% if user.isAdmin() %} class="tr-admin" {% endif %}>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.loginName}}</td>
+                                <td>
+                                    <a href="{{ path('admin_user_view', {id: user.id}) }}" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} target=_blank>View</a>
+                                    <a href="{{ path('admin_user_edit', { 'id': user.id}) }}" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} target=_blank>Edit</a>
+                                    <a href="{{ path('admin_user_delete', {id: user.id}) }}" onClick="return confirm('Are you sure you want to delete {{ user.email }} ?')" {% if user.isAdmin() %} class="td-actions-admin" {% endif %} >Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
     </div>
     
 {% endblock %}

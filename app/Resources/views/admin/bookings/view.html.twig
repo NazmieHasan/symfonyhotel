@@ -52,6 +52,7 @@
                         <tr>
                             <th>Stay Id</th>
                             <th>Guest</th> 
+                            <th>Terminated</th> 
                         </tr>
                         </thead>
                         <tbody>
@@ -59,6 +60,7 @@
                             <tr>
                                 <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
                                 <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }} </a></td>
+                                <td>{% if ( stay.isTerminated == 1 ) %} Yes {% else %} No {% endif %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

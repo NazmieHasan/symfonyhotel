@@ -122,7 +122,7 @@ class BookingService implements BookingServiceInterface
     /**
      * @return ArrayCollection|Booking[]
      */
-    public function getAllBookingsByUser()
+    public function getAllByCurrentUser()
     {
         return  $this->bookingRepository
 
@@ -134,14 +134,30 @@ class BookingService implements BookingServiceInterface
     }
     
     /**
+     * @param int $userId
+     * @return Booking[]
+     */
+    public function getAllByUserId(int $userId)
+    {
+        $user = $this->userService->findOneById($userId);
+        
+        return $this
+            ->bookingRepository
+            ->findBy(['userId' => $userId], ['id' => 'DESC']);
+
+    }
+    
+    /**
      * @param int $roomId
      * @return Booking[]
      */
     public function getAllByRoomId(int $roomId)
     {
         $room = $this->roomService->getOne($roomId);
+        
         return $this
             ->bookingRepository
             ->findBy(['room' => $room], ['id' => 'DESC']);
     }
+    
 }

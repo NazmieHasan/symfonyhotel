@@ -140,9 +140,9 @@ class UserController extends Controller
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAllBookingsByUser()
+    public function getAllMyBookings()
     {
-        $bookings = $this->bookingService->getAllBookingsByUser();
+        $bookings = $this->bookingService->getAllByCurrentUser();
 
         return $this->render("users/myBookings.html.twig",
             [
