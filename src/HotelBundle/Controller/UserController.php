@@ -84,7 +84,7 @@ class UserController extends Controller
         }
 
         if ($form->isValid()) {
-            $this->addFlash("info", "You are registered successfully! Login in system.");
+            $this->addFlash("info", "You are registered! Login in system.");
             $this->userService->save($user);
             return $this->redirectToRoute("security_login");
         }
@@ -100,9 +100,10 @@ class UserController extends Controller
      * @Route("/user/create-booking/category-{id}", name="user_booking_create", methods={"GET"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param $id
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function create(int $id)
+    public function create(Request $request, int $id)
     {
         $category = $this->categoryService->getOne($id);
         $payments = $this->paymentService->getAll();
@@ -130,9 +131,18 @@ class UserController extends Controller
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
         
-        $this->bookingService->create($booking, $id);
-        $this->addFlash("info", "Create booking successfully!");
-        return $this->redirectToRoute("my_bookings");
+        if ($form->isValid()) {
+            $this->bookingService->create($booking, $id);
+            $this->addFlash("info", "Create booking successfully!");
+            return $this->redirectToRoute("my_bookings");
+        }
+        
+        return $this->render('users/createBooking.html.twig',
+            [
+                'form' => $form->createView(),
+                'category' => $category,
+                'payments' => $payments,
+            ]);
     }
     
     /**

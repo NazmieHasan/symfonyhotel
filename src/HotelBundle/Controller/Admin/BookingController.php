@@ -11,6 +11,7 @@ use HotelBundle\Entity\Category;
 use HotelBundle\Entity\Payment;
 use HotelBundle\Entity\Status;
 use HotelBundle\Form\BookingType;
+use HotelBundle\Form\BookingEditType;
 use HotelBundle\Form\StayType;
 use HotelBundle\Form\RoomType;
 use HotelBundle\Form\GuestType;
@@ -101,26 +102,61 @@ class BookingController extends Controller
     }
     
     /**
-     * @Route("/view/{id}", name="admin_booking_view")
+     * @Route("/view/{id}", name="admin_booking_view", methods={"GET"})
      * @Security("has_role('ROLE_ADMIN')")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function view(int $id) {
+    public function view(int $id) 
+    {
         $booking = $this->bookingService->getOne($id);
-        $rooms = $this->roomService->getAll();
-        $guests = $this->guestService->getAll();
-        
         $form = $this->createForm(StayType::class);
-        
         $stays = $this->stayService->getAllByBookingId($id);
+        $guest = '';
+        
+        if ($booking === null){
+            return $this->redirectToRoute("hotel_index");
+        }
 
         return $this->render("admin/bookings/view.html.twig",
             [
                 'form' => $this->createForm(StayType::class)->createView(),
                 'booking' => $booking,
-                'rooms' => $rooms,
-                'guests' => $guests,
+                'guest' => $guest,
+                'stays' => $stays,
+            ]);
+    }
+    
+    /**
+     * @Route("/view/{id}",  methods={"POST"})
+     * @Security("has_role('ROLE_ADMIN')")
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewProcess(Request $request, int $id) 
+    {
+        $booking = $this->bookingService->getOne($id);
+        $form = $this->createForm(StayType::class);
+        $stays = $this->stayService->getAllByBookingId($id);
+        
+        if ($booking === null){
+            return $this->redirectToRoute("hotel_index");
+        }
+        
+        $personalNumber = $request->get('personalNumber');
+        $em = $this->getDoctrine()->getManager();
+        $guest = $em->getRepository("HotelBundle:Guest")
+                    ->findBy(
+                            [
+                                'personalNumber' => $personalNumber
+                            ]);
+
+        return $this->render("admin/bookings/view.html.twig",
+            [
+                'form' => $this->createForm(StayType::class)->createView(),
+                'booking' => $booking,
+                'guest' => $guest,
                 'stays' => $stays,
             ]);
     }
@@ -136,20 +172,18 @@ class BookingController extends Controller
         $booking = $this->bookingService->getOne($id);
         
         $categories = $this->categoryService->getAll();
-        $rooms = $this->roomService->getAll();
         $payments = $this->paymentService->getAll();
         $statuses = $this->statusService->getAll();
         
-        if (null === $booking){
+        if ($booking === null){
             return $this->redirectToRoute("hotel_index");
         }
 
         return $this->render('admin/bookings/edit.html.twig',
             [
-                'form' => $this->createForm(BookingType::class)->createView(),
+                'form' => $this->createForm(BookingEditType::class)->createView(),
                 'booking' => $booking,
                 'categories' => $categories,
-                'rooms' => $rooms,
                 'payments' => $payments,
                 'statuses' => $statuses,
             ]);
@@ -171,7 +205,7 @@ class BookingController extends Controller
         $payments = $this->paymentService->getAll();
         $statuses = $this->statusService->getAll();
 
-        $form = $this->createForm(BookingType::class, $booking);
+        $form = $this->createForm(BookingEditType::class, $booking);
         $form->handleRequest($request);
         $this->bookingService->edit($booking);
 

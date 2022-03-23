@@ -6,6 +6,11 @@
         <div class="row">
             <div class="col-sm-4 offset-sm-4">
                 <div class="well">
+                    {% for msg in app.session.flashbag.get('info')  %}
+                        <div class="alert alert-success" id="info">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
                     <form name="authenticate" class="form-horizontal" action="{{ path('security_login') }}" method="post">
                         <fieldset>
                             <legend>Login</legend>

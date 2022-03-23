@@ -2,8 +2,11 @@
 body {
     background: #f0f0f0;
 }
-a, a:hover{
+a, a:hover {
     color: darkred;
+}
+.custom-a, .custom-a:hover {
+    color: #000000; 
 }
 
 legend {

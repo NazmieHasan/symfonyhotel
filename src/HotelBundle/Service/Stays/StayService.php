@@ -60,6 +60,9 @@ class StayService implements StayServiceInterface
     {
         $stay
             ->setBooking($this->bookingService->getOne($bookingId));
+        
+        $booking = $this->bookingService->getOne($bookingId);    
+        $booking->setStatusId(5); // Status In Progress   
             
         return $this->stayRepository->insert($stay);
     }
@@ -125,6 +128,17 @@ class StayService implements StayServiceInterface
         return $this
             ->stayRepository
             ->findBy(['booking' => $booking], ['id' => 'DESC']);
+    }
+    
+    /**
+     * @param int $bookingId
+     */
+    public function getMaxDateOfDepartureByBookingId(int $bookingId)
+    {
+        $booking = $this->bookingService->getOne($bookingId);
+        return $this
+            ->stayRepository
+            ->findOneBy(['booking' => $booking], ['dateOfDeparture' => 'DESC'], 1);
     }
     
 }

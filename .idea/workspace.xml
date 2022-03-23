@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand />
     <select />
@@ -7,20 +10,38 @@
   <component name="ChangeListManager">
     <list default="true" id="b2167960-1c84-47c0-bfdb-031179bbf0db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/db_rent_cars.5PXKMA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/hotel.tMHtBQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/library.uyToCQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/newdb_hotel.U2Qwww.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/online_store.9ceWWQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/shoe_shelf.1n_kig.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92af7ef7-640e-484a-ace2-35d6455699fa/storage_v2/_src_/schema/softuni_courses._0w9aw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/915c89f9-3a2c-4444-a2ff-1aca910397bb.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/915c89f9-3a2c-4444-a2ff-1aca910397bb/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a174efa1-fd31-4952-bf36-3a577df461f4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a174efa1-fd31-4952-bf36-3a577df461f4/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/bookings/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/bookings/view.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/guests/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/guests/view.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/stays/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/stays/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/stays/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/stays/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/stays/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/stays/view.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/users/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/users/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/users/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin/users/view.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/users/createBooking.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/users/createBooking.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/users/myBookings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/users/myBookings.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/users/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/users/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/Admin/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/ExceptionController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Entity/Stay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Entity/Stay.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Form/BookingType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Service/Bookings/BookingService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Bookings/BookingService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelBundle/Service/Stays/StayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelBundle/Service/Stays/StayService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/custom.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +55,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -90,6 +114,9 @@
       <path value="$PROJECT_DIR$/vendor/fig/link-util" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="1j9Acsk9caWwQriT5JxMG8DkHgP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -101,7 +128,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../erp-task" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -109,11 +136,16 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="Server" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/bin/console" scriptParameters="server:run">
+      <CommandLine>
+        <PhpTestInterpreterSettings>
+          <option name="interpreterName" value="PHP 7.2" />
+        </PhpTestInterpreterSettings>
+      </CommandLine>
       <method v="2" />
     </configuration>
   </component>
@@ -129,6 +161,19 @@
       <workItem from="1610830164095" duration="1641000" />
       <workItem from="1610833405274" duration="491000" />
       <workItem from="1611860573131" duration="1524000" />
+      <workItem from="1646374904826" duration="374000" />
+      <workItem from="1646375301512" duration="334000" />
+      <workItem from="1646375661212" duration="55000" />
+      <workItem from="1646375816256" duration="603000" />
+      <workItem from="1646376705312" duration="381000" />
+      <workItem from="1646377422984" duration="1067000" />
+      <workItem from="1646381273061" duration="267000" />
+      <workItem from="1646382169201" duration="1424000" />
+      <workItem from="1646385957509" duration="153000" />
+      <workItem from="1646500570170" duration="3339000" />
+      <workItem from="1646510115908" duration="4842000" />
+      <workItem from="1646551313152" duration="9457000" />
+      <workItem from="1647251932568" duration="440000" />
     </task>
     <servers />
   </component>
@@ -145,6 +190,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

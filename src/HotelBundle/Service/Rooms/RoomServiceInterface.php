@@ -23,4 +23,14 @@ interface RoomServiceInterface
      */
     public function getAllByCategoryId(int $categoryId);
     
+    /**
+     * @param int $categoryId
+     */
+    public function getFirstByCategoryId(int $categoryId);
+    
+    /**
+     * @param int $categoryId
+     */
+    public function getLastByCategoryId(int $categoryId);
+    
 }

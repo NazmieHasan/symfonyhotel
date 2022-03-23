@@ -25,7 +25,7 @@ class Stay
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="string", length=255)
+     * @ORM\Column(name="note", type="string", length=255, nullable=true)
      */
     private $note;
     
@@ -83,6 +83,11 @@ class Stay
     public  function __construct()
     {
         $this->dateOfAccommodation = new \DateTime('now');
+    }
+    
+    public function __toString()
+    {
+        return (string)$this->getDateOfDeparture();
     }
 
     /**

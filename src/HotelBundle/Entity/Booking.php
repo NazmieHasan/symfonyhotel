@@ -4,6 +4,7 @@ namespace HotelBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Booking
@@ -36,13 +37,6 @@ class Booking
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
-    
-     /**
-     * @var int
-     *
-     * @ORM\Column(name="room_id", type="integer")
-     */
-    private $roomId;
 
     /**
      * @var Room
@@ -50,7 +44,7 @@ class Booking
      * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Room", inversedBy="bookings")
      * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
      */
-    private $room;
+    private $roomId;
 
     /**
      * @var \DateTime
@@ -74,11 +68,26 @@ class Booking
     private $days;
 
     /**
+     * @Assert\NotBlank(message = "Adults field is required")
+     *
      * @var int
      *
      * @ORM\Column(name="adults", type="integer")
      */
     private $adults;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="guest_count", type="integer")
+     */
+    private $guestCount;
+    
+    /**
+     * @var integer
+     * @ORM\Column(name="terminated_count", type="integer")
+     */
+    private $terminatedCount;
     
     /**
      * @var bool
@@ -102,6 +111,8 @@ class Booking
     private $paymentId;
 
     /**
+     * @Assert\NotBlank(message = "Payment field is required")
+     *
      * @var Payment
      *
      * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Payment", inversedBy="bookings")
@@ -137,7 +148,6 @@ class Booking
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $userId;
-
 
     /**
      * @var int
@@ -215,7 +225,7 @@ class Booking
     }
 
     /**
-     * @return int
+     * @return Room
      */
     public function getRoomId()
     {
@@ -223,27 +233,13 @@ class Booking
     }
 
     /**
-     * @param int $roomId
+     * @param Room $room
+     * @return Booking
      */
-    public function setRoomId($roomId)
+    public function setRoomId(Room $roomId = null)
     {
         $this->roomId = $roomId;
-    }
-
-    /**
-     * @return Room
-     */
-    public function getRoom()
-    {
-        return $this->room;
-    }
-
-    /**
-     * @param Room $room
-     */
-    public function setRoom($room)
-    {
-        $this->room = $room;
+        return $this;
     }
 
     /**
@@ -377,6 +373,46 @@ class Booking
     }
     
     /**
+     * Set guestCount
+     *
+     * @param integer $guestCount
+     *
+     * @return Booking
+     */
+    public function setGuestCount($guestCount)
+    {
+        $this->guestCount = $guestCount;
+
+        return $this;
+    }
+
+    /**
+     * Get guestCount
+     *
+     * @return int
+     */
+    public function getGuestCount()
+    {
+        return $this->guestCount;
+    }
+    
+    /**
+     * @return int
+     */
+    public function getTerminatedCount(): int
+    {
+        return $this->terminatedCount;
+    }
+
+    /**
+     * @param int $terminatedCount
+     */
+    public function setTerminatedCount(int $terminatedCount)
+    {
+        $this->terminatedCount = $terminatedCount;
+    }
+    
+    /**
      * Set childBed
      *
      * @param bool $childBed
@@ -496,7 +532,7 @@ class Booking
     {
         return $this->dateAdded;
     }
-
+    
     /**
      * @return int
      */

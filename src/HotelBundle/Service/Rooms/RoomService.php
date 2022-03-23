@@ -92,4 +92,28 @@ class RoomService implements RoomServiceInterface
             ->findBy(['category' => $category]);
     }
     
+    /**
+     * @param int $categoryId
+     */
+    public function getFirstByCategoryId(int $categoryId)
+    {
+        $category = $this->categoryService->getOne($categoryId);
+        
+        return $this
+            ->roomRepository
+            ->findOneBy(['category' => $category], ['id' => 'ASC'], 1);
+    }
+    
+    /**
+     * @param int $categoryId
+     */
+    public function getLastByCategoryId(int $categoryId)
+    {
+        $category = $this->categoryService->getOne($categoryId);
+        
+        return $this
+            ->roomRepository
+            ->findOneBy(['category' => $category], ['id' => 'DESC'], 1);
+    }
+    
 }

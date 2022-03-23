@@ -4,16 +4,20 @@
 
     <div class="container body-content text-center">
         <h2>Stay Details [ #{{ stay.id }} ]</h2>
-        <p>Date of accomodation: {{ stay.dateOfAccommodation|date("Y-m-d H:i:s") }} </p>
+        <p>
+            <span class="cl-bold">Period:</span> {{ stay.dateOfAccommodation|date("Y-m-d H:i:s") }} -
+            {% if ( stay.isTerminated == 1 ) %}
+                {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }}
+            {% endif %}
+        </p>
+        <p>Terminated: <span class="cl-bold"> {% if ( stay.isTerminated == 1 ) %} Yes {% else %} No {% endif %}</span></p>
         <p>Booking Id: <a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking.id }} </a></p>
         <p>Guest: <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></p>
-        <p>Terminated: <span class="cl-bold"> {% if ( stay.isTerminated == 1 ) %} Yes {% else %} No {% endif %}</span></p>
-        <p>{% if ( stay.isTerminated == 1 ) %} Date of departure: {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }} {% endif %}</p>
-        <p>Note: {{ stay.note }}</p>
+        <p><span class="cl-bold">Note:</span> {{ stay.note }}</p>
         <p>
             <a class="btn btn-success btn-xs" href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
             <a class="btn btn-danger btn-xs" href="{{ path('admin_stay_delete', {id: stay.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
         </p>
     </div>
-    
+
 {% endblock %}

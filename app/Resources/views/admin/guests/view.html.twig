@@ -25,9 +25,9 @@
                     <tbody>
                     {% for stay in stays %}
                         <tr>
-                            <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></p>  
-                            <td><a href="{{ path('admin_room_view', {id: stay.booking.room.id}) }}"> {{ stay.booking.room }} </a></p>     
-                            <td><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}"> {{ stay.booking }} </a></p>
+                            <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
+                            <td><a href="{{ path('admin_room_view', {id: stay.booking.roomId.id}) }}"> {{ stay.booking.roomId.number }} </a></td>
+                            <td><a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}"> {{ stay.booking }} </a></td>
                         </tr>
                    {% endfor %}
                     </tbody>

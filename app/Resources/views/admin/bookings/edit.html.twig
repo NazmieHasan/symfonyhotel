@@ -6,61 +6,30 @@
         <div class="row">
             <div class="col-sm-6 offset-sm-3">
                 <div class="well">
+                    {% for msg in app.session.flashbag.get('errors')  %}
+                        <div class="alert alert-danger">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
                     <form class="form-horizontal" action="{{ path('admin_booking_edit', {id: booking.id}) }}" method="post">
                         <fieldset>
                             <legend>Edit Booking [ #{{ booking.id }} ]</legend>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_category">Category</label>
+                                <label class="col-sm-12 control-label" for="booking_edit_checkin">Checkin</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control" id="booking_category" name="booking[category]">
-                                        {% for category in categories %}
-                                            {% if ( booking.category.id == category.id)  %}
-                                                <option selected="selected" value="{{ category.id }}">
-                                                    {{ category.name }}
-                                                </option>
-                                            {% else %}
-                                                <option value="{{ category.id }}">
-                                                    {{ category.name }}
-                                                </option>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </select>
+                                    <input type="date" class="form-control" id="booking_edit_checkin"  name="booking_edit[checkin]"  value="{{ booking.checkin|date("Y-m-d") }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_room">Room</label>
+                                <label class="col-sm-12 control-label" for="booking_edit_checkout">Checkout</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control" id="booking_room" name="booking[room]">
-                                        {% for room in rooms %}
-                                            {% if ( booking.room.id == room.id)  %}
-                                                <option selected="selected" value="{{ room.id }}">
-                                                    {{ room.number }} {{ room.category }}
-                                                </option>
-                                            {% else %}
-                                                <option value="{{ room.id }}">
-                                                    {{ room.number }} {{ room.category }}
-                                                </option>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </select>
+                                    <input type="date" class="form-control" id="booking_edit_checkout"  name="booking_edit[checkout]"  value="{{ booking.checkout|date("Y-m-d")}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_checkin">Checkin</label>
+                                <label class="col-sm-12 control-label" for="booking_edit_adults">Adults and children over 6 years old</label>
                                 <div class="col-sm-12">
-                                    <input type="date" class="form-control" id="booking_checkin"  name="booking[checkin]"  value="{{ booking.checkin|date("Y-m-d") }}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_checkout">Checkout</label>
-                                <div class="col-sm-12">
-                                    <input type="date" class="form-control" id="booking_checkout"  name="booking[checkout]"  value="{{ booking.checkout|date("Y-m-d")}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_adults">Adults</label>
-                                <div class="col-sm-12">
-                                    <select class="form-control" id="booking_adults" name="booking[adults]">
+                                    <select class="form-control" id="booking_edit_adults" name="booking_edit[adults]">
                                         {% for i in 1..booking.category.beds %}
                                             {% if (i == booking.adults)  %}
                                                 <option selected="selected" value="{{ i }}">{{ i }}</option>
@@ -73,14 +42,14 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <input type="checkbox" name="booking[childBed]" {% if ( booking.childBed == 1 ) %} ( checked="checked" ) {% endif %} >
-                                    <label for="booking_childBed">I want a child bed</label>
+                                    <input type="checkbox" name="booking_edit[childBed]" {% if ( booking.childBed == 1 ) %} ( checked="checked" ) {% endif %} >
+                                    <label for="booking_edit_childBed">with a child bed (children aged 6 and under)</label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_payment">Payment</label>
+                                <label class="col-sm-12 control-label" for="booking_edit_payment">Payment</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control" id="booking_payment" name="booking[payment]">
+                                    <select class="form-control" id="booking_edit_payment" name="booking_edit[payment]">
                                         {% for payment in payments %}
                                             {% if ( booking.payment.id == payment.id)  %}
                                                 <option selected="selected" value="{{ payment.id }}">
@@ -96,15 +65,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_paidAmount">Paid Amount</label>
+                                <label class="col-sm-12 control-label" for="booking_edit_paidAmount">Paid Amount</label>
                                 <div class="col-sm-12">
-                                    <input type="number" class="form-control" id="booking_paidAmount"  name="booking[paidAmount]" value="{{ booking.paidAmount }}">
+                                    <input type="number" class="form-control" id="booking_edit_paidAmount"  name="booking_edit[paidAmount]" value="{{ booking.paidAmount }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="booking_status">Status</label>
+                                <label class="col-sm-12 control-label" for="booking_edit_status">Status</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control" id="booking_status" name="booking[status]">
+                                    <select class="form-control" id="booking_edit_status" name="booking_edit[status]">
                                         {% for status in statuses %}
                                             {% if ( booking.status.id == status.id)  %}
                                                 <option selected="selected" value="{{ status.id }}">

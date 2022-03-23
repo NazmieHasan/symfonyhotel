@@ -2,15 +2,12 @@
 
 namespace HotelBundle\Form;
 
-use HotelBundle\Entity\Category;
 use HotelBundle\Entity\Payment;
-use HotelBundle\Entity\Room;
-use HotelBundle\Entity\Status;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,8 +20,6 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', EntityType::class,
-                ['class' => Category::class])
             ->add('checkin', DateType::class, array(
                 "widget" => 'single_text',
                 "format" => 'yyyy-MM-dd',
@@ -35,22 +30,13 @@ class BookingType extends AbstractType
                 "format" => 'yyyy-MM-dd',
                 "data" => new \DateTime()
             ))
-            ->add('adults', NumberType::class)
+            ->add('adults', IntegerType::class)
             ->add('childBed', CheckboxType::class, array(
                 'label' => '',
                 'required' => false,
                 ))
             ->add('payment', EntityType::class,
-                ['class' => Payment::class])
-            ->add('status', null, [
-                'required'   => false,
-                'empty_data' => '1'
-            ])
-            ->add('room', null, [
-                'required'   => false,
-                'empty_data' => '1'
-            ])
-            ->add('paidAmount', NumberType::class);
+                ['class' => Payment::class]);
     }
 
     /**
@@ -62,6 +48,5 @@ class BookingType extends AbstractType
             'data_class' => 'HotelBundle\Entity\Booking'
         ));
     }
-
 
 }

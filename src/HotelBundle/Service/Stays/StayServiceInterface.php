@@ -30,4 +30,9 @@ interface StayServiceInterface
      */
     public function getAllByBookingId(int $bookingId);
     
+    /**
+     * @param int $bookingId
+     */
+    public function getMaxDateOfDepartureByBookingId(int $bookingId);
+    
 }

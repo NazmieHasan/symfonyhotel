@@ -23,14 +23,7 @@
                     {% endfor %} 
                 </p>
                 <p>Count: {{ rooms|length }}</p> 
-                <p>
-                    {% for room in rooms|slice(0, 1) %}
-                        From {{ room.number }} 
-                    {% endfor %}
-                    {% for room in rooms|slice(rooms|length - 1) %}
-                        to {{ room.number }}
-                    {% endfor %}
-                </p>
+                <p>From {{ firstRoomId.number }} to {{ lastRoomId.number }}</p>
             </div>
         </div>
     </div>

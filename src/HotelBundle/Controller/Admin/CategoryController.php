@@ -99,11 +99,15 @@ class CategoryController extends Controller
         $category = $this->categoryService->getOne($id);
         
         $rooms = $this->roomService->getAllByCategoryId($id);
+        $firstRoomId = $this->roomService->getFirstByCategoryId($id);
+        $lastRoomId = $this->roomService->getLastByCategoryId($id);
 
         return $this->render("admin/categories/view.html.twig",
             [
                 'category' => $category,
-                'rooms' => $rooms
+                'rooms' => $rooms,
+                'firstRoomId' => $firstRoomId,
+                'lastRoomId' => $lastRoomId,
             ]);
     }
 

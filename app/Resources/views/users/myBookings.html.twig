@@ -5,6 +5,11 @@
     <div class="container body-content">
         <h4>User: {{ app.user.loginName }}</h4>
         <div class="well">
+            {% for msg in app.session.flashbag.get('info')  %}
+                <div class="alert alert-success" id="info">
+                    {{ msg }}
+                </div>
+            {% endfor %}
             <h2>All Bookings</h2>
             <div class="row">
                 <table class="table table-striped table-hover ">

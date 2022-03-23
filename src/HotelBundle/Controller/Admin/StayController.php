@@ -111,13 +111,16 @@ class StayController extends Controller
     public function edit($id)
     {
         $stay = $this->stayService->getOne($id);
+        
+        $bookingId = $stay->getBookingId();
+        $booking = $this->bookingService->getOne($bookingId);
         $bookings = $this->bookingService->getAll();
         $guests = $this->guestService->getAll();
         
-        if (null === $stay){
+        if ($stay === null){
             return $this->redirectToRoute("hotel_index");
         }
-
+        
         return $this->render('admin/stays/edit.html.twig',
             [
                 'form' => $this->createForm(StayEditType::class)
@@ -140,13 +143,30 @@ class StayController extends Controller
     {
         $stay = $this->stayService->getOne($id);
         
+        $bookingId = $stay->getBookingId();
+        $booking = $this->bookingService->getOne($bookingId);
+        $bookings = $this->bookingService->getAll();
+        $guests = $this->guestService->getAll();
+        
         $form = $this->createForm(StayEditType::class, $stay);
         $form->handleRequest($request);
        
         if ($stay->getIsTerminated(1)) {    
             $stay->setDateOfDeparture(new \DateTime('now'));
-        } else {  
+            $booking->setTerminatedCount($booking->getTerminatedCount() + 1);
+            if ( $booking->getGuestCount() == $booking->getTerminatedCount() ) {
+                $maxDateOfDeparture = $this->stayService->getMaxDateOfDepartureByBookingId($bookingId)->getDateOfDeparture();
+                $daysDiff = $booking->getCheckout()->diff($maxDateOfDeparture)->format("%a");
+                if ($daysDiff > 0) {
+                    $booking->setStatusId(6); // Status Terminated Early
+                }
+                if ($daysDiff == 0) {
+                    $booking->setStatusId(7); // Status Done 
+                }
+            }
+        } else {   
             $stay->setDateOfDeparture(null);
+            $booking->setStatusId(5); // Status In Progress 
         }
         
         $this->stayService->edit($stay);

@@ -58,6 +58,7 @@ class Room
 
     public function __toString()
     {
+        return (string)$this->getId();
         return $this->getNumber();
     }
     

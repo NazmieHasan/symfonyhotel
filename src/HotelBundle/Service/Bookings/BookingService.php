@@ -7,6 +7,7 @@ use HotelBundle\Repository\BookingRepository;
 use HotelBundle\Service\Users\UserServiceInterface;
 use HotelBundle\Service\Categories\CategoryServiceInterface;
 use HotelBundle\Service\Rooms\RoomServiceInterface;
+use HotelBundle\Service\Statuses\StatusServiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class BookingService implements BookingServiceInterface
@@ -28,27 +29,34 @@ class BookingService implements BookingServiceInterface
      * @var RoomServiceInterface
      */
     private $roomService;
+    
+    /**
+     * @var StatusServiceInterface
+     */ 
+    private $statusService;
 
     /**
      * BookingService constructor.
      * @param BookingRepository $bookingRepository
      * @param UserServiceInterface $userService
      * @param CategoryServiceInterface $categoryService
-     * @param RoomRepository $roomRepository
+     * @param RoomServiceInterface $roomService
+     * @param StatusServiceInterface $statusService
      */
     public function __construct(BookingRepository $bookingRepository,
               UserServiceInterface $userService,
               CategoryServiceInterface $categoryService,
-              RoomServiceInterface $roomService)
+              RoomServiceInterface $roomService,
+              StatusServiceInterface $statusService)
     {
         $this->bookingRepository = $bookingRepository;
         $this->userService = $userService;
         $this->categoryService = $categoryService;
         $this->roomService = $roomService;
+        $this->statusService = $statusService;
     }
 
     /**
-     * @param Request $request
      * @param Booking $booking
      * @param int $categoryId
      * @return bool
@@ -60,15 +68,27 @@ class BookingService implements BookingServiceInterface
         $userId = $this->userService->currentUser();
         $booking->setUserId($userId);
         $booking->setCategory($this->categoryService->getOne($categoryId));
+        $booking->setTerminatedCount(0);
         
-        // $room = $this->roomService->getAllFreeRoomByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId);
-        // $booking->setRoom($room);
+        // $roomId = $this->roomService->getOneFreeRoomByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId);
+        // $booking->setRoom($roomId);
         
+        $firstRoomId = $this->roomService->getFirstByCategoryId($categoryId)->getId();
+        $lastRoomId = $this->roomService->getLastByCategoryId($categoryId)->getId();
+        $id = rand($firstRoomId, $lastRoomId);
+        $roomId = $this->roomService->getOne($id);
+        $booking->setRoomId($roomId);
+
         $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
         $booking->setDays($days);
         $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));
         $booking->setPaidAmount(0.00);
         $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
+        
+        $booking->setStatus($this->statusService->getOne(1)); // Status Awaiting Payment
+        
+        $guestCount = $booking->getAdults() + $booking->getChildBed();
+        $booking->setGuestCount($guestCount);
 
         return $this->bookingRepository->insert($booking);
     }
@@ -86,6 +106,17 @@ class BookingService implements BookingServiceInterface
         $booking->setDays($days);
         $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));
         $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
+        
+        $guestCount = $booking->getAdults() + $booking->getChildBed();
+        $booking->setGuestCount($guestCount);
+        
+        if ($booking->getPaidAmount() === $booking->getTotalAmount() * 0.40) {
+            $booking->setStatusId(3); // Status For Execution (40% paid)
+        }
+        
+        if ($booking->getPaidAmount() === $booking->getTotalAmount()) {
+            $booking->setStatusId(4); // Status For Execution (100% paid)
+        }
         
         return $this->bookingRepository->update($booking);
     }
@@ -157,7 +188,7 @@ class BookingService implements BookingServiceInterface
         
         return $this
             ->bookingRepository
-            ->findBy(['room' => $room], ['id' => 'DESC']);
+            ->findBy(['roomId' => $roomId], ['id' => 'DESC']);
     }
     
 }
