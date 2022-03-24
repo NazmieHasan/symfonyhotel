@@ -155,8 +155,9 @@ class StayController extends Controller
             $stay->setDateOfDeparture(new \DateTime('now'));
             $booking->setTerminatedCount($booking->getTerminatedCount() + 1);
             if ( $booking->getGuestCount() == $booking->getTerminatedCount() ) {
-                $maxDateOfDeparture = $this->stayService->getMaxDateOfDepartureByBookingId($bookingId)->getDateOfDeparture();
-                $daysDiff = $booking->getCheckout()->diff($maxDateOfDeparture)->format("%a");
+                $maxDateOfDeparture = new \DateTime($this->stayService->getMaxDateOfDepartureByBookingId($bookingId)->getDateOfDeparture()->format('Y-m-d'));
+                $dateCheckout = new \DateTime($booking->getCheckout()->format('Y-m-d'));
+                $daysDiff = $maxDateOfDeparture->diff($dateCheckout)->format("%a");
                 if ($daysDiff > 0) {
                     $booking->setStatusId(6); // Status Terminated Early
                 }

@@ -28,7 +28,7 @@
                             <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}" target=_blank>{{ stay.guest.personalNumber }}</a>
                             <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}" target=_blank>{{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }}</a>
                         </td>
-                        <td>{% if ( stay.isTerminated == 1 ) %} Yes {% else %} No {% endif %}</td>
+                        <td>{% if ( stay.isTerminated == 1 ) %} Yes on {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }} {% else %} No {% endif %}</td>
                         <td>
                             <a href="{{ path('admin_stay_view', {id: stay.id}) }}" target=_blank>View</a>
                             <a href="{{ path('admin_stay_edit', {id: stay.id}) }}" target=_blank>Edit</a>
