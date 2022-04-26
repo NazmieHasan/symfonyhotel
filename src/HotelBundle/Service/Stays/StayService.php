@@ -61,7 +61,8 @@ class StayService implements StayServiceInterface
         $stay
             ->setBooking($this->bookingService->getOne($bookingId));
         
-        $booking = $this->bookingService->getOne($bookingId);    
+        $booking = $this->bookingService->getOne($bookingId);
+        $stay->setIsTerminated(0);
         $booking->setStatusId(5); // Status In Progress   
             
         return $this->stayRepository->insert($stay);
@@ -75,6 +76,33 @@ class StayService implements StayServiceInterface
      */
     public function edit(Stay $stay): bool
     {
+        $bookingId = $stay->getBookingId();
+        $booking = $this->bookingService->getOne($bookingId);
+        
+        if ($stay->getIsTerminated(1)) {  
+            if ($stay->getDateOfDeparture() === null) {
+                $stay->setDateOfDeparture(new \DateTime('now'));
+                $booking->setTerminatedCount($booking->getTerminatedCount() + 1);
+                if ( $booking->getGuestCount() == $booking->getTerminatedCount() ) {
+                    $maxDateOfDeparture = new \DateTime($stay->getDateOfDeparture()->format('Y-m-d'));
+                    $dateCheckout = new \DateTime($booking->getCheckout()->format('Y-m-d'));
+                    $daysDiff = $maxDateOfDeparture->diff($dateCheckout)->format("%a");
+                    if ($daysDiff > 0) {
+                        $booking->setStatusId(6); // Status Terminated Early
+                    }
+                    if ($daysDiff == 0) {
+                        $booking->setStatusId(7); // Status Done 
+                    }
+                }
+            }
+        } else {
+            if ($stay->getDateOfDeparture() !== null) {
+                $stay->setDateOfDeparture(null);
+                $booking->setTerminatedCount($booking->getTerminatedCount() - 1);
+                $booking->setStatusId(5); // Status In Progress
+            }
+        }
+        
         return $this->stayRepository->update($stay);
     }
 
@@ -113,6 +141,7 @@ class StayService implements StayServiceInterface
     public function getAllByGuestId(int $guestId)
     {
         $guest = $this->guestService->getOne($guestId);
+        
         return $this
             ->stayRepository
             ->findBy(['guest' => $guest], ['id' => 'DESC']);
@@ -125,6 +154,7 @@ class StayService implements StayServiceInterface
     public function getAllByBookingId(int $bookingId)
     {
         $booking = $this->bookingService->getOne($bookingId);
+        
         return $this
             ->stayRepository
             ->findBy(['booking' => $booking], ['id' => 'DESC']);
@@ -133,12 +163,13 @@ class StayService implements StayServiceInterface
     /**
      * @param int $bookingId
      */
-    public function getMaxDateOfDepartureByBookingId(int $bookingId)
+    public function getCountByBookingId(int $bookingId)
     {
         $booking = $this->bookingService->getOne($bookingId);
+        
         return $this
             ->stayRepository
-            ->findOneBy(['booking' => $booking], ['dateOfDeparture' => 'DESC'], 1);
+            ->count(['booking' => $booking]);
     }
     
 }

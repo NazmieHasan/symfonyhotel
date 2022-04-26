@@ -95,6 +95,18 @@ class RoomService implements RoomServiceInterface
     /**
      * @param int $categoryId
      */
+    public function getCountByCategoryId(int $categoryId)
+    {
+        $category = $this->categoryService->getOne($categoryId);
+        
+        return $this
+            ->roomRepository
+            ->count(['category' => $category]);
+    }
+    
+    /**
+     * @param int $categoryId
+     */
     public function getFirstByCategoryId(int $categoryId)
     {
         $category = $this->categoryService->getOne($categoryId);

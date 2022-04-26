@@ -99,6 +99,7 @@ class CategoryController extends Controller
         $category = $this->categoryService->getOne($id);
         
         $rooms = $this->roomService->getAllByCategoryId($id);
+        $roomsCount = $this->roomService->getCountByCategoryId($id);
         $firstRoomId = $this->roomService->getFirstByCategoryId($id);
         $lastRoomId = $this->roomService->getLastByCategoryId($id);
 
@@ -106,6 +107,7 @@ class CategoryController extends Controller
             [
                 'category' => $category,
                 'rooms' => $rooms,
+                'roomsCount' => $roomsCount,
                 'firstRoomId' => $firstRoomId,
                 'lastRoomId' => $lastRoomId,
             ]);

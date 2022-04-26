@@ -2,22 +2,48 @@
 
 {% block body %}
 
-    <div class="container body-content text-center">
-        <h2>Stay Details [ #{{ stay.id }} ]</h2>
-        <p>
-            <span class="cl-bold">Period:</span> {{ stay.dateOfAccommodation|date("Y-m-d H:i:s") }} -
-            {% if ( stay.isTerminated == 1 ) %}
-                {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }}
-            {% endif %}
-        </p>
-        <p>Terminated: <span class="cl-bold"> {% if ( stay.isTerminated == 1 ) %} Yes {% else %} No {% endif %}</span></p>
-        <p>Booking Id: <a href="{{ path('admin_booking_view', {id: stay.booking.id}) }}">{{ stay.booking.id }} </a></p>
-        <p>Guest: <a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstname }} {{ stay.guest.fathersName }} {{ stay.guest.lastname }} </a></p>
-        <p><span class="cl-bold">Note:</span> {{ stay.note }}</p>
-        <p>
-            <a class="btn btn-success btn-xs" href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit</a>
-            <a class="btn btn-danger btn-xs" href="{{ path('admin_stay_delete', {id: stay.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
-        </p>
+     <div class="container body-content text-center">
+         <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+             
+                {% for msg in app.session.flashbag.get('info')  %}
+                    <div class="alert alert-success" id="info">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+     
+                <h2 style="margin-bottom: 1rem;">Stay Details [ #{{ stay.id }} ]</h2>
+                <h4 class="cl-bold text-danger">
+                    Terminated: {% if ( stay.isTerminated == 1 ) %} Yes {% else %} No {% endif %}
+                </h4>
+                <hr />
+                <p>
+                    <span class="cl-bold">Period:</span> {{ stay.dateOfAccommodation|date("Y-m-d H:i:s") }} -
+                    {% if ( stay.isTerminated == 1 ) %}
+                       {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }}
+                    {% endif %}
+                </p>
+                <hr />
+                <p>
+                    Booking Id: <a class="custom-a" href="{{ path('admin_booking_view', {id: stay.booking.id}) }}"><span class="cl-bold"> {{ stay.booking.id }} </span></a> |
+                    Room: <a class="custom-a" href="{{ path('admin_room_view', {id: stay.booking.roomId.id}) }}"><span class="cl-bold"> {{ stay.booking.roomId.number }} </span></a>
+                </p>
+                <hr />
+                <p>
+                    Category: <a class="custom-a" href="{{ path('admin_category_view', {id: stay.booking.category.id}) }}"><span class="cl-bold"> {{ stay.booking.category }} </span></a>
+                </p>
+                <hr />
+                <p>Guest: <a class="custom-a" href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"><span class="cl-bold"> {{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }} </span></a></p>
+                <hr />
+                <p><span class="cl-bold">Note:</span> {{ stay.note }}</p>
+                <hr />
+                <p>
+                    <a class="btn btn-success btn-xs" href="{{ path('admin_stay_edit', {id: stay.id}) }}">Edit Stay</a>
+                    <a class="btn btn-danger btn-xs" href="{{ path('admin_stay_delete', {id: stay.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Stay</a>
+                </p>
+                
+            </div>
+        </div>
     </div>
 
 {% endblock %}

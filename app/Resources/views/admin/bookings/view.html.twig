@@ -6,44 +6,49 @@
         <div class="row">
             <div class="col-sm-8 offset-sm-2">
             
-            
                 {% for msg in app.session.flashbag.get('info')  %}
                     <div class="alert alert-success" id="info">
                         {{ msg }}
                     </div>
                 {% endfor %}
                 
-                <h2>Booking Details [ #{{ booking.id }} ]</h2>
+                <h2 style="margin-bottom: 1rem;">Booking Details [ #{{ booking.id }} ]</h2>
+                <h4 class="cl-bold text-danger">
+                    Status: {{ booking.status.name }}
+                </h4>
+                <hr />
                 <p>
-                    Reserved by email <a href="{{ path('admin_user_view', {id: booking.userId.id}) }}"><span class="cl-bold"> {{ booking.userId.email }} </span></a>
+                    Reserved by email <a class="custom-a cl-bold "  href="{{ path('admin_user_view', {id: booking.userId.id}) }}"> {{ booking.userId.email }} </a>
                     on <span class="cl-bold"> {{ booking.dateAdded|date("Y-m-d H:i:s") }} </span>
                 </p>
-                <h4 class="cl-bold">
-                    Status: <span class="text-danger"> {{ booking.status.name }} </span> 
-                </h4>
+                <hr />
                 <p>
                     Checkin: <span class="cl-bold"> {{ booking.checkin|date("Y-m-d") }} </span> | 
-                    Checkout: <span class="cl-bold"> {{ booking.checkout|date("Y-m-d") }} </span> | 
-                    <span class="cl-bold"> {{ booking.days }} day(s) </span>
+                    Checkout: <span class="cl-bold"> {{ booking.checkout|date("Y-m-d") }} </span>
                 </p>
+                <hr />
                 <p>
                     Payment: <span class="cl-bold"> {{ booking.payment.name }} </span> |
                     Total Amount: <span class="cl-bold"> ${{ booking.totalAmount}} </span> 
                 </p>
+                <hr />
                 <p>
                     Paid Amount: <span class="cl-bold"> ${{ booking.paidAmount}} </span> | 
                     Payment Amount: <span class="cl-bold"> ${{ booking.paymentAmount}} </span>
                 </p>
+                <hr />
                 <p>
-                    Category: <a class="custom-a" href="{{ path('admin_category_view', {id: booking.category.id}) }}"><span class="cl-bold"> {{ booking.category.name }} </span></a> |
-                    Room: <a class="custom-a" href="{{ path('admin_room_view', {id: booking.roomId.id}) }}"><span class="cl-bold"> {{ booking.roomId.number }} </span></a>
+                    Category: <a class="custom-a cl-bold " href="{{ path('admin_category_view', {id: booking.category.id}) }}"> {{ booking.category.name }} </a> |
+                    Room: <a class="custom-a cl-bold " href="{{ path('admin_room_view', {id: booking.roomId.id}) }}"> {{ booking.roomId.number }} </a>
                 </p>
+                <hr />
                 <p>
                     Adults: <span class="icon-find"> {% for i in 1..booking.adults %} {{ "&#xf007;" }} {% endfor %} </span> |
                     Child Bed: <span class="cl-bold"> {% if ( booking.childBed == 1 ) %} Yes {% else %} No {% endif %}</span> |
                     Guest Count: <span class="cl-bold"> {{ booking.guestCount }} </span>
                 </p>
-                <p>
+                <hr style="margin-bottom: 0">
+                <p style="margin-bottom: 3rem;">
                     <a class="btn btn-success btn-xs" href="{{ path('admin_booking_edit', {id: booking.id}) }}">Edit Booking</a>
                     <a class="btn btn-danger btn-xs" href="{{ path('admin_booking_delete', {id: booking.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Booking</a>
                 </p>
@@ -54,7 +59,6 @@
                             <div class="row">
                                 <div class="col-sm-8 form-group">
                                     <input type="text" class="form-control icon-find" name="personalNumber" placeholder="&#xF002; Enter personal number" style="color: darkred; border: 1px solid darkred; background: white;" />
-                                    <p>Please, enter 10 digits!</p>
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="submit" class="btn btn-danger btn-outline mt-0">Find Guest</button>
@@ -95,12 +99,12 @@
                 {% endif %}
                 
                 {% if ( stays|length < booking.guestCount ) and ( booking.paymentAmount == 0.00 ) %} 
-                    <h4><button class="btn btn-danger btn-outline" id="Add">Add stay for this booking</button></h4>
+                    <p><button class="btn btn-danger btn-outline" id="Add">Add a stay to the booking</button></p>
                     <div id="add_stay"></div> 
                 {% else %} 
-                    <h4><button class="btn btn-danger btn-outline" disabled>Add stay for this booking</button></h4>
+                    <span><button class="btn btn-danger btn-outline" disabled>Add a stay to the booking</button></span>
                     {% if ( booking.paymentAmount != 0.00 ) %}
-                        <p>The button is disabled. Awaiting Payment ${{booking.paymentAmount}} !</p>
+                        <p class="cl-bold">The button is disabled. Awaiting Payment ${{booking.paymentAmount}} !</p>
                     {% endif %} 
                 {% endif %} 
         
@@ -120,9 +124,9 @@
                         <tbody>
                             {% for stay in stays %}
                             <tr>
-                                <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}"> {{ stay.id }} </a></td>
-                                <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}"> {{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }} </a></td>
-                                <td>{% if ( stay.isTerminated == 1 ) %} Yes on {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }} {% else %} No {% endif %}</td>
+                                <td><a href="{{ path('admin_stay_view', {id: stay.id}) }}" target=_blank> {{ stay.id }} </a></td>
+                                <td><a href="{{ path('admin_guest_view', {id: stay.guest.id}) }}" target=_blank> {{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }} </a></td>
+                                <td style="color: darkred;">{% if ( stay.isTerminated == 1 ) %} Yes on {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }} {% else %} No {% endif %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

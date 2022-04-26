@@ -3,6 +3,11 @@
 {% block body %}
 
     <div class="container body-content">
+        {% for msg in app.session.flashbag.get('info')  %}
+                <div class="alert alert-success" id="info">
+                    {{ msg }}
+                </div>
+        {% endfor %}    
         <div class="row find-guest">
             <div class="col-md-8">
                 <h2>

@@ -171,9 +171,9 @@ class BookingController extends Controller
     {
         $booking = $this->bookingService->getOne($id);
         
-        $categories = $this->categoryService->getAll();
         $payments = $this->paymentService->getAll();
         $statuses = $this->statusService->getAll();
+        $countStay = $this->stayService->getCountByBookingId($id);
         
         if ($booking === null){
             return $this->redirectToRoute("hotel_index");
@@ -183,10 +183,10 @@ class BookingController extends Controller
             [
                 'form' => $this->createForm(BookingEditType::class)->createView(),
                 'booking' => $booking,
-                'categories' => $categories,
                 'payments' => $payments,
                 'statuses' => $statuses,
-            ]);
+            ]
+        );
 
     }
 
@@ -201,12 +201,45 @@ class BookingController extends Controller
     {
         $booking = $this->bookingService->getOne($id);
         
-        $categories = $this->categoryService->getAll();
         $payments = $this->paymentService->getAll();
         $statuses = $this->statusService->getAll();
-
+        $countStay = $this->stayService->getCountByBookingId($id);
+        
         $form = $this->createForm(BookingEditType::class, $booking);
+        $form->remove('checkin');
+        $form->remove('checkout');
         $form->handleRequest($request);
+        
+        // if Status = In Progress; Status = Done (Terminated Early); Status = Done,
+        // the total amount must be paid
+        if ($booking->getStatusId() > 4 ) {
+            if ($booking->getPaidAmount() != $booking->getTotalAmount()) {
+                $this->addFlash("errors", "Not allow edit. Awaiting Payment!");
+                return $this->render('admin/bookings/edit.html.twig',
+                    [
+                        'form' => $this->createForm(BookingEditType::class)->createView(),
+                        'booking' => $booking,
+                        'payments' => $payments,
+                        'statuses' => $statuses,
+                    ]
+                );    
+            }
+        }
+        
+        // not allow guest count < stay count
+        $countGuest = $booking->getAdults() + $booking->getChildBed();
+        if ($countGuest < $countStay) {
+            $this->addFlash("errors", "Not allow edit. Remove stay!");
+            return $this->render('admin/bookings/edit.html.twig',
+                [
+                    'form' => $this->createForm(BookingEditType::class)->createView(),
+                    'booking' => $booking,
+                    'payments' => $payments,
+                    'statuses' => $statuses,
+                ]
+            );    
+        }
+        
         $this->bookingService->edit($booking);
 
         return $this->redirectToRoute('admin_booking_view', [ 'id' => $id]);

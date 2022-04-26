@@ -102,20 +102,21 @@ class BookingService implements BookingServiceInterface
      */
     public function edit(Booking $booking): bool
     {
-        $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
-        $booking->setDays($days);
-        $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));
         $booking->setPaymentAmount($booking->getTotalAmount() - $booking->getPaidAmount());
         
         $guestCount = $booking->getAdults() + $booking->getChildBed();
         $booking->setGuestCount($guestCount);
         
-        if ($booking->getPaidAmount() === $booking->getTotalAmount() * 0.40) {
-            $booking->setStatusId(3); // Status For Execution (40% paid)
+        if ($booking->getStatusId() == 1) {
+            if ($booking->getPaidAmount() === $booking->getTotalAmount() * 0.40) {
+                $booking->setStatusId(3); // Status For Execution (40% paid)
+            }
         }
         
-        if ($booking->getPaidAmount() === $booking->getTotalAmount()) {
-            $booking->setStatusId(4); // Status For Execution (100% paid)
+        if ( ($booking->getStatusId() == 1) or ($booking->getStatusId() == 3) ) {
+            if ($booking->getPaidAmount() === $booking->getTotalAmount()) {
+                $booking->setStatusId(4); // Status For Execution (100% paid)
+            }
         }
         
         return $this->bookingRepository->update($booking);

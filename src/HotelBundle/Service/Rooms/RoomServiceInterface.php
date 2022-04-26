@@ -26,6 +26,11 @@ interface RoomServiceInterface
     /**
      * @param int $categoryId
      */
+    public function getCountByCategoryId(int $categoryId);
+    
+    /**
+     * @param int $categoryId
+     */
     public function getFirstByCategoryId(int $categoryId);
     
     /**

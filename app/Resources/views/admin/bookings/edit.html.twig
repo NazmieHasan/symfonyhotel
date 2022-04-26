@@ -17,13 +17,13 @@
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="booking_edit_checkin">Checkin</label>
                                 <div class="col-sm-12">
-                                    <input type="date" class="form-control" id="booking_edit_checkin"  name="booking_edit[checkin]"  value="{{ booking.checkin|date("Y-m-d") }}">
+                                    <div class="form-control">{{ booking.checkin|date("Y-m-d") }}</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="booking_edit_checkout">Checkout</label>
                                 <div class="col-sm-12">
-                                    <input type="date" class="form-control" id="booking_edit_checkout"  name="booking_edit[checkout]"  value="{{ booking.checkout|date("Y-m-d")}}">
+                                    <div class="form-control">{{ booking.checkout|date("Y-m-d") }}</div>
                                 </div>
                             </div>
                             <div class="form-group">

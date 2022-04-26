@@ -33,6 +33,6 @@ interface StayServiceInterface
     /**
      * @param int $bookingId
      */
-    public function getMaxDateOfDepartureByBookingId(int $bookingId);
+    public function getCountByBookingId(int $bookingId);
     
 }

@@ -95,6 +95,10 @@ class StayController extends Controller
      */
     public function view(int $id) {
         $stay = $this->stayService->getOne($id);
+        
+        if ($stay === null){
+            return $this->redirectToRoute("hotel_index");
+        }
 
         return $this->render("admin/stays/view.html.twig",
             [
@@ -117,7 +121,7 @@ class StayController extends Controller
         $bookings = $this->bookingService->getAll();
         $guests = $this->guestService->getAll();
         
-        if ($stay === null){
+        if ($stay === null) {
             return $this->redirectToRoute("hotel_index");
         }
         
@@ -137,7 +141,7 @@ class StayController extends Controller
      * @Security("has_role('ROLE_ADMIN')"))
      * @param Request $request
      * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Responsen
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editProcess(Request $request, int $id)
     {
@@ -150,25 +154,6 @@ class StayController extends Controller
         
         $form = $this->createForm(StayEditType::class, $stay);
         $form->handleRequest($request);
-       
-        if ($stay->getIsTerminated(1)) {    
-            $stay->setDateOfDeparture(new \DateTime('now'));
-            $booking->setTerminatedCount($booking->getTerminatedCount() + 1);
-            if ( $booking->getGuestCount() == $booking->getTerminatedCount() ) {
-                $maxDateOfDeparture = new \DateTime($this->stayService->getMaxDateOfDepartureByBookingId($bookingId)->getDateOfDeparture()->format('Y-m-d'));
-                $dateCheckout = new \DateTime($booking->getCheckout()->format('Y-m-d'));
-                $daysDiff = $maxDateOfDeparture->diff($dateCheckout)->format("%a");
-                if ($daysDiff > 0) {
-                    $booking->setStatusId(6); // Status Terminated Early
-                }
-                if ($daysDiff == 0) {
-                    $booking->setStatusId(7); // Status Done 
-                }
-            }
-        } else {   
-            $stay->setDateOfDeparture(null);
-            $booking->setStatusId(5); // Status In Progress 
-        }
         
         $this->stayService->edit($stay);
 
