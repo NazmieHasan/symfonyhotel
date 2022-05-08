@@ -35,4 +35,6 @@ interface BookingServiceInterface
      */
     public function getAllByRoomId(int $roomId);
     
+    public function findAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status);
+    
 }

@@ -145,13 +145,14 @@ class BookingController extends Controller
         }
         
         $personalNumber = $request->get('personalNumber');
-        $em = $this->getDoctrine()->getManager();
-        $guest = $em->getRepository("HotelBundle:Guest")
-                    ->findBy(
-                            [
-                                'personalNumber' => $personalNumber
-                            ]);
-
+        $guest = $this->guestService->findOneByPersonalNumber($personalNumber);
+        
+        if ($personalNumber == null) {
+            $this->addFlash("errorPersonalNumber", "Please, enter personal number!");
+        } else {
+            $this->addFlash("infoResult", "Result guest with personalNumber $personalNumber ");
+        }
+        
         return $this->render("admin/bookings/view.html.twig",
             [
                 'form' => $this->createForm(StayType::class)->createView(),
@@ -210,7 +211,20 @@ class BookingController extends Controller
         $form->remove('checkout');
         $form->handleRequest($request);
         
-        // if Status = In Progress; Status = Done (Terminated Early); Status = Done,
+        // if Status = Canceled, not allow edit booking
+        if ($booking->getStatusId() == 2 ) {
+            $this->addFlash("errors", "Not allow edit booking with status canceled!");
+            return $this->render('admin/bookings/edit.html.twig',
+                [
+                    'form' => $this->createForm(BookingEditType::class)->createView(),
+                    'booking' => $booking,
+                    'payments' => $payments,
+                    'statuses' => $statuses,
+                ]
+            );    
+        }
+        
+        // if Status = In Progress, Done (Terminated Early), Done,
         // the total amount must be paid
         if ($booking->getStatusId() > 4 ) {
             if ($booking->getPaidAmount() != $booking->getTotalAmount()) {
@@ -229,7 +243,7 @@ class BookingController extends Controller
         // not allow guest count < stay count
         $countGuest = $booking->getAdults() + $booking->getChildBed();
         if ($countGuest < $countStay) {
-            $this->addFlash("errors", "Not allow edit. Remove stay!");
+            $this->addFlash("errors", "Not allow edit. Remove a stay or increase the number of guests!");
             return $this->render('admin/bookings/edit.html.twig',
                 [
                     'form' => $this->createForm(BookingEditType::class)->createView(),
@@ -267,31 +281,96 @@ class BookingController extends Controller
     /**
      * @Route("/", name="admin_bookings")
      * @Security("has_role('ROLE_ADMIN')")
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAllBookings(Request $request)
+    public function getAllBookings()
     {
         $bookings = $this->bookingService->getAll();
-        
-        if($request->isMethod("POST")) { 
-        
-            $checkinSearch = $request->get('checkin');
-            $date = $checkinSearch;
-            $checkin = (new \DateTime())->modify($date);
-            
-            $em = $this->getDoctrine()->getManager();
-            $bookings = $em->getRepository("HotelBundle:Booking")
-                ->findBy(
-                    ['checkin' => $checkin],
-                    ['dateAdded' => 'DESC']
-                );                  
-        }
 
         return $this->render("admin/bookings/list.html.twig",
             [
                 'bookings' => $bookings
             ]);
+    }
+    
+    /**
+     * @Route("/find", name="admin_bookings_find", methods={"GET"})
+     * @Security("has_role('ROLE_ADMIN')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function findAllBookings()
+    {
+        $bookings = $this->bookingService->getAll();
+        
+        $statuses = $this->statusService->getAll();
+        $payments = $this->paymentService->getAll();
+        
+        return $this->render("admin/bookings/find.html.twig",
+            [
+                'bookings' => $bookings,
+                'statuses' => $statuses, 
+                'payments' => $payments,
+            ]);
+    }
+    
+    /**
+     * @Route("/find", methods={"POST"})
+     * @Security("has_role('ROLE_ADMIN')")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function findAllBookingsProcess(Request $request)
+    {
+        $checkin = ''; $checkout = ''; $dateAdded = '';
+        $status = ''; $statusName = ''; $payment = ''; $paymentName = '';
+        $statuses = $this->statusService->getAll();
+        $payments = $this->paymentService->getAll();
+        
+        $checkinSearch = $request->get('checkin');
+        $checkoutSearch = $request->get('checkout');
+        $dateAddedSearch = $request->get('dateAdded');
+        $statusSearch = $request->get('status');
+        $paymentSearch = $request->get('payment');
+        
+        if ($checkinSearch != null) {
+            $checkin = date("Y-m-d", strtotime($checkinSearch)); 
+        }
+            
+        if ($checkoutSearch != null) { 
+            $checkout = date("Y-m-d", strtotime($checkoutSearch));
+        }
+        
+        if ($dateAddedSearch != null) {
+            $dateAdded = date("Y-m-d", strtotime($dateAddedSearch));
+        }
+            
+        if ($statusSearch != null) {
+            $status = $statusSearch;
+            $statusName = $this->statusService->getOne($statusSearch)->getName();
+        }
+        
+        if ($paymentSearch != null) {
+            $payment = $paymentSearch;
+            $paymentName = $this->paymentService->getOne($paymentSearch)->getName();
+        }
+        
+        if ( 
+            ($checkinSearch == null) or ($checkoutSearch == null) or ($dateAddedSearch == null) or
+            ($statusSearch == null) or ($paymentSearch == null)  ) {
+            $this->addFlash("errors", "All fields is required. Please select!");
+        } else {
+        $this->addFlash("info", "Result bookings where checkin = $checkin, checkout = $checkout, dateAdded = $dateAdded,  status = $statusName, payment = $paymentName");
+        }
+        
+        $bookingsResult = $this->bookingService->findAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status);
+        
+        return $this->render("admin/bookings/findResult.html.twig",
+            [
+                'bookingsResult' => $bookingsResult,
+                'statuses' => $statuses, 
+                'payments' => $payments,
+            ]);
+
     }
     
 }

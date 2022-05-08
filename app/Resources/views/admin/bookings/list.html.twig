@@ -3,22 +3,12 @@
 {% block body %}
 
     <div class="container body-content">
-        <div class="row find-booking">
-            <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6 mb-5">
                 <h2><a href="{{ path('admin_bookings') }}">All Bookings</a></h2>
             </div>
-            <div class="col-md-4 text-center">
-                <form method="POST">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <input type="date" name="checkin" value="{{ "now"|date('Y-m-d') }}" />
-                            <p>Enter checkin date!</p>
-                        </div>
-                        <div class="col-md-5">
-                            <button type="submit" class="btn btn-danger">Find Booking</button>
-                        </div>
-                    </div>
-                </form>
+            <div class="col-md-6 mb-5 text-right">
+                <h3><a href="{{ path('admin_bookings_find') }}">Find Bookings</a></h3>
             </div>
         </div>
         {% if bookings|length == 0 %} 
@@ -33,6 +23,7 @@
                         <th>Date Added</th>
                         <th>Checkin</th>
                         <th>Checkout</th>
+                        <th>Payment</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -44,6 +35,7 @@
                             <td>{{ booking.dateAdded|date("Y-m-d H:i:s") }}</td>
                             <td>{{ booking.checkin|date("Y-m-d") }}</td>
                             <td>{{ booking.checkout|date("Y-m-d") }}</td>
+                            <td>{{ booking.payment }}</td>
                             <td>{{ booking.status }}</td>
                             <td>
                                 <a href="{{ path('admin_booking_view', {id: booking.id}) }}" target=_blank>View</a>

@@ -108,17 +108,17 @@ class BookingService implements BookingServiceInterface
         $booking->setGuestCount($guestCount);
         
         if ($booking->getStatusId() == 1) {
-            if ($booking->getPaidAmount() === $booking->getTotalAmount() * 0.40) {
+            if ($booking->getPaidAmount() == $booking->getTotalAmount() * 0.40) {
                 $booking->setStatusId(3); // Status For Execution (40% paid)
             }
         }
         
         if ( ($booking->getStatusId() == 1) or ($booking->getStatusId() == 3) ) {
-            if ($booking->getPaidAmount() === $booking->getTotalAmount()) {
+            if ($booking->getPaidAmount() == $booking->getTotalAmount()) {
                 $booking->setStatusId(4); // Status For Execution (100% paid)
             }
         }
-        
+       
         return $this->bookingRepository->update($booking);
     }
 
@@ -192,4 +192,9 @@ class BookingService implements BookingServiceInterface
             ->findBy(['roomId' => $roomId], ['id' => 'DESC']);
     }
     
+    public function findAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status)
+    {
+        return $this->bookingRepository->getAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status);
+    }
+   
 }

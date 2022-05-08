@@ -76,5 +76,25 @@ class BookingRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
+    
+    public function getAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status)
+    {
+        return $this->createQueryBuilder('b')
+            ->addSelect('s')
+            ->innerJoin("b.status", 's')
+            ->innerJoin("b.payment", 'p')
+            ->andwhere('s.id = :status')
+            ->andwhere('p.id = :payment')
+            ->andWhere('b.checkin = :checkin')
+            ->andWhere('b.checkout = :checkout')
+            ->andWhere('b.dateAdded like :dateAdded')
+            ->setParameter('status', $status)
+            ->setParameter('payment', $payment)
+            ->setParameter('checkin', $checkin)
+            ->setParameter('checkout', $checkout)
+            ->setParameter('dateAdded', '%'.$dateAdded.'%')
+            ->getQuery()
+            ->getResult();
+    }
 
 }

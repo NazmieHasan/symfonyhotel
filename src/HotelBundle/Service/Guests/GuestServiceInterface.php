@@ -17,5 +17,5 @@ interface GuestServiceInterface
      */
     public function getAll();
     
-    public function findOneByPersonalNumber(string $personalNumber) : ?Guest; 
+    public function findOneByPersonalNumber(string $personalNumber); 
 }

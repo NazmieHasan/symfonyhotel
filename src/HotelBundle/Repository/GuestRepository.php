@@ -76,5 +76,14 @@ class GuestRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
+    
+    public function getOneByPersonalNumber($personalNumber)
+    {
+       return $this->createQueryBuilder('g')
+            ->where('g.personalNumber = :personalNumber')
+            ->setParameter('personalNumber', $personalNumber)
+            ->getQuery()
+            ->getResult();
+    }
 
 }

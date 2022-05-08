@@ -70,9 +70,9 @@ class GuestService implements GuestServiceInterface
         return $this->guestRepository->findBy([], ['id' => 'DESC']);
     }
     
-    public function findOneByPersonalNumber($personalNumber): ?Guest
+    public function findOneByPersonalNumber($personalNumber)
     {
-        return $this->guestRepository->findOneBy(['personalNumber' => $personalNumber]);
+        return $this->guestRepository->getOneByPersonalNumber($personalNumber);
     }
     
 }

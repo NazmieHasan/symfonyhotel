@@ -67,7 +67,24 @@
                         </div>
                     </div>
                 </form>
-                {% if guest|length == 1 %}
+                {% if guest|length == 0 %}
+                    {% for msg in app.session.flashbag.get('errorPersonalNumber')  %}
+                        <div class="alert alert-danger" id="errorPersonalNumber">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+                    {% for msg in app.session.flashbag.get('infoResult')  %}
+                        <div class="alert text-center" id="info">
+                            {{ msg }}
+                            <h4>Not found result! Please, try again!</h4>
+                        </div>
+                   {% endfor %}
+                {% else %} 
+                   {% for msg in app.session.flashbag.get('infoResult')  %}
+                    <div class="alert alert-success text-center" id="info">
+                    {{ msg }}
+                     </div>
+                    {% endfor %}
                     <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -95,7 +112,7 @@
                             </tr>
                        {% endfor %}
                     </tbody>
-                    </table>
+                    </table>  
                 {% endif %}
                 
                 {% if ( stays|length < booking.guestCount ) and ( booking.paymentAmount == 0.00 ) %} 
