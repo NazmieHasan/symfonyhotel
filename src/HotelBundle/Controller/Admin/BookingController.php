@@ -300,14 +300,11 @@ class BookingController extends Controller
      */
     public function findAllBookings()
     {
-        $bookings = $this->bookingService->getAll();
-        
         $statuses = $this->statusService->getAll();
         $payments = $this->paymentService->getAll();
         
         return $this->render("admin/bookings/find.html.twig",
             [
-                'bookings' => $bookings,
                 'statuses' => $statuses, 
                 'payments' => $payments,
             ]);
@@ -362,7 +359,7 @@ class BookingController extends Controller
         $this->addFlash("info", "Result bookings where checkin = $checkin, checkout = $checkout, dateAdded = $dateAdded,  status = $statusName, payment = $paymentName");
         }
         
-        $bookingsResult = $this->bookingService->findAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status);
+        $bookingsResult = $this->bookingService->findAllByCheckinCheckoutDateAddedStatusPayment($checkin, $checkout, $dateAdded, $status, $payment);
         
         return $this->render("admin/bookings/findResult.html.twig",
             [

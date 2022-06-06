@@ -15,5 +15,6 @@ interface RoleServiceInterface
     public function getAll();
 
     public function findOneBy(string $name) : ?Role; 
-
+    
+    public function getCount();
 }

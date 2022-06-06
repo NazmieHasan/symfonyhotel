@@ -102,4 +102,9 @@ class UserService implements UserServiceInterface
       return $this->userRepository->findBy([], ['id' => 'DESC']);
     }
     
+    public function getCount()
+    {
+        return $this->userRepository->count([]);
+    }
+    
 }

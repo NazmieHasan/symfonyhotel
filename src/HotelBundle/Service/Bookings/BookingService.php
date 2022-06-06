@@ -192,9 +192,9 @@ class BookingService implements BookingServiceInterface
             ->findBy(['roomId' => $roomId], ['id' => 'DESC']);
     }
     
-    public function findAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status)
+    public function findAllByCheckinCheckoutDateAddedStatusPayment($checkin, $checkout, $dateAdded, $status, $payment)
     {
-        return $this->bookingRepository->getAllByCheckinCheckoutDateAddedPaymentStatus($checkin, $checkout, $dateAdded, $payment, $status);
+        return $this->bookingRepository->getAllByCheckinCheckoutDateAddedStatusPayment($checkin, $checkout, $dateAdded, $status, $payment);
     }
    
 }

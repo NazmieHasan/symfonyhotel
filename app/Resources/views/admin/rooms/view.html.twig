@@ -18,7 +18,7 @@
                 <p>Price: <span class="cl-bold"> ${{ room.category.price }} </span></p>
                 <hr />
                 <p>
-                    <a class="btn btn-success btn-xs" href="{{ path('admin_room_edit', {id: room.id}) }}">Edit Room</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('admin_room_edit', {id: room.id}) }}">Edit Room</a>
                     <a class="btn btn-danger btn-xs" href="{{ path('admin_room_delete', {id: room.id}) }}" onClick="return confirm('Are you sure you want to delete?')">Delete Room</a>
                 </p>
                 

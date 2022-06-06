@@ -18,7 +18,7 @@
                 <p class="cl-bold">Phone: {{ guest.phone }}</p>
                 <hr />
                 <p>
-                    <a class="btn btn-success btn-xs" href="{{ path('admin_guest_edit', {id: guest.id}) }}">Edit Guest</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('admin_guest_edit', {id: guest.id}) }}">Edit Guest</a>
                     <a class="btn btn-danger btn-xs" href="{{ path('admin_guest_delete', {id: guest.id}) }}" onClick="return confirm('Are you sure you want to delete {{ guest.firstName }} {{ guest.fathersName }} {{ guest.lastName }} ?')">Delete Guest</a>
                 </p>
             

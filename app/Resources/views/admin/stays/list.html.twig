@@ -30,8 +30,8 @@
                         </td>
                         <td>{% if ( stay.isTerminated == 1 ) %} Yes on {{ stay.dateOfDeparture|date("Y-m-d H:i:s") }} {% else %} No {% endif %}</td>
                         <td>
-                            <a href="{{ path('admin_stay_view', {id: stay.id}) }}" target=_blank>View</a>
-                            <a href="{{ path('admin_stay_edit', {id: stay.id}) }}" target=_blank>Edit</a>
+                            <a class="text-success" href="{{ path('admin_stay_view', {id: stay.id}) }}" target=_blank>View</a>
+                            <a class="text-primary" href="{{ path('admin_stay_edit', {id: stay.id}) }}" target=_blank>Edit</a>
                             <a href="{{ path('admin_stay_delete', {id: stay.id}) }}" onClick="return confirm('Are you sure you want to delete stay with guest {{ stay.guest.firstName }} {{ stay.guest.fathersName }} {{ stay.guest.lastName }} ?')">Delete</a>
                         </td>
                     </tr>

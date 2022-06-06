@@ -35,12 +35,4 @@ Symfony 3.4.43
 
 6) php bin/console doctrine:schema:update --force
 
-7) insert in table roles:
-
-id role
-  
-1 ROLE_USER
-
-2 ROLE_ADMIN
-
-8) php bin/console server:run
+7) php bin/console server:run

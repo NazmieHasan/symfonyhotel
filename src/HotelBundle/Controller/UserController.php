@@ -7,6 +7,7 @@ use HotelBundle\Form\UserType;
 use HotelBundle\Entity\Booking;
 use HotelBundle\Form\BookingType;
 use HotelBundle\Service\Users\UserServiceInterface;
+use HotelBundle\Service\Roles\RoleServiceInterface;
 use HotelBundle\Service\Categories\CategoryServiceInterface;
 use HotelBundle\Service\Payments\PaymentServiceInterface;
 use HotelBundle\Service\Bookings\BookingServiceInterface;
@@ -22,6 +23,11 @@ class UserController extends Controller
      * @var UserServiceInterface
      */
     private $userService;
+    
+    /**
+     * @var RoleServiceInterface
+     */
+    private $roleService;
     
     /**
      * @var CategoryServiceInterface
@@ -40,11 +46,13 @@ class UserController extends Controller
 
     public function __construct(
         UserServiceInterface $userService,
+        RoleServiceInterface $roleService,
         CategoryServiceInterface $categoryService,
         PaymentServiceInterface $paymentService,
         BookingServiceInterface $bookingService)
     {
         $this->userService = $userService;
+        $this->roleService = $roleService;
         $this->categoryService = $categoryService;
         $this->paymentService = $paymentService;
         $this->bookingService = $bookingService;
@@ -72,6 +80,8 @@ class UserController extends Controller
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+        
+        $usersCount = $this->userService->getCount();
 
         if(null !== $this
                 ->userService->findOneByEmail($form['email']->getData())) {
@@ -84,7 +94,15 @@ class UserController extends Controller
         }
 
         if ($form->isValid()) {
-            $this->addFlash("info", "You are registered! Login in system.");
+        
+            if ($usersCount == 0) {
+                $userRole = $this->roleService->findOneBy("ROLE_ADMIN");
+                $user->addRole($userRole);
+                $this->addFlash("info", "You are registered first! You have an admin role. Login in system.");
+            } else {
+                $this->addFlash("info", "You are registered! Login in system.");
+            }
+            
             $this->userService->save($user);
             return $this->redirectToRoute("security_login");
         }

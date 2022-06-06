@@ -8,6 +8,24 @@
                 <form class="form-horizontal" action="{{ path('admin_bookings_find') }}" method="post">
                     <legend>Search Booking</legend> 
                     <div class="form-group">
+                        <label class="col-sm-12 control-label" for="booking_checkin">Checkin</label>
+                        <div class="col-sm-12">
+                            <input type="date" class="form-control" name="checkin" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="booking_checkout">Checkout</label>
+                        <div class="col-sm-12">
+                            <input type="date" class="form-control" name="checkout" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="booking_dateAdded">Date Added</label>
+                        <div class="col-sm-12">
+                            <input type="date" class="form-control" name="dateAdded" />
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-12 control-label" for="booking_status">Status</label>
                         <div class="col-sm-12">
                             <select class="form-control" name="status">
@@ -31,24 +49,6 @@
                                     </option>
                                 {% endfor %}
                             </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-12 control-label" for="booking_checkin">Checkin</label>
-                        <div class="col-sm-12">
-                            <input type="date" class="form-control" name="checkin" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-12 control-label" for="booking_checkout">Checkout</label>
-                        <div class="col-sm-12">
-                            <input type="date" class="form-control" name="checkout" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-12 control-label" for="booking_dateAdded">Date Added</label>
-                        <div class="col-sm-12">
-                            <input type="date" class="form-control" name="dateAdded" />
                         </div>
                     </div>
                     <div class="form-group">

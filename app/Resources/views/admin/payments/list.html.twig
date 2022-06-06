@@ -23,7 +23,7 @@
                         <td>{{ payment.id }}</td>
                         <td>{{ payment.name }}</td>
                         <td>
-                            <a href="{{ path('admin_payment_edit', {id: payment.id}) }}">Edit</a>
+                            <a class="text-primary" href="{{ path('admin_payment_edit', {id: payment.id}) }}">Edit</a>
                             <a href="{{ path('admin_payment_delete', {id: payment.id}) }}" onClick="return confirm('Are you sure you want to delete {{ payment.name }} ?')">Delete</a>
                         </td>
                     </tr>

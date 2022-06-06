@@ -46,4 +46,10 @@ class RoleService implements RoleServiceInterface
         );
 
     }
+    
+    public function getCount()
+    {
+        return $this->roleRepository->count([]);
+    }
+    
 }
