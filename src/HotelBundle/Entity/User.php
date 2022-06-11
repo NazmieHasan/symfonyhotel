@@ -26,7 +26,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @Assert\NotBlank(message="This field cannot be empty")
+     * @Assert\NotBlank(message="Email cannot be empty")
      *
      * @Assert\Email(
      *     message="Invalid email",
@@ -40,7 +40,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @Assert\NotBlank(message="This field cannot be empty")
+     * @Assert\NotBlank(message="Password cannot be empty")
      *
      * @Assert\Length(
      *     min = 5,
@@ -62,7 +62,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @Assert\NotBlank(message="This field cannot be empty")
+     * @Assert\NotBlank(message="Login name cannot be empty")
      *
      * @Assert\Length(
      *     min = 3,

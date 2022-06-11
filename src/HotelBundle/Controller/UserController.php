@@ -80,17 +80,19 @@ class UserController extends Controller
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+        $requestEmail = $form['email']->getData();
         
         $usersCount = $this->userService->getCount();
+        
+        if ($requestEmail !== null) {
 
-        if(null !== $this
-                ->userService->findOneByEmail($form['email']->getData())) {
-            $email = $this
-                ->userService->findOneByEmail($form['email']->getData())
-                ->getEmail();
+            if (null !== $this->userService->findOneByEmail($requestEmail)) {
+                $email = $this->userService->findOneByEmail($requestEmail)->getEmail();
 
-            $this->addFlash("errors", "Email  $email already taken!");
-            return $this->returnRegisterView($user);
+                $this->addFlash("errors", "Email  $email already taken!");
+                
+                return $this->returnRegisterView($user);
+            }
         }
 
         if ($form->isValid()) {

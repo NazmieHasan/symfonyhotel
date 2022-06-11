@@ -15,38 +15,29 @@
                         <fieldset>
                             <legend>Edit User</legend>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="user_edit_email">Email</label>
+                                <label class="col-sm-12 control-label" for="user_email">Email</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="user_edit_email" placeholder="Email" name="user_edit[email]"  value="{{ (form.email.vars.value )}}">
-                                </div>
-                                <div class="form-errors">
-                                    {{ form_errors(form.email) }}
+                                    <div class="form-control">{{ user.email }}</div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="user_edit_loginName">Login Name</label>
+                                <label class="col-sm-12 control-label" for="user_loginName">Login Name</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="user_edit_loginName" placeholder="Login Name" name="user_edit[loginName]"  value="{{ (form.loginName.vars.value )}}">
+                                    <input type="text" class="form-control" id="user_edit_loginName" name="user_edit[loginName]"  value="{{ (form.loginName.vars.value )}}">
                                 </div>
                                 <div class="form-errors">
                                     {{ form_errors(form.loginName) }}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="user_edit_password_first">Password</label>
                                 <div class="col-sm-12">
-                                    <input type="password" class="form-control" id="user_edit_password_first" placeholder="Password" name="user_edit[password][first]">
-                                </div>
-                                <div class="form-errors">
-                                    {{ form_errors(form.password.first) }}
+                                    <div id="changePass" class="btn btn-danger btn-sm">Change Password</div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-12 control-label" for="user_edit_password_second">Confirm Password</label>
-                                <div class="col-sm-12">
-                                    <input type="password" class="form-control" id="user_edit_password_second" placeholder="Repeat Password" name="user_edit[password][second]">
-                                </div>
+                            <div class="form-errors">
+                                {{ form_errors(form.password.first) }}
                             </div>
+                            <div id="pass"></div>
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     {{ form_widget(form.roles) }}
@@ -65,5 +56,30 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        $('#changePass').click(function () {
+            $('#pass').empty();
+
+            let form =
+                `
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="user_password_first">Password</label>
+                        <div class="col-sm-12">
+                            <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="user_edit[password][first]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="user_password_second">Confirm Password</label>
+                        <div class="col-sm-12">
+                            <input type="password" class="form-control" id="user_password_second" placeholder="Repeat Password" name="user_edit[password][second]">
+                        </div>
+                    </div>
+                `;
+
+            $('#pass').append(form);
+            $('#pass').toggle();
+        })
+    </script>
     
 {% endblock %}

@@ -9,7 +9,6 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/login", name="security_login")
-     * @param $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function login()

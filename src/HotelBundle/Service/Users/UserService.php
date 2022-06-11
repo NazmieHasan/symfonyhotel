@@ -46,11 +46,11 @@ class UserService implements UserServiceInterface
      */
     public function save(User $user): bool
     {
-            $passwordHash =
-                $this->encryptionService->hash($user->getPassword());
-            $user->setPassword($passwordHash);
-            $userRole = $this->roleService->findOneBy("ROLE_USER");
-            $user->addRole($userRole);
+        $passwordHash = $this->encryptionService->hash($user->getPassword());
+        $user->setPassword($passwordHash);
+        
+        $userRole = $this->roleService->findOneBy("ROLE_USER");
+        $user->addRole($userRole);
 
         return $this->userRepository->insert($user);
     }
@@ -83,6 +83,15 @@ class UserService implements UserServiceInterface
 
     public function update(User $user): bool
     {
+        $oldPasswordHash = $user->getPassword();
+        
+        if ($user->getPassword()) {
+            $newPasswordHash = $this->encryptionService->hash($user->getPassword());
+            $user->setPassword($newPasswordHash);
+        } else {
+            $user->setPassword($oldPasswordHash); // not set $oldPasswordHash;
+        }
+            
         return $this->userRepository->update($user);
     }
     
