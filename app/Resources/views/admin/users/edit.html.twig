@@ -15,13 +15,13 @@
                         <fieldset>
                             <legend>Edit User</legend>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="user_email">Email</label>
+                                <label class="col-sm-12 control-label" for="user_edit_email">Email</label>
                                 <div class="col-sm-12">
                                     <div class="form-control">{{ user.email }}</div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label" for="user_loginName">Login Name</label>
+                                <label class="col-sm-12 control-label" for="user_edit_loginName">Login Name</label>
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" id="user_edit_loginName" name="user_edit[loginName]"  value="{{ (form.loginName.vars.value )}}">
                                 </div>
@@ -64,15 +64,15 @@
             let form =
                 `
                     <div class="form-group">
-                        <label class="col-sm-12 control-label" for="user_password_first">Password</label>
+                        <label class="col-sm-12 control-label" for="user_edit_password_first">Password</label>
                         <div class="col-sm-12">
-                            <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="user_edit[password][first]">
+                            <input type="password" class="form-control" id="user_edit_password_first" placeholder="Password" name="user_edit[password][first]">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-12 control-label" for="user_password_second">Confirm Password</label>
+                        <label class="col-sm-12 control-label" for="user_edit_password_second">Confirm Password</label>
                         <div class="col-sm-12">
-                            <input type="password" class="form-control" id="user_password_second" placeholder="Repeat Password" name="user_edit[password][second]">
+                            <input type="password" class="form-control" id="user_edit_password_second" placeholder="Repeat Password" name="user_edit[password][second]">
                         </div>
                     </div>
                 `;

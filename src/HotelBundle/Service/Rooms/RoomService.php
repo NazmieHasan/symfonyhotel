@@ -128,4 +128,14 @@ class RoomService implements RoomServiceInterface
             ->findOneBy(['category' => $category], ['id' => 'DESC'], 1);
     }
     
+    public function findAllByCheckinCheckout($checkin, $checkout)
+    {
+        return $this->roomRepository->getAllByCheckinCheckout($checkin, $checkout);
+    }
+    
+    public function findOneByCheckinCheckoutCategory($checkin, $checkout, $categoryId)
+    {
+        return $this->roomRepository->getOneByCheckinCheckoutCategory($checkin, $checkout, $categoryId);
+    }
+    
 }

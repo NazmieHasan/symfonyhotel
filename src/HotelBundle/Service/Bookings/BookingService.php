@@ -55,30 +55,23 @@ class BookingService implements BookingServiceInterface
         $this->roomService = $roomService;
         $this->statusService = $statusService;
     }
-
+    
     /**
      * @param Booking $booking
      * @param int $categoryId
+     * @param int $roomId
      * @return bool
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function create(Booking $booking, int $categoryId): bool
+    public function create(Booking $booking, int $categoryId, int $roomId): bool
     {
         $userId = $this->userService->currentUser();
         $booking->setUserId($userId);
         $booking->setCategory($this->categoryService->getOne($categoryId));
+        $booking->setRoomId($this->roomService->getOne($roomId));
         $booking->setTerminatedCount(0);
-        
-        // $roomId = $this->roomService->getOneFreeRoomByCheckinCheckoutCategoryId(date $checkin, date $checkout, int $categoryId);
-        // $booking->setRoom($roomId);
-        
-        $firstRoomId = $this->roomService->getFirstByCategoryId($categoryId)->getId();
-        $lastRoomId = $this->roomService->getLastByCategoryId($categoryId)->getId();
-        $id = rand($firstRoomId, $lastRoomId);
-        $roomId = $this->roomService->getOne($id);
-        $booking->setRoomId($roomId);
-
+       
         $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
         $booking->setDays($days);
         $booking->setTotalAmount(($booking->getCategory()->getPrice()) * ($booking->getDays()));

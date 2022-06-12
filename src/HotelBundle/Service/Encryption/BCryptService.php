@@ -7,7 +7,7 @@ class BCryptService implements EncryptionServiceInterface
 
     public function hash(string $password)
     {
-        return password_hash($password, PASSWORD_BCRIPT);
+        return password_hash($password, PASSWORD_BCRYPT);
     }
 
     public function verify(string $password, string $hash)

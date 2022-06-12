@@ -13,7 +13,7 @@
     </section>
     <div class="container-fluid search-room text-center">
         <div class="container">
-            <form>
+            <form class="form-horizontal" action="{{ path('search_room') }}" method="post">
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 col-title">
@@ -21,11 +21,11 @@
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <label>Arrival:</label>
-                            <input type="date" class="input-date"  value="{{ "now"|date('Y-m-d') }}" />
+                            <input type="date" class="input-date"  value="{{ "now"|date('Y-m-d') }}" name="checkin" />
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <label>Departure:</label>
-                            <input type="date" class="input-date" value="{{ "now"|date_modify('+1 day')|date('Y-m-d') }}" />
+                            <input type="date" class="input-date" value="{{ "now"|date_modify('+1 day')|date('Y-m-d') }}" name="checkout" />
                         </div>
                         <div class="col-lg-2 col-md-12 col-sm-12 col-sx-12">
                             <button type="submit" class="btn btn-danger form-submit">SEARCH ROOM</button>

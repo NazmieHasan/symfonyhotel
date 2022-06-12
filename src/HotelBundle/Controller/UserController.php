@@ -8,6 +8,7 @@ use HotelBundle\Entity\Booking;
 use HotelBundle\Form\BookingType;
 use HotelBundle\Service\Users\UserServiceInterface;
 use HotelBundle\Service\Roles\RoleServiceInterface;
+use HotelBundle\Service\Rooms\RoomServiceInterface;
 use HotelBundle\Service\Categories\CategoryServiceInterface;
 use HotelBundle\Service\Payments\PaymentServiceInterface;
 use HotelBundle\Service\Bookings\BookingServiceInterface;
@@ -29,6 +30,12 @@ class UserController extends Controller
      */
     private $roleService;
     
+     /**
+     * @var RoomServiceInterface
+     */
+    private $roomService;
+    
+    
     /**
      * @var CategoryServiceInterface
      */
@@ -47,12 +54,14 @@ class UserController extends Controller
     public function __construct(
         UserServiceInterface $userService,
         RoleServiceInterface $roleService,
+        RoomServiceInterface $roomService,
         CategoryServiceInterface $categoryService,
         PaymentServiceInterface $paymentService,
         BookingServiceInterface $bookingService)
     {
         $this->userService = $userService;
         $this->roleService = $roleService;
+        $this->roomService = $roomService;
         $this->categoryService = $categoryService;
         $this->paymentService = $paymentService;
         $this->bookingService = $bookingService;
@@ -147,12 +156,20 @@ class UserController extends Controller
     {
         $booking = new Booking();
         $category = $this->categoryService->getOne($id);
+        
+        $firstRoomId = $this->roomService->getFirstByCategoryId($id)->getId();
+        $lastRoomId = $this->roomService->getLastByCategoryId($id)->getId();
+        $rId = rand($firstRoomId, $lastRoomId);
+        // $rId = $this->roomService->findOneByCheckinCheckoutCategory($checkin, $checkout, $categoryId);
+        $room = $this->roomService->getOne($rId);
+        
         $payments = $this->paymentService->getAll();
+        
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $this->bookingService->create($booking, $id);
+            $this->bookingService->create($booking, $id, $rId);
             $this->addFlash("info", "Create booking successfully!");
             return $this->redirectToRoute("my_bookings");
         }
@@ -161,6 +178,62 @@ class UserController extends Controller
             [
                 'form' => $form->createView(),
                 'category' => $category,
+                'room' => $room,
+                'payments' => $payments,
+            ]);
+    }
+    
+    /**
+     * @Route("/user/create-booking/category-{catId}/room-{rId}", name="booking_create", methods={"GET"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param $catId
+     * @param $rId
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function createWithSearchForm(Request $request, int $catId, int $rId)
+    {
+        $category = $this->categoryService->getOne($catId);
+        $room = $this->roomService->getOne($rId);
+        $payments = $this->paymentService->getAll();
+        
+        return $this->render('users/crBooking.html.twig',
+            [
+                'form' => $this->createForm(BookingType::class)->createView(),
+                'category' => $category,
+                'room' => $room,
+                'payments' => $payments,
+            ]);
+    }
+
+    /**
+     * @Route("/user/create-booking/category-{catId}/room-{rId}", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param $catId
+     * @param $rId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function createWithSearchFormProcess(Request $request, int $catId, int $rId)
+    {
+        $booking = new Booking();
+        $category = $this->categoryService->getOne($catId);
+        $room = $this->roomService->getOne($rId);
+        $payments = $this->paymentService->getAll();
+        $form = $this->createForm(BookingType::class, $booking);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $this->bookingService->create($booking, $catId, $rId);
+            $this->addFlash("info", "Create booking successfully!");
+            return $this->redirectToRoute("my_bookings");
+        }
+        
+        return $this->render('users/crBooking.html.twig',
+            [
+                'form' => $form->createView(),
+                'category' => $category,
+                'room' => $room,
                 'payments' => $payments,
             ]);
     }

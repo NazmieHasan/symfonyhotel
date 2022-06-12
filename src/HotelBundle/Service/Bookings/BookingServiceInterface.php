@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface BookingServiceInterface
 {
-    public function create(Booking $booking, int $categoryId) : bool;
+    public function create(Booking $booking, int $categoryId, int $roomdId) : bool;
     public function edit(Booking $booking) : bool;
     public function delete(Booking $booking) : bool;
     public function getOne(int $id) : ?Booking;

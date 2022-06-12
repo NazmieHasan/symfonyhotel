@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container home-container">
+        
+        {% if roomsResult|length == 0 %} 
+            {% for msg in app.session.flashbag.get('errors')  %}
+                <div class="alert alert-danger text-center" id="errors">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+            {% for msg in app.session.flashbag.get('info')  %}
+                <div class="alert text-center" id="info">
+                    {{ msg }}
+                    <h4>Not found result! Please, try again!</h4>
+                </div>
+            {% endfor %}
+        {% else %} 
+            {% for msg in app.session.flashbag.get('info')  %}
+                <div class="alert alert-success text-center" id="info">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+            <div class="row">
+                {% for room in roomsResult %}
+                <div class="col-md-4 col-sm-12 col-home">
+                    <img src="{{ asset('uploads/images/categories/' ~ room.category.image)}}" alt="img" class="img-thumbnail">
+                    <div class="room-info">
+                        <a class="cat-link" href="{{ path('category_view', {id: room.categoryId}) }}">{{ room.category.name }}</a>
+                        <p>{{ room.category.description }}</p>
+                        <a href="{{ path('booking_create', {catId: room.categoryId, rId: room.id}) }}"><button class="btn btn-danger">BOOKING</button></a>
+                    </div>
+                </div>
+               {% endfor %}  
+            </div>
+        {% endif %} 
+     
+    </div>  
+    
+{% endblock %}

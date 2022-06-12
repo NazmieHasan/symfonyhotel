@@ -38,4 +38,8 @@ interface RoomServiceInterface
      */
     public function getLastByCategoryId(int $categoryId);
     
+    public function findAllByCheckinCheckout($checkin, $checkout);
+    
+    public function findOneByCheckinCheckoutCategory($checkin, $checkout, $categoryId);
+    
 }

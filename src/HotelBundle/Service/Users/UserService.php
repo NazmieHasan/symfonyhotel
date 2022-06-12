@@ -4,7 +4,7 @@ namespace HotelBundle\Service\Users;
 
 use HotelBundle\Entity\User;
 use HotelBundle\Repository\UserRepository;
-use HotelBundle\Service\Encryption\ArgonEncryption;;
+use HotelBundle\Service\Encryption\ArgonEncryption;
 use HotelBundle\Service\Encryption\EncryptionServiceInterface;
 use HotelBundle\Service\Roles\RoleService;
 use HotelBundle\Service\Roles\RoleServiceInterface;

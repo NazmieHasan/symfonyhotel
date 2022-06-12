@@ -76,5 +76,36 @@ class RoomRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
-
+    
+    public function getAllByCheckinCheckout($checkin, $checkout)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r')
+            ->leftJoin('HotelBundle:Booking', 'b', 'WITH', 'b.roomId = r.id')
+            ->where('b.checkin = :checkin')
+            ->andWhere('b.checkout = :checkout')
+            ->groupBy('r.categoryId')
+            ->setParameter('checkin', $checkin)
+            ->setParameter('checkout', $checkout)
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ->getResult();       
+    }
+    
+    public function getOneByCheckinCheckoutCategory($checkin, $checkout, $categoryId)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r')
+            ->leftJoin('HotelBundle:Booking', 'b', 'WITH', 'b.roomId = r.id')
+            ->where('b.checkin = :checkin')
+            ->andWhere('b.checkout = :checkout')
+            ->andWhere('r.categoryId = :categoryId')
+            ->setParameter('checkin', $checkin)
+            ->setParameter('checkout', $checkout)
+            ->setParameter('categoryId', $categoryId)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();       
+    }
+   
 }
