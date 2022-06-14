@@ -29,7 +29,9 @@
                     <div class="room-info">
                         <a class="cat-link" href="{{ path('category_view', {id: room.categoryId}) }}">{{ room.category.name }}</a>
                         <p>{{ room.category.description }}</p>
-                        <a href="{{ path('booking_create', {catId: room.categoryId, rId: room.id}) }}"><button class="btn btn-danger">BOOKING</button></a>
+                        <a href="{{ path('user_booking_create_with_search_form', { catId: room.categoryId, rId: room.id, checkin: checkin|date('Y-m-d'), checkout: checkout|date('Y-m-d') } ) }}">
+                            <button class="btn btn-danger">BOOKING</button>
+                        </a>
                     </div>
                 </div>
                {% endfor %}  

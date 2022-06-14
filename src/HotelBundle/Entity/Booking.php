@@ -37,6 +37,13 @@ class Booking
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="room_id", type="integer")
+     */
+    private $roomId;
 
     /**
      * @var Room
@@ -44,7 +51,7 @@ class Booking
      * @ORM\ManyToOne(targetEntity="HotelBundle\Entity\Room", inversedBy="bookings")
      * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
      */
-    private $roomId;
+    private $room;
 
     /**
      * @var \DateTime
@@ -225,7 +232,7 @@ class Booking
     }
 
     /**
-     * @return Room
+     * @return int
      */
     public function getRoomId()
     {
@@ -233,13 +240,27 @@ class Booking
     }
 
     /**
-     * @param Room $room
-     * @return Booking
+     * @param int $roomId
      */
-    public function setRoomId(Room $roomId = null)
+    public function setRoomId($roomId)
     {
         $this->roomId = $roomId;
-        return $this;
+    }
+
+    /**
+     * @return Room
+     */
+    public function getRoom()
+    {
+        return $this->room;
+    }
+
+    /**
+     * @param Room $room
+     */
+    public function setRoom($room)
+    {
+        $this->room = $room;
     }
 
     /**

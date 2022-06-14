@@ -113,6 +113,8 @@ class HomeController extends Controller
         return $this->render("home/findRoomResult.html.twig",
             [
                 'roomsResult' => $roomsResult,
+                'checkin' => $checkin,
+                'checkout' => $checkout,
             ]
         );
         

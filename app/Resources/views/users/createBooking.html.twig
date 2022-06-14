@@ -5,7 +5,12 @@
     <div class="container body-content">
         <div class="row">
             <div class="col-sm-6 offset-sm-3">
-                <form class="form-horizontal" action="{{ path('user_booking_create', {id: category.id}) }}" method="post">
+                {% for msg in app.session.flashbag.get('warning')  %}
+                    <div class="alert alert-warning text-center">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+                <form class="form-horizontal" action="{{ path('user_booking_create', {catId: category.id}) }}" method="post">
                     <legend>Create Booking - {{ category.name }}</legend>
                     <div class="form-group">
                         <label class="col-sm-12 control-label" for="booking_checkin">Checkin</label>

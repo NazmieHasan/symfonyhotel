@@ -69,7 +69,7 @@ class BookingService implements BookingServiceInterface
         $userId = $this->userService->currentUser();
         $booking->setUserId($userId);
         $booking->setCategory($this->categoryService->getOne($categoryId));
-        $booking->setRoomId($this->roomService->getOne($roomId));
+        $booking->setRoom($this->roomService->getOne($roomId));
         $booking->setTerminatedCount(0);
        
         $days = $booking->getCheckin()->diff($booking->getCheckout())->format("%a");
