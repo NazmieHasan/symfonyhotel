@@ -78,34 +78,118 @@ class RoomRepository extends \Doctrine\ORM\EntityRepository
     }
     
     public function getAllByCheckinCheckout($checkin, $checkout)
-    {
-        return $this->createQueryBuilder('r')
-            ->select('r')
-            ->leftJoin('HotelBundle:Booking', 'b', 'WITH', 'b.roomId = r.id')
-            ->where('b.checkin = :checkin')
-            ->andWhere('b.checkout = :checkout')
-            ->groupBy('r.categoryId')
-            ->setParameter('checkin', $checkin)
-            ->setParameter('checkout', $checkout)
-            ->orderBy('r.id', 'ASC')
-            ->getQuery()
-            ->getResult();       
+    {  
+        $roomIds = $this->_em->createQuery("
+            SELECT 
+                r
+            FROM 
+                HotelBundle:Room r
+            LEFT JOIN 
+                HotelBundle:Booking b
+            WITH 
+                b.roomId = r.id
+            WHERE (
+                (b.checkin = :checkin AND b.checkout = :checkout) OR 
+                
+                ( (b.checkin = :checkin ) AND (:checkout BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (:checkin BETWEEN b.checkin AND b.checkout) AND (:checkout BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (:checkin BETWEEN b.checkin AND b.checkout) AND (:checkout = b.checkout) ) OR
+                
+                ( (b.checkin BETWEEN :checkin AND :checkout) AND (:checkout BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (b.checkin BETWEEN :checkin AND :checkout) AND (b.checkout = :checkout) ) OR
+                
+                ( (b.checkout BETWEEN :checkin AND :checkout) AND (:checkin BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (b.checkin BETWEEN :checkin AND :checkout) AND (b.checkout BETWEEN :checkin AND :checkout) )
+            ) 
+            
+        ")
+        ->setParameter('checkin', $checkin)
+        ->setParameter('checkout', $checkout)
+        ->getResult(); 
+               
+       $removeRoomIds = implode(',',$roomIds);
+       
+       if ($removeRoomIds == null) {
+           $removeRoomIds = '0';
+       } 
+    
+        return $this->_em->createQuery("
+            SELECT 
+                r
+            FROM 
+                HotelBundle:Room r
+            LEFT JOIN 
+                HotelBundle:Booking b
+            WITH 
+                b.roomId = r.id
+            WHERE  
+                r.id NOT IN ($removeRoomIds)
+            GROUP BY r.categoryId      
+       ")
+        ->getResult();          
     }
     
     public function getOneByCheckinCheckoutCategory($checkin, $checkout, $categoryId)
     {
-        return $this->createQueryBuilder('r')
-            ->select('r')
-            ->leftJoin('HotelBundle:Booking', 'b', 'WITH', 'b.roomId = r.id')
-            ->where('b.checkin = :checkin')
-            ->andWhere('b.checkout = :checkout')
-            ->andWhere('r.categoryId = :categoryId')
-            ->setParameter('checkin', $checkin)
-            ->setParameter('checkout', $checkout)
-            ->setParameter('categoryId', $categoryId)
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getResult();       
+        $roomIds = $this->_em->createQuery("
+            SELECT 
+                r
+            FROM 
+                HotelBundle:Room r
+            LEFT JOIN 
+                HotelBundle:Booking b
+            WITH 
+                b.roomId = r.id
+            WHERE (
+                (r.categoryId = :categoryId) AND
+                
+                (b.checkin = :checkin AND b.checkout = :checkout) OR 
+                
+                ( (b.checkin = :checkin ) AND (:checkout BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (:checkin BETWEEN b.checkin AND b.checkout) AND (:checkout BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (:checkin BETWEEN b.checkin AND b.checkout) AND (:checkout = b.checkout) ) OR
+                
+                ( (b.checkin BETWEEN :checkin AND :checkout) AND (:checkout BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (b.checkin BETWEEN :checkin AND :checkout) AND (b.checkout = :checkout) ) OR
+                
+                ( (b.checkout BETWEEN :checkin AND :checkout) AND (:checkin BETWEEN b.checkin AND b.checkout) ) OR
+                
+                ( (b.checkin BETWEEN :checkin AND :checkout) AND (b.checkout BETWEEN :checkin AND :checkout) )
+            )
+        ")
+        ->setParameter('checkin', $checkin)
+        ->setParameter('checkout', $checkout)
+        ->setParameter('categoryId', $categoryId)
+        ->getResult(); 
+               
+       $removeRoomIds = implode(',',$roomIds);
+       
+       if ($removeRoomIds == null) {
+           $removeRoomIds = '0';
+       } 
+    
+        return $this->_em->createQuery("
+            SELECT 
+                r
+            FROM 
+                HotelBundle:Room r
+            LEFT JOIN 
+                HotelBundle:Booking b
+            WITH 
+                b.roomId = r.id
+            WHERE 
+                r.categoryId = $categoryId AND
+                r.id NOT IN ($removeRoomIds)    
+       ")
+        ->setMaxResults(1)
+        ->getResult();     
     }
    
 }

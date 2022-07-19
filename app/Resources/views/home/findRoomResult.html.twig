@@ -2,29 +2,58 @@
 
 {% block body %}
 
-    <div class="container home-container">
-        
-        {% if roomsResult|length == 0 %} 
-            {% for msg in app.session.flashbag.get('errors')  %}
-                <div class="alert alert-danger text-center" id="errors">
-                    {{ msg }}
-                </div>
-            {% endfor %}
-            {% for msg in app.session.flashbag.get('info')  %}
-                <div class="alert text-center" id="info">
-                    {{ msg }}
-                    <h4>Not found result! Please, try again!</h4>
-                </div>
-            {% endfor %}
-        {% else %} 
-            {% for msg in app.session.flashbag.get('info')  %}
-                <div class="alert alert-success text-center" id="info">
-                    {{ msg }}
-                </div>
-            {% endfor %}
-            <div class="row">
-                {% for room in roomsResult %}
-                <div class="col-md-4 col-sm-12 col-home">
+    <div class="container home-container mb-5">
+        <div class="row text-center">
+            <div class="col-md-6 offset-md-3">
+                {% if roomsResult|length == 0 %} 
+                    {% for msg in app.session.flashbag.get('errors')  %}
+                        <div class="alert alert-danger" id="errors">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+                    {% for msg in app.session.flashbag.get('warning')  %}
+                        <div class="alert alert-warning" id="warning">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}       
+                    <form class="form-horizontal search-room" action="{{ path('search_room') }}" method="post">
+                        <div class="form-group">
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-12 col-title">
+                                    <span>BOOK ONLINE</span>
+                                </div>
+                            </div>
+                           <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label class="mr-3 pr-5">Arrival:</label>
+                                    <input type="date" class="input-date"  value="{{ "now"|date('Y-m-d') }}" name="checkin" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="mr-3 pr-3">Departure:</label>
+                                    <input type="date" class="input-date" value="{{ "now"|date_modify('+1 day')|date('Y-m-d') }}" name="checkout" />
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-danger form-submit">SEARCH ROOM</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>    
+                {% else %} 
+                    {% for msg in app.session.flashbag.get('info')  %}
+                        <div class="alert alert-success" id="info">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+               {% endif %} 
+            </div>
+        </div>     
+        <div class="row">
+           {% for room in roomsResult %}
+                <div class="col-md-6 offset-md-3 col-home">
                     <img src="{{ asset('uploads/images/categories/' ~ room.category.image)}}" alt="img" class="img-thumbnail">
                     <div class="room-info">
                         <a class="cat-link" href="{{ path('category_view', {id: room.categoryId}) }}">{{ room.category.name }}</a>
@@ -34,10 +63,8 @@
                         </a>
                     </div>
                 </div>
-               {% endfor %}  
-            </div>
-        {% endif %} 
-     
+            {% endfor %}  
+        </div>        
     </div>  
     
 {% endblock %}

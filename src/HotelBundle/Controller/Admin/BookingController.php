@@ -150,7 +150,7 @@ class BookingController extends Controller
         if ($personalNumber == null) {
             $this->addFlash("errorPersonalNumber", "Please, enter personal number!");
         } else {
-            $this->addFlash("infoResult", "Result guest with personalNumber $personalNumber ");
+            $this->addFlash("infoResult", "Result guest with personal number $personalNumber ");
         }
         
         return $this->render("admin/bookings/view.html.twig",

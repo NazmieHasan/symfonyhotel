@@ -76,7 +76,7 @@ class HomeController extends Controller
      */
     public function searchRoom()
     {
-       $categories = $this->categoryService->getAll();
+        $categories = $this->categoryService->getAll();
             
         return $this->render('home/index.html.twig',
         ['categories' => $categories]); 
@@ -89,27 +89,27 @@ class HomeController extends Controller
      */
     public function findRoom(Request $request)
     {
-        $checkin = ''; $checkout = '';
+        $checkin = ''; $checkout = ''; $roomsResult = '';
         
         $checkinSearch = $request->get('checkin');
         $checkoutSearch = $request->get('checkout');
         
-        if ($checkinSearch != null) {
+        if ( ($checkinSearch != null) && ($checkoutSearch != null) )  {
             $checkin = date("Y-m-d", strtotime($checkinSearch)); 
+            $checkout = date("Y-m-d", strtotime($checkoutSearch));
+            
+            $roomsResult = $this->roomService->findAllByCheckinCheckout($checkin, $checkout);
+            
+            if (!$roomsResult) {  
+                $this->addFlash("warning", "Not found rooms with checkin = $checkin, checkout = $checkout. Please, try again!");
+            } else {    
+                $this->addFlash("info", "Result rooms with checkin = $checkin, checkout = $checkout");
+            } 
+               
+        } else {
+            $this->addFlash("errors", "All fields are required. Please select!");
         }
             
-        if ($checkoutSearch != null) { 
-            $checkout = date("Y-m-d", strtotime($checkoutSearch));
-        }
-        
-        if ( ($checkinSearch == null) or ($checkoutSearch == null) ) {
-            $this->addFlash("errors", "All fields is required. Please select!");
-        } else {
-        $this->addFlash("info", "Result free rooms where checkin = $checkin, checkout = $checkout");
-        }
-        
-        $roomsResult = $this->roomService->findAllByCheckinCheckout($checkin, $checkout);
-    
         return $this->render("home/findRoomResult.html.twig",
             [
                 'roomsResult' => $roomsResult,
