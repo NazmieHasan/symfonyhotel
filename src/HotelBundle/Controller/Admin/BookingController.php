@@ -320,6 +320,10 @@ class BookingController extends Controller
     {
         $checkin = ''; $checkout = ''; $dateAdded = '';
         $status = ''; $statusName = ''; $payment = ''; $paymentName = '';
+        
+        $resMsgCheckin = ''; $resMsgCheckout = ''; $resMsgDateAdded = ''; 
+        $resMsgStatus = ''; $resMsgPayment = '';
+        
         $statuses = $this->statusService->getAll();
         $payments = $this->paymentService->getAll();
         
@@ -331,32 +335,33 @@ class BookingController extends Controller
         
         if ($checkinSearch != null) {
             $checkin = date("Y-m-d", strtotime($checkinSearch)); 
+            $resMsgCheckin =  'checkin = ' .$checkin;
         }
             
         if ($checkoutSearch != null) { 
             $checkout = date("Y-m-d", strtotime($checkoutSearch));
+            $resMsgCheckout =  'checkout = ' .$checkout;
         }
         
         if ($dateAddedSearch != null) {
             $dateAdded = date("Y-m-d", strtotime($dateAddedSearch));
+            $resMsgDateAdded =  'date added = ' .$dateAdded;
         }
             
         if ($statusSearch != null) {
             $status = $statusSearch;
             $statusName = $this->statusService->getOne($statusSearch)->getName();
+            $resMsgStatus =  'status =  ' .$statusName;
         }
         
         if ($paymentSearch != null) {
             $payment = $paymentSearch;
             $paymentName = $this->paymentService->getOne($paymentSearch)->getName();
+            $resMsgPayment =  'payment = ' .$paymentName;
         }
         
-        if ( 
-            ($checkinSearch == null) or ($checkoutSearch == null) or ($dateAddedSearch == null) or
-            ($statusSearch == null) or ($paymentSearch == null)  ) {
-            $this->addFlash("errors", "All fields is required. Please select!");
-        } else {
-        $this->addFlash("info", "Result bookings where checkin = $checkin, checkout = $checkout, dateAdded = $dateAdded,  status = $statusName, payment = $paymentName");
+        if ( ($checkinSearch) || ($checkoutSearch) || ($dateAddedSearch) || ($statusSearch) || ($paymentSearch) ) {
+            $this->addFlash("info", "Result bookings where $resMsgCheckin $resMsgCheckout $resMsgDateAdded $resMsgStatus $resMsgPayment");
         }
         
         $bookingsResult = $this->bookingService->findAllByCheckinCheckoutDateAddedStatusPayment($checkin, $checkout, $dateAdded, $status, $payment);
@@ -367,7 +372,7 @@ class BookingController extends Controller
                 'statuses' => $statuses, 
                 'payments' => $payments,
             ]);
-
+            
     }
     
 }

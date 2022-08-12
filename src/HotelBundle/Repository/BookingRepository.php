@@ -79,22 +79,33 @@ class BookingRepository extends \Doctrine\ORM\EntityRepository
     
     public function getAllByCheckinCheckoutDateAddedStatusPayment($checkin, $checkout, $dateAdded, $status, $payment)
     {
-        return $this->createQueryBuilder('b')
-            ->addSelect('s')
-            ->innerJoin("b.status", 's')
-            ->innerJoin("b.payment", 'p')
-            ->andWhere('b.checkin = :checkin')
-            ->andWhere('b.checkout = :checkout')
-            ->andWhere('b.dateAdded like :dateAdded')
-            ->andwhere('s.id = :status')
-            ->andwhere('p.id = :payment')
-            ->setParameter('checkin', $checkin)
-            ->setParameter('checkout', $checkout)
-            ->setParameter('dateAdded', '%'.$dateAdded.'%')
-            ->setParameter('status', $status)
-            ->setParameter('payment', $payment)
-            ->getQuery()
-            ->getResult();
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('b');
+        $qb->from('HotelBundle:Booking', 'b');
+        
+        if ($checkin) {
+            $qb->andWhere('b.checkin = :checkin')->setParameter('checkin', $checkin);
+        }
+        
+        if ($checkout) {
+            $qb->andWhere('b.checkout = :checkout')->setParameter('checkout', $checkout);
+        }
+        
+        if ($dateAdded) {
+            $qb->andWhere('b.dateAdded like :dateAdded')->setParameter('dateAdded', '%'.$dateAdded.'%');
+        }
+
+        if ($status) {
+            $qb->andWhere('b.status = :status')->setParameter('status', $status);
+        }
+        
+        if ($payment) {
+            $qb->andWhere('b.payment = :payment')->setParameter('payment', $payment);
+        }
+           
+        $qb->orderBy('b.dateAdded', 'DESC');
+
+        return $qb->getQuery()->getResult();    
     }
 
 }

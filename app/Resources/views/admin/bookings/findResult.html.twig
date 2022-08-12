@@ -65,11 +65,6 @@
     <div class="container body-content">
         <div class="col-sm-10 offset-sm-1">
         {% if bookingsResult|length == 0 %} 
-            {% for msg in app.session.flashbag.get('errors')  %}
-                <div class="alert alert-danger text-center" id="errors">
-                    {{ msg }}
-                </div>
-            {% endfor %}
             {% for msg in app.session.flashbag.get('info')  %}
                 <div class="alert text-center" id="info">
                     {{ msg }}
