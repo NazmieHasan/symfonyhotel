@@ -7,9 +7,7 @@ SoftUni PHP MVC Frameworks - Symfony
 
 https://softuni.bg/trainings/3025/php-mvc-frameworks-symfony-july-2020
 
-Project Requirements:
-
-https://github.com/NazmieHasan/---PROJECTS---REQUIREMENTS---/blob/main/SYMFONY-Hotel.pdf
+Project Requirements: Requirements.pdf
 
 Certificate: https://softuni.bg/certificates/details/88519/dfd370cf
 
