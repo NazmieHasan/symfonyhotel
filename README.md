@@ -41,5 +41,5 @@ Symfony 3.4.43
 ![4-categories](https://user-images.githubusercontent.com/58294359/192850564-6ab7cc84-1007-4ebd-80ab-0aae7e79d567.png)
 ![5-payments](https://user-images.githubusercontent.com/58294359/192850579-b9325921-aa7f-435a-92b0-97e9f1c23e87.png)
 ![6-roles](https://user-images.githubusercontent.com/58294359/192850608-94f620c9-06a3-414b-83e7-d3ade7d41b80.png)
-![Uploading 7-rooms.png…]()
+![7-rooms](https://user-images.githubusercontent.com/58294359/192851552-e2f4d146-9320-422b-8b81-9396f8c968c9.png)
 ![8-statuses](https://user-images.githubusercontent.com/58294359/192850668-34025746-e422-489d-a84c-2576e0463cc4.png)
