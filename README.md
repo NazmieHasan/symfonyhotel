@@ -56,4 +56,3 @@ Symfony 3.4.43
 ![19-guests](https://user-images.githubusercontent.com/58294359/195800190-f1d3b702-ea7e-4f5f-ba8e-514a553577c5.png)
 ![20-bookings-view-394-add-stay-in-booking](https://user-images.githubusercontent.com/58294359/195800212-c8e2e1c8-89ca-46cf-a025-806a6014de51.png)
 ![21-stays](https://user-images.githubusercontent.com/58294359/193219340-fd8f84ce-a602-4032-bafe-41d8da758a6a.png)
-![22-guests-view-16](https://user-images.githubusercontent.com/58294359/195800241-cd39582c-3a2d-47b0-a7ac-5a7f71f59217.png)
